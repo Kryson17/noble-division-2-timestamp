@@ -7,269 +7,549 @@
 <title>Noble Division 2 Timestamp</title>
 
 <style>
-    * {
-        box-sizing: border-box;
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #35b9e6;
+    --blue-dark: #159bc8;
+    --blue-light: #dff7ff;
+    --text: #173746;
+    --muted: #7693a0;
+    --card: rgba(255,255,255,.78);
+    --border: #c8eaf5;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 10% 10%, rgba(75,205,245,.25), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(105,220,255,.22), transparent 28%),
+        linear-gradient(135deg, #f2fcff, #dff7ff);
+    overflow-x: hidden;
+}
+
+/* Animated background */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .25;
+    z-index: -1;
+    animation: float 8s ease-in-out infinite alternate;
+}
+
+body::before {
+    background: #55d7ff;
+    top: -120px;
+    left: -100px;
+}
+
+body::after {
+    background: #36b4df;
+    bottom: -130px;
+    right: -100px;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    from {
+        transform: translate(0, 0);
     }
 
-    body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(135deg, #eaf9ff, #d8f3ff);
-        color: #183447;
+    to {
+        transform: translate(40px, 25px);
+    }
+}
+
+/* Header */
+
+.header {
+    text-align: center;
+    padding: 65px 20px 40px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.7);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 25px rgba(32,155,194,.1);
+    color: var(--blue-dark);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.logo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 12px rgba(53,185,230,.8);
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #159bc8, #55cbed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    max-width: 550px;
+    margin: 14px auto 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Main */
+
+.container {
+    width: 92%;
+    max-width: 1050px;
+    margin: auto;
+    padding-bottom: 70px;
+}
+
+.section {
+    margin-top: 25px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.section-line {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, var(--border), transparent);
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #527582;
+}
+
+/* Cards */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    padding: 23px;
+    border-radius: 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(32,145,180,.08);
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(64,196,235,.15);
+    right: -55px;
+    top: -55px;
+    transition: .3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #8dd9ef;
+    box-shadow: 0 18px 40px rgba(30,155,195,.15);
+}
+
+.card:hover::before {
+    transform: scale(1.4);
+}
+
+.card.active {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(53,185,230,.12),
+                0 18px 40px rgba(30,155,195,.14);
+}
+
+.icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--blue-light);
+    font-size: 21px;
+    margin-bottom: 17px;
+    transition: .25s ease;
+}
+
+.card:hover .icon {
+    transform: rotate(-5deg) scale(1.08);
+}
+
+.card h3 {
+    position: relative;
+    margin: 0;
+    font-size: 17px;
+}
+
+.card p {
+    position: relative;
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Generator */
+
+.generator {
+    display: none;
+    margin-top: 28px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.86);
+    border: 1px solid var(--border);
+    box-shadow: 0 15px 45px rgba(30,145,180,.1);
+    animation: appear .3s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
 
-    .header {
-        text-align: center;
-        padding: 55px 20px 35px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.generator-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.generator-title {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.live {
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #e4faff;
+    color: #2199bd;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+/* Inputs */
+
+.controls {
+    display: none;
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.control {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.control label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #64838f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 13px;
+    border-radius: 10px;
+    border: 1px solid #c8e4ed;
+    background: #f8fdff;
+    color: var(--text);
+    outline: none;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(53,185,230,.1);
+}
+
+.calculated {
+    display: none;
+    margin-bottom: 17px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    background: #eafaff;
+    color: #37849a;
+    font-size: 13px;
+}
+
+/* Output */
+
+textarea {
+    width: 100%;
+    min-height: 390px;
+    padding: 17px;
+    border-radius: 13px;
+    border: 1px solid #c8e4ed;
+    background: #f8fdff;
+    color: #284753;
+    resize: vertical;
+    outline: none;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.copy {
+    width: 100%;
+    margin-top: 13px;
+    padding: 15px;
+    border: none;
+    border-radius: 11px;
+    background: linear-gradient(90deg, #35b9e6, #55cbed);
+    color: white;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.copy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(53,185,230,.25);
+}
+
+.copied {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+    color: #35a77e;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 0 20px 30px;
+    color: #8aa5af;
+    font-size: 11px;
+}
+
+/* Mobile */
+
+@media(max-width: 700px) {
+
+    .cards {
+        grid-template-columns: 1fr;
     }
 
-    .badge {
-        display: inline-block;
-        padding: 7px 14px;
-        border-radius: 30px;
-        background: #c8efff;
-        color: #1688b5;
-        font-size: 12px;
-        font-weight: bold;
-        letter-spacing: 2px;
-        margin-bottom: 15px;
+    .controls {
+        grid-template-columns: 1fr;
+    }
+
+    .generator-top {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     h1 {
-        margin: 0;
-        font-size: 38px;
-        font-weight: 800;
         letter-spacing: -1px;
     }
-
-    .subtitle {
-        margin-top: 10px;
-        color: #668493;
-        font-size: 15px;
-    }
-
-    .container {
-        width: 92%;
-        max-width: 950px;
-        margin: auto;
-        padding-bottom: 60px;
-    }
-
-    .section-title {
-        margin: 15px 0 18px;
-        font-size: 14px;
-        font-weight: 800;
-        letter-spacing: 2px;
-        color: #4c7180;
-        text-transform: uppercase;
-    }
-
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-    }
-
-    .card {
-        border: 1px solid #c8eaf6;
-        border-radius: 16px;
-        padding: 22px;
-        background: rgba(255,255,255,0.75);
-        box-shadow: 0 8px 25px rgba(38, 139, 174, 0.08);
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 30px rgba(38, 139, 174, 0.15);
-        border-color: #8ed9f1;
-    }
-
-    .card.active {
-        border-color: #45b9df;
-        background: #f8fdff;
-    }
-
-    .icon {
-        width: 42px;
-        height: 42px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 12px;
-        background: #d9f5ff;
-        color: #1595c1;
-        font-size: 20px;
-        margin-bottom: 15px;
-    }
-
-    .card h3 {
-        margin: 0;
-        font-size: 17px;
-    }
-
-    .card p {
-        margin: 7px 0 0;
-        color: #76919d;
-        font-size: 13px;
-    }
-
-    .output-section {
-        display: none;
-        margin-top: 30px;
-        padding: 24px;
-        border-radius: 18px;
-        background: rgba(255,255,255,0.82);
-        border: 1px solid #c8eaf6;
-        box-shadow: 0 8px 30px rgba(38, 139, 174, 0.09);
-    }
-
-    .output-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-
-    .output-title {
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    .status {
-        font-size: 12px;
-        color: #62a0b5;
-    }
-
-    textarea {
-        width: 100%;
-        min-height: 390px;
-        padding: 17px;
-        border-radius: 12px;
-        border: 1px solid #c9e5ef;
-        background: #f7fcfe;
-        color: #274451;
-        resize: vertical;
-        font-family: monospace;
-        font-size: 13px;
-        line-height: 1.55;
-        outline: none;
-    }
-
-    textarea:focus {
-        border-color: #63c6e8;
-    }
-
-    .copy-button {
-        width: 100%;
-        margin-top: 13px;
-        padding: 14px;
-        border: none;
-        border-radius: 11px;
-        background: #48b9df;
-        color: white;
-        font-size: 14px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-
-    .copy-button:hover {
-        background: #2fa8d1;
-    }
-
-    .copied {
-        text-align: center;
-        margin-top: 10px;
-        color: #38a47c;
-        font-size: 13px;
-        display: none;
-    }
-
-    footer {
-        text-align: center;
-        color: #86a5b1;
-        font-size: 12px;
-        padding: 10px 0 30px;
-    }
-
-    @media (max-width: 650px) {
-        h1 {
-            font-size: 30px;
-        }
-
-        .cards {
-            grid-template-columns: 1fr;
-        }
-    }
+}
 </style>
 </head>
 
 <body>
 
 <header class="header">
-    <div class="badge">NOBLE DIVISION 2</div>
 
-    <h1>Timestamp Generator</h1>
+    <div class="logo">
+        <span class="logo-dot"></span>
+        NOBLE DIVISION 2
+    </div>
+
+    <h1>
+        Timestamp <span class="gradient-text">Generator</span>
+    </h1>
 
     <div class="subtitle">
-        Select a session schedule to generate your Discord message.
+        Generate ready-to-use Discord timestamps for Noble Division 2 sessions.
     </div>
+
 </header>
 
 
 <main class="container">
 
-    <div class="section-title">
-        Session Schedule
-    </div>
+    <!-- SESSION SCHEDULE -->
 
-    <div class="cards">
+    <section class="section">
 
-        <div class="card" onclick="showPreset('division', this)">
-            <div class="icon">🏆</div>
-            <h3>Division Cup</h3>
-            <p>Resume hosting in 2 days at 14:00</p>
+        <div class="section-heading">
+            <div class="section-title">Session Schedule</div>
+            <div class="section-line"></div>
         </div>
 
-        <div class="card" onclick="showPreset('solo', this)">
-            <div class="icon">👤</div>
-            <h3>Solo CC Weekend</h3>
-            <p>Sessions 3–7</p>
+        <div class="cards">
+
+            <div class="card" onclick="showPreset('division', this)">
+                <div class="icon">🏆</div>
+                <h3>Division Cup</h3>
+                <p>Resume hosting in 2 days · 14:00</p>
+            </div>
+
+            <div class="card" onclick="showPreset('solo', this)">
+                <div class="icon">👤</div>
+                <h3>Solo CC Weekend</h3>
+                <p>Sessions 3–7</p>
+            </div>
+
+            <div class="card" onclick="showPreset('weekday', this)">
+                <div class="icon">📅</div>
+                <h3>None Tournament Weekday</h3>
+                <p>Sessions 1–6</p>
+            </div>
+
+            <div class="card" onclick="showPreset('weekend', this)">
+                <div class="icon">🌙</div>
+                <h3>None Tournament Weekend</h3>
+                <p>Sessions 1–7</p>
+            </div>
+
         </div>
 
-        <div class="card" onclick="showPreset('weekday', this)">
-            <div class="icon">📅</div>
-            <h3>None Tournament Weekday</h3>
-            <p>Sessions 1–6</p>
+    </section>
+
+
+    <!-- SESSIONS -->
+
+    <section class="section">
+
+        <div class="section-heading">
+            <div class="section-title">Sessions</div>
+            <div class="section-line"></div>
         </div>
 
-        <div class="card" onclick="showPreset('weekend', this)">
-            <div class="icon">🌙</div>
-            <h3>None Tournament Weekend</h3>
-            <p>Sessions 1–7</p>
+        <div class="cards">
+
+            <div class="card" onclick="showSession('late', this)">
+                <div class="icon">🌙</div>
+                <h3>Latenight Lobby</h3>
+                <p>2 games · Custom session time</p>
+            </div>
+
+            <div class="card" onclick="showSession('lobby', this)">
+                <div class="icon">🎮</div>
+                <h3>Lobby</h3>
+                <p>3 games · Custom session time</p>
+            </div>
+
+            <div class="card" onclick="showSession('second', this)">
+                <div class="icon">🔄</div>
+                <h3>Second Lobby</h3>
+                <p>3 games · Second lobby</p>
+            </div>
+
         </div>
 
-    </div>
+    </section>
 
 
-    <section class="output-section" id="outputSection">
+    <!-- GENERATOR -->
 
-        <div class="output-header">
-            <div class="output-title" id="outputTitle">
+    <section class="generator" id="generator">
+
+        <div class="generator-top">
+
+            <div class="generator-title" id="generatorTitle">
                 Generated Message
             </div>
 
-            <div class="status">
+            <div class="live">
                 LIVE TIMESTAMPS
             </div>
+
         </div>
+
+
+        <div class="controls" id="controls">
+
+            <div class="control">
+                <label>Date</label>
+                <input type="date" id="sessionDate">
+            </div>
+
+            <div class="control">
+                <label>Registration</label>
+                <input type="time" id="sessionTime">
+            </div>
+
+            <div class="control">
+                <label>Host Discord User ID</label>
+                <input type="text" id="hostId" placeholder="123456789012345678">
+            </div>
+
+        </div>
+
+
+        <div class="calculated" id="calculated">
+            First Game Commences: <strong id="calculatedTime"></strong>
+        </div>
+
 
         <textarea id="output" readonly></textarea>
 
-        <button class="copy-button" onclick="copyMessage()">
+        <button class="copy" onclick="copyMessage()">
             COPY MESSAGE
         </button>
 
@@ -289,13 +569,31 @@
 
 <script>
 
-function makeTimestamp(date, hour, minute = 0) {
+let currentSession = null;
+
+
+/* -------------------------
+   TIMESTAMP FUNCTIONS
+------------------------- */
+
+function timestampFor(date, hour, minute = 0) {
 
     const d = new Date(date);
 
     d.setHours(hour, minute, 0, 0);
 
     return Math.floor(d.getTime() / 1000);
+}
+
+
+function timestampFromInput(dateString, timeString) {
+
+    const [year, month, day] = dateString.split("-").map(Number);
+    const [hour, minute] = timeString.split(":").map(Number);
+
+    const date = new Date(year, month - 1, day, hour, minute, 0, 0);
+
+    return Math.floor(date.getTime() / 1000);
 }
 
 
@@ -309,13 +607,16 @@ function formatDate(date) {
 }
 
 
-function showPreset(type, selectedCard) {
+/* -------------------------
+   SCHEDULE PRESETS
+------------------------- */
 
-    document.querySelectorAll(".card").forEach(card => {
-        card.classList.remove("active");
-    });
+function showPreset(type, card) {
 
-    selectedCard.classList.add("active");
+    selectCard(card);
+
+    document.getElementById("controls").style.display = "none";
+    document.getElementById("calculated").style.display = "none";
 
     const today = new Date();
 
@@ -331,7 +632,7 @@ function showPreset(type, selectedCard) {
 
         target.setDate(target.getDate() + 2);
 
-        const timestamp = makeTimestamp(target, 14);
+        const timestamp = timestampFor(target, 14);
 
         title = "Division Cup";
 
@@ -340,7 +641,7 @@ function showPreset(type, selectedCard) {
     }
 
 
-    /* SOLO CC WEEKEND */
+    /* SOLO CC */
 
     if (type === "solo") {
 
@@ -350,11 +651,11 @@ function showPreset(type, selectedCard) {
 
         const date = formatDate(today);
 
-        const third = makeTimestamp(today, 18);
-        const fourth = makeTimestamp(today, 20);
-        const fifth = makeTimestamp(today, 22);
-        const sixth = makeTimestamp(today, 23, 30);
-        const seventh = makeTimestamp(nextDay, 1);
+        const third = timestampFor(today, 18);
+        const fourth = timestampFor(today, 20);
+        const fifth = timestampFor(today, 22);
+        const sixth = timestampFor(today, 23, 30);
+        const seventh = timestampFor(nextDay, 1);
 
         title = "Solo CC Weekend";
 
@@ -384,18 +685,18 @@ More details are available in #announcements
     }
 
 
-    /* NONE TOURNAMENT WEEKDAY */
+    /* WEEKDAY */
 
     if (type === "weekday") {
 
         const date = formatDate(today);
 
-        const first = makeTimestamp(today, 14);
-        const second = makeTimestamp(today, 16);
-        const third = makeTimestamp(today, 18);
-        const fourth = makeTimestamp(today, 20);
-        const fifth = makeTimestamp(today, 22);
-        const sixth = makeTimestamp(today, 23, 30);
+        const first = timestampFor(today, 14);
+        const second = timestampFor(today, 16);
+        const third = timestampFor(today, 18);
+        const fourth = timestampFor(today, 20);
+        const fifth = timestampFor(today, 22);
+        const sixth = timestampFor(today, 23, 30);
 
         title = "None Tournament Weekday";
 
@@ -428,7 +729,7 @@ More details are available in #announcements
     }
 
 
-    /* NONE TOURNAMENT WEEKEND */
+    /* WEEKEND */
 
     if (type === "weekend") {
 
@@ -438,13 +739,13 @@ More details are available in #announcements
 
         const date = formatDate(today);
 
-        const first = makeTimestamp(today, 14);
-        const second = makeTimestamp(today, 16);
-        const third = makeTimestamp(today, 18);
-        const fourth = makeTimestamp(today, 20);
-        const fifth = makeTimestamp(today, 22);
-        const sixth = makeTimestamp(today, 23, 30);
-        const seventh = makeTimestamp(nextDay, 1);
+        const first = timestampFor(today, 14);
+        const second = timestampFor(today, 16);
+        const third = timestampFor(today, 18);
+        const fourth = timestampFor(today, 20);
+        const fifth = timestampFor(today, 22);
+        const sixth = timestampFor(today, 23, 30);
+        const seventh = timestampFor(nextDay, 1);
 
         title = "None Tournament Weekend";
 
@@ -480,31 +781,221 @@ More details are available in #announcements
     }
 
 
-    document.getElementById("outputTitle").textContent = title;
-
-    document.getElementById("output").value = text;
-
-    document.getElementById("outputSection").style.display = "block";
-
-    document.getElementById("copied").style.display = "none";
-
+    openGenerator(title, text);
 }
 
 
+/* -------------------------
+   SESSION GENERATOR
+------------------------- */
+
+function showSession(type, card) {
+
+    selectCard(card);
+
+    currentSession = type;
+
+    document.getElementById("controls").style.display = "grid";
+    document.getElementById("calculated").style.display = "block";
+
+    const today = new Date();
+
+    const dateInput = document.getElementById("sessionDate");
+    const timeInput = document.getElementById("sessionTime");
+
+    if (!dateInput.value) {
+
+        dateInput.value =
+            `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,"0")}-${String(today.getDate()).padStart(2,"0")}`;
+    }
+
+    if (!timeInput.value) {
+        timeInput.value = "14:00";
+    }
+
+    updateSession();
+
+    const titles = {
+        late: "Latenight Lobby",
+        lobby: "Lobby",
+        second: "Second Lobby"
+    };
+
+    document.getElementById("generatorTitle").textContent =
+        titles[type];
+}
+
+
+function updateSession() {
+
+    if (!currentSession) return;
+
+    const date = document.getElementById("sessionDate").value;
+    const time = document.getElementById("sessionTime").value;
+    const host = document.getElementById("hostId").value.trim();
+
+    if (!date || !time) return;
+
+    const registrationTimestamp =
+        timestampFromInput(date, time);
+
+    const startDate = new Date(
+        registrationTimestamp * 1000
+    );
+
+    startDate.setMinutes(
+        startDate.getMinutes() + 15
+    );
+
+    const firstGameTimestamp =
+        Math.floor(startDate.getTime() / 1000);
+
+
+    document.getElementById("calculatedTime").textContent =
+        startDate.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+
+    let text = "";
+
+    const hostText =
+        host ? `<@${host}>` : `<@user>`;
+
+
+    if (currentSession === "late") {
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (2 games)**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registrationTimestamp}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGameTimestamp}:t>
+
+The host for this session is: ${hostText}, Direct Message them for help.
+
+• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
+
+Required at least **55+ Reacts** for 1 lobby and **110+ Reacts** for a 2nd lobby (1 per duo).`;
+    }
+
+
+    if (currentSession === "lobby") {
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (3 games)**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registrationTimestamp}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGameTimestamp}:t>
+
+The host for this session is: ${hostText}, Direct Message them for help.
+
+• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
+
+Required at least **55+ Reacts** for 1 lobby and **110+ Reacts** for a 2nd lobby (1 per duo).`;
+    }
+
+
+    if (currentSession === "second") {
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (3 games)**
+
+**Second Lobby**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registrationTimestamp}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGameTimestamp}:t>
+
+• The host for this session is: ${hostText}, Direct Message them for help.
+
+Required at least **55+ Reacts** (1 per duo).`;
+    }
+
+
+    document.getElementById("output").value = text;
+}
+
+
+/* -------------------------
+   HELPERS
+------------------------- */
+
+function selectCard(card) {
+
+    document.querySelectorAll(".card").forEach(c => {
+        c.classList.remove("active");
+    });
+
+    card.classList.add("active");
+}
+
+
+function openGenerator(title, text) {
+
+    document.getElementById("generator").style.display = "block";
+
+    document.getElementById("generatorTitle").textContent =
+        title;
+
+    document.getElementById("output").value =
+        text;
+
+    document.getElementById("copied").style.display =
+        "none";
+
+    document.getElementById("generator")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+}
+
+
+/* -------------------------
+   LIVE INPUT
+------------------------- */
+
+document.getElementById("sessionDate")
+    .addEventListener("input", updateSession);
+
+document.getElementById("sessionTime")
+    .addEventListener("input", updateSession);
+
+document.getElementById("hostId")
+    .addEventListener("input", updateSession);
+
+
+/* -------------------------
+   COPY
+------------------------- */
+
 function copyMessage() {
 
-    const output = document.getElementById("output");
+    const output =
+        document.getElementById("output");
 
-    navigator.clipboard.writeText(output.value);
+    navigator.clipboard.writeText(
+        output.value
+    );
 
-    document.getElementById("copied").style.display = "block";
+    document.getElementById("copied")
+        .style.display = "block";
 
     setTimeout(() => {
 
-        document.getElementById("copied").style.display = "none";
+        document.getElementById("copied")
+            .style.display = "none";
 
     }, 2000);
-
 }
 
 </script>

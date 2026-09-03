@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Noble Division 2 Timestamp</title>
 
 <style>
@@ -12,95 +13,194 @@
 
     body {
         margin: 0;
-        font-family: Arial, sans-serif;
-        background: #111318;
-        color: #ffffff;
         min-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #eaf9ff, #d8f3ff);
+        color: #183447;
     }
 
-    .container {
-        width: 90%;
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 50px 20px;
+    .header {
+        text-align: center;
+        padding: 55px 20px 35px;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 7px 14px;
+        border-radius: 30px;
+        background: #c8efff;
+        color: #1688b5;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
     }
 
     h1 {
-        text-align: center;
-        margin-bottom: 45px;
-        font-size: 32px;
+        margin: 0;
+        font-size: 38px;
+        font-weight: 800;
+        letter-spacing: -1px;
     }
 
-    .category {
-        font-size: 22px;
-        font-weight: bold;
-        margin-bottom: 18px;
+    .subtitle {
+        margin-top: 10px;
+        color: #668493;
+        font-size: 15px;
     }
 
-    .buttons {
+    .container {
+        width: 92%;
+        max-width: 950px;
+        margin: auto;
+        padding-bottom: 60px;
+    }
+
+    .section-title {
+        margin: 15px 0 18px;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        color: #4c7180;
+        text-transform: uppercase;
+    }
+
+    .cards {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 16px;
     }
 
-    button {
-        border: none;
-        border-radius: 8px;
-        padding: 15px;
-        background: #242832;
-        color: white;
-        font-size: 15px;
+    .card {
+        border: 1px solid #c8eaf6;
+        border-radius: 16px;
+        padding: 22px;
+        background: rgba(255,255,255,0.75);
+        box-shadow: 0 8px 25px rgba(38, 139, 174, 0.08);
         cursor: pointer;
-        transition: 0.2s;
+        transition: all 0.2s ease;
     }
 
-    button:hover {
-        background: #343946;
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(38, 139, 174, 0.15);
+        border-color: #8ed9f1;
     }
 
-    .preset {
-        margin-top: 35px;
-        display: none;
+    .card.active {
+        border-color: #45b9df;
+        background: #f8fdff;
     }
 
-    .preset h2 {
+    .icon {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: #d9f5ff;
+        color: #1595c1;
         font-size: 20px;
-        margin-bottom: 12px;
+        margin-bottom: 15px;
+    }
+
+    .card h3 {
+        margin: 0;
+        font-size: 17px;
+    }
+
+    .card p {
+        margin: 7px 0 0;
+        color: #76919d;
+        font-size: 13px;
+    }
+
+    .output-section {
+        display: none;
+        margin-top: 30px;
+        padding: 24px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.82);
+        border: 1px solid #c8eaf6;
+        box-shadow: 0 8px 30px rgba(38, 139, 174, 0.09);
+    }
+
+    .output-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .output-title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .status {
+        font-size: 12px;
+        color: #62a0b5;
     }
 
     textarea {
         width: 100%;
-        min-height: 400px;
+        min-height: 390px;
+        padding: 17px;
+        border-radius: 12px;
+        border: 1px solid #c9e5ef;
+        background: #f7fcfe;
+        color: #274451;
         resize: vertical;
-        background: #191c23;
-        color: #ffffff;
-        border: 1px solid #343944;
-        border-radius: 8px;
-        padding: 15px;
         font-family: monospace;
-        font-size: 14px;
-        line-height: 1.5;
+        font-size: 13px;
+        line-height: 1.55;
+        outline: none;
     }
 
-    .copy {
-        margin-top: 12px;
-        background: #5865f2;
+    textarea:focus {
+        border-color: #63c6e8;
+    }
+
+    .copy-button {
         width: 100%;
+        margin-top: 13px;
+        padding: 14px;
+        border: none;
+        border-radius: 11px;
+        background: #48b9df;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
     }
 
-    .copy:hover {
-        background: #4752c4;
+    .copy-button:hover {
+        background: #2fa8d1;
     }
 
     .copied {
-        margin-top: 10px;
         text-align: center;
-        color: #8be28b;
+        margin-top: 10px;
+        color: #38a47c;
+        font-size: 13px;
         display: none;
     }
 
-    @media (max-width: 600px) {
-        .buttons {
+    footer {
+        text-align: center;
+        color: #86a5b1;
+        font-size: 12px;
+        padding: 10px 0 30px;
+    }
+
+    @media (max-width: 650px) {
+        h1 {
+            font-size: 30px;
+        }
+
+        .cards {
             grid-template-columns: 1fr;
         }
     }
@@ -109,36 +209,88 @@
 
 <body>
 
-<div class="container">
+<header class="header">
+    <div class="badge">NOBLE DIVISION 2</div>
 
-    <h1>Noble Division 2 Timestamp</h1>
+    <h1>Timestamp Generator</h1>
 
-    <div class="category">Session Schedule</div>
+    <div class="subtitle">
+        Select a session schedule to generate your Discord message.
+    </div>
+</header>
 
-    <div class="buttons">
-        <button onclick="showPreset('division')">Division Cup</button>
-        <button onclick="showPreset('solo')">Solo CC Weekend</button>
-        <button onclick="showPreset('weekday')">None Tournament Weekday</button>
-        <button onclick="showPreset('weekend')">None Tournament Weekend</button>
+
+<main class="container">
+
+    <div class="section-title">
+        Session Schedule
     </div>
 
-    <div class="preset" id="presetBox">
-        <h2 id="presetTitle"></h2>
+    <div class="cards">
+
+        <div class="card" onclick="showPreset('division', this)">
+            <div class="icon">🏆</div>
+            <h3>Division Cup</h3>
+            <p>Resume hosting in 2 days at 14:00</p>
+        </div>
+
+        <div class="card" onclick="showPreset('solo', this)">
+            <div class="icon">👤</div>
+            <h3>Solo CC Weekend</h3>
+            <p>Sessions 3–7</p>
+        </div>
+
+        <div class="card" onclick="showPreset('weekday', this)">
+            <div class="icon">📅</div>
+            <h3>None Tournament Weekday</h3>
+            <p>Sessions 1–6</p>
+        </div>
+
+        <div class="card" onclick="showPreset('weekend', this)">
+            <div class="icon">🌙</div>
+            <h3>None Tournament Weekend</h3>
+            <p>Sessions 1–7</p>
+        </div>
+
+    </div>
+
+
+    <section class="output-section" id="outputSection">
+
+        <div class="output-header">
+            <div class="output-title" id="outputTitle">
+                Generated Message
+            </div>
+
+            <div class="status">
+                LIVE TIMESTAMPS
+            </div>
+        </div>
 
         <textarea id="output" readonly></textarea>
 
-        <button class="copy" onclick="copyText()">Copy</button>
+        <button class="copy-button" onclick="copyMessage()">
+            COPY MESSAGE
+        </button>
 
         <div class="copied" id="copied">
-            Copied!
+            ✓ Message copied
         </div>
-    </div>
 
-</div>
+    </section>
+
+</main>
+
+
+<footer>
+    Noble Division 2 · Timestamp Generator
+</footer>
+
 
 <script>
 
-function timestampFor(date, hour, minute = 0) {
+function makeTimestamp(date, hour, minute = 0) {
+
     const d = new Date(date);
 
     d.setHours(hour, minute, 0, 0);
@@ -148,32 +300,38 @@ function timestampFor(date, hour, minute = 0) {
 
 
 function formatDate(date) {
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
+
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
 
     return `${day}-${month}-${year}`;
 }
 
 
-function showPreset(type) {
+function showPreset(type, selectedCard) {
 
-    const now = new Date();
+    document.querySelectorAll(".card").forEach(card => {
+        card.classList.remove("active");
+    });
+
+    selectedCard.classList.add("active");
+
+    const today = new Date();
 
     let text = "";
     let title = "";
 
-    /*
-     * DIVISION CUP
-     * 2 Tage später um 14:00
-     */
+
+    /* DIVISION CUP */
 
     if (type === "division") {
 
-        const target = new Date(now);
+        const target = new Date(today);
+
         target.setDate(target.getDate() + 2);
 
-        const timestamp = timestampFor(target, 14, 0);
+        const timestamp = makeTimestamp(target, 14);
 
         title = "Division Cup";
 
@@ -182,35 +340,33 @@ function showPreset(type) {
     }
 
 
-    /*
-     * SOLO CC WEEKEND
-     */
+    /* SOLO CC WEEKEND */
 
     if (type === "solo") {
 
-        const date = new Date(now);
-        const nextDay = new Date(date);
+        const nextDay = new Date(today);
+
         nextDay.setDate(nextDay.getDate() + 1);
 
-        const dateText = formatDate(date);
+        const date = formatDate(today);
 
-        const third = timestampFor(date, 18, 0);
-        const fourth = timestampFor(date, 20, 0);
-        const fifth = timestampFor(date, 22, 0);
-        const sixth = timestampFor(date, 23, 30);
-        const seventh = timestampFor(nextDay, 1, 0);
+        const third = makeTimestamp(today, 18);
+        const fourth = makeTimestamp(today, 20);
+        const fifth = makeTimestamp(today, 22);
+        const sixth = makeTimestamp(today, 23, 30);
+        const seventh = makeTimestamp(nextDay, 1);
 
         title = "Solo CC Weekend";
 
         text =
 `@everyone
 
-  :Div2:   **Noble Division 2 Schedule ${dateText})**   :Div2: 
+  :Div2:   **Noble Division 2 Schedule ${date})**   :Div2:
 
 Third Session:
 :Arrow: <t:${third}:t>
 
-Fourth Session: 
+Fourth Session:
 :Arrow: <t:${fourth}:t>
 
 Fifth Session: (2 games)
@@ -222,34 +378,31 @@ Sixth Session: (2 games)
 Seventh Session: (2 games)
 :Arrow: <t:${seventh}:t>
 
-More details are available in #announcements 
+More details are available in #announcements
 
 -# Please note that session times may shift depending on how earlier sessions progress.`;
     }
 
 
-    /*
-     * NONE TOURNAMENT WEEKDAY
-     */
+    /* NONE TOURNAMENT WEEKDAY */
 
     if (type === "weekday") {
 
-        const date = new Date(now);
-        const dateText = formatDate(date);
+        const date = formatDate(today);
 
-        const first = timestampFor(date, 14, 0);
-        const second = timestampFor(date, 16, 0);
-        const third = timestampFor(date, 18, 0);
-        const fourth = timestampFor(date, 20, 0);
-        const fifth = timestampFor(date, 22, 0);
-        const sixth = timestampFor(date, 23, 30);
+        const first = makeTimestamp(today, 14);
+        const second = makeTimestamp(today, 16);
+        const third = makeTimestamp(today, 18);
+        const fourth = makeTimestamp(today, 20);
+        const fifth = makeTimestamp(today, 22);
+        const sixth = makeTimestamp(today, 23, 30);
 
         title = "None Tournament Weekday";
 
         text =
 `@everyone
 
-  <:Div2:1540429559076225094>   **Noble Division 2 Schedule ${dateText})**   <:Div2:1540429559076225094> 
+  <:Div2:1540429559076225094>   **Noble Division 2 Schedule ${date})**   <:Div2:1540429559076225094>
 
 First Session:
 <:Arrow:1540758164797005876> <t:${first}:t>
@@ -260,7 +413,7 @@ Second Session:
 Third Session:
 <:Arrow:1540758164797005876> <t:${third}:t>
 
-Fourth Session: 
+Fourth Session:
 <:Arrow:1540758164797005876> <t:${fourth}:t>
 
 Fifth Session: (2 games)
@@ -269,38 +422,36 @@ Fifth Session: (2 games)
 Sixth Session: (2 games)
 <:Arrow:1540758164797005876> <t:${sixth}:t>
 
-More details are available in #announcements 
+More details are available in #announcements
 
 -# Please note that session times may shift depending on how earlier sessions progress.`;
     }
 
 
-    /*
-     * NONE TOURNAMENT WEEKEND
-     */
+    /* NONE TOURNAMENT WEEKEND */
 
     if (type === "weekend") {
 
-        const date = new Date(now);
-        const nextDay = new Date(date);
+        const nextDay = new Date(today);
+
         nextDay.setDate(nextDay.getDate() + 1);
 
-        const dateText = formatDate(date);
+        const date = formatDate(today);
 
-        const first = timestampFor(date, 14, 0);
-        const second = timestampFor(date, 16, 0);
-        const third = timestampFor(date, 18, 0);
-        const fourth = timestampFor(date, 20, 0);
-        const fifth = timestampFor(date, 22, 0);
-        const sixth = timestampFor(date, 23, 30);
-        const seventh = timestampFor(nextDay, 1, 0);
+        const first = makeTimestamp(today, 14);
+        const second = makeTimestamp(today, 16);
+        const third = makeTimestamp(today, 18);
+        const fourth = makeTimestamp(today, 20);
+        const fifth = makeTimestamp(today, 22);
+        const sixth = makeTimestamp(today, 23, 30);
+        const seventh = makeTimestamp(nextDay, 1);
 
         title = "None Tournament Weekend";
 
         text =
 `@everyone
 
-  <:Div2:1540429559076225094>   **Noble Division 2 Schedule ${dateText})**   <:Div2:1540429559076225094> 
+  <:Div2:1540429559076225094>   **Noble Division 2 Schedule ${date})**   <:Div2:1540429559076225094>
 
 First Session:
 <:Arrow:1540758164797005876> <t:${first}:t>
@@ -311,7 +462,7 @@ Second Session:
 Third Session:
 <:Arrow:1540758164797005876> <t:${third}:t>
 
-Fourth Session: 
+Fourth Session:
 <:Arrow:1540758164797005876> <t:${fourth}:t>
 
 Fifth Session: (2 games)
@@ -323,20 +474,24 @@ Sixth Session: (2 games)
 Seventh Session: (2 games)
 <:Arrow:1540758164797005876> <t:${seventh}:t>
 
-More details are available in #announcements 
+More details are available in #announcements
 
 -# Please note that session times may shift depending on how earlier sessions progress.`;
     }
 
 
-    document.getElementById("presetTitle").textContent = title;
+    document.getElementById("outputTitle").textContent = title;
+
     document.getElementById("output").value = text;
-    document.getElementById("presetBox").style.display = "block";
+
+    document.getElementById("outputSection").style.display = "block";
+
     document.getElementById("copied").style.display = "none";
+
 }
 
 
-function copyText() {
+function copyMessage() {
 
     const output = document.getElementById("output");
 
@@ -345,8 +500,11 @@ function copyText() {
     document.getElementById("copied").style.display = "block";
 
     setTimeout(() => {
+
         document.getElementById("copied").style.display = "none";
+
     }, 2000);
+
 }
 
 </script>

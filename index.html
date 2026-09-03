@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noble Division 2 Timestamp</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #111318;
+        color: #ffffff;
+        min-height: 100vh;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 50px 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 45px;
+        font-size: 32px;
+    }
+
+    .category {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 18px;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    button {
+        border: none;
+        border-radius: 8px;
+        padding: 15px;
+        background: #242832;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #343946;
+    }
+
+    .preset {
+        margin-top: 35px;
+        display: none;
+    }
+
+    .preset h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 400px;
+        resize: vertical;
+        background: #191c23;
+        color: #ffffff;
+        border: 1px solid #343944;
+        border-radius: 8px;
+        padding: 15px;
+        font-family: monospace;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .copy {
+        margin-top: 12px;
+        background: #5865f2;
+        width: 100%;
+    }
+
+    .copy:hover {
+        background: #4752c4;
+    }
+
+    .copied {
+        margin-top: 10px;
+        text-align: center;
+        color: #8be28b;
+        display: none;
+    }
+
+    @media (max-width: 600px) {
+        .buttons {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Noble Division 2 Timestamp</h1>
+
+    <div class="category">Session Schedule</div>
+
+    <div class="buttons">
+        <button onclick="showPreset('division')">Division Cup</button>
+        <button onclick="showPreset('solo')">Solo CC Weekend</button>
+        <button onclick="showPreset('weekday')">None Tournament Weekday</button>
+        <button onclick="showPreset('weekend')">None Tournament Weekend</button>
+    </div>
+
+    <div class="preset" id="presetBox">
+        <h2 id="presetTitle"></h2>
+
+        <textarea id="output" readonly></textarea>
+
+        <button class="copy" onclick="copyText()">Copy</button>
+
+        <div class="copied" id="copied">
+            Copied!
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+function timestampFor(date, hour, minute = 0) {
+    const d = new Date(date);
+
+    d.setHours(hour, minute, 0, 0);
+
+    return Math.floor(d.getTime() / 1000);
+}
+
+
+function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    return `${day}-${month}-${year}`;
+}
+
+
+function showPreset(type) {
+
+    const now = new Date();
+
+    let text = "";
+    let title = "";
+
+    /*
+     * DIVISION CUP
+     * 2 Tage später um 14:00
+     */
+
+    if (type === "division") {
+
+        const target = new Date(now);
+        target.setDate(target.getDate() + 2);
+
+        const timestamp = timestampFor(target, 14, 0);
+
+        title = "Division Cup";
+
+        text =
+`<:ArrowRight:1398315425913372872> There are no sessions scheduled for today & tomorrow. Good luck in the Divisional Cups! We’ll resume hosting ~ <t:${timestamp}:D> . See you then! 🏆`;
+    }
+
+
+    /*
+     * SOLO CC WEEKEND
+     */
+
+    if (type === "solo") {
+
+        const date = new Date(now);
+        const nextDay = new Date(date);
+        nextDay.setDate(nextDay.getDate() + 1);
+
+        const dateText = formatDate(date);
+
+        const third = timestampFor(date, 18, 0);
+        const fourth = timestampFor(date, 20, 0);
+        const fifth = timestampFor(date, 22, 0);
+        const sixth = timestampFor(date, 23, 30);
+        const seventh = timestampFor(nextDay, 1, 0);
+
+        title = "Solo CC Weekend";
+
+        text =
+`@everyone
+
+  :Div2:   **Noble Division 2 Schedule ${dateText})**   :Div2: 
+
+Third Session:
+:Arrow: <t:${third}:t>
+
+Fourth Session: 
+:Arrow: <t:${fourth}:t>
+
+Fifth Session: (2 games)
+:Arrow: <t:${fifth}:t>
+
+Sixth Session: (2 games)
+:Arrow: <t:${sixth}:t>
+
+Seventh Session: (2 games)
+:Arrow: <t:${seventh}:t>
+
+More details are available in #announcements 
+
+-# Please note that session times may shift depending on how earlier sessions progress.`;
+    }
+
+
+    /*
+     * NONE TOURNAMENT WEEKDAY
+     */
+
+    if (type === "weekday") {
+
+        const date = new Date(now);
+        const dateText = formatDate(date);
+
+        const first = timestampFor(date, 14, 0);
+        const second = timestampFor(date, 16, 0);
+        const third = timestampFor(date, 18, 0);
+        const fourth = timestampFor(date, 20, 0);
+        const fifth = timestampFor(date, 22, 0);
+        const sixth = timestampFor(date, 23, 30);
+
+        title = "None Tournament Weekday";
+
+        text =
+`@everyone
+
+  <:Div2:1540429559076225094>   **Noble Division 2 Schedule ${dateText})**   <:Div2:1540429559076225094> 
+
+First Session:
+<:Arrow:1540758164797005876> <t:${first}:t>
+
+Second Session:
+<:Arrow:1540758164797005876> <t:${second}:t>
+
+Third Session:
+<:Arrow:1540758164797005876> <t:${third}:t>
+
+Fourth Session: 
+<:Arrow:1540758164797005876> <t:${fourth}:t>
+
+Fifth Session: (2 games)
+<:Arrow:1540758164797005876> <t:${fifth}:t>
+
+Sixth Session: (2 games)
+<:Arrow:1540758164797005876> <t:${sixth}:t>
+
+More details are available in #announcements 
+
+-# Please note that session times may shift depending on how earlier sessions progress.`;
+    }
+
+
+    /*
+     * NONE TOURNAMENT WEEKEND
+     */
+
+    if (type === "weekend") {
+
+        const date = new Date(now);
+        const nextDay = new Date(date);
+        nextDay.setDate(nextDay.getDate() + 1);
+
+        const dateText = formatDate(date);
+
+        const first = timestampFor(date, 14, 0);
+        const second = timestampFor(date, 16, 0);
+        const third = timestampFor(date, 18, 0);
+        const fourth = timestampFor(date, 20, 0);
+        const fifth = timestampFor(date, 22, 0);
+        const sixth = timestampFor(date, 23, 30);
+        const seventh = timestampFor(nextDay, 1, 0);
+
+        title = "None Tournament Weekend";
+
+        text =
+`@everyone
+
+  <:Div2:1540429559076225094>   **Noble Division 2 Schedule ${dateText})**   <:Div2:1540429559076225094> 
+
+First Session:
+<:Arrow:1540758164797005876> <t:${first}:t>
+
+Second Session:
+<:Arrow:1540758164797005876> <t:${second}:t>
+
+Third Session:
+<:Arrow:1540758164797005876> <t:${third}:t>
+
+Fourth Session: 
+<:Arrow:1540758164797005876> <t:${fourth}:t>
+
+Fifth Session: (2 games)
+<:Arrow:1540758164797005876> <t:${fifth}:t>
+
+Sixth Session: (2 games)
+<:Arrow:1540758164797005876> <t:${sixth}:t>
+
+Seventh Session: (2 games)
+<:Arrow:1540758164797005876> <t:${seventh}:t>
+
+More details are available in #announcements 
+
+-# Please note that session times may shift depending on how earlier sessions progress.`;
+    }
+
+
+    document.getElementById("presetTitle").textContent = title;
+    document.getElementById("output").value = text;
+    document.getElementById("presetBox").style.display = "block";
+    document.getElementById("copied").style.display = "none";
+}
+
+
+function copyText() {
+
+    const output = document.getElementById("output");
+
+    navigator.clipboard.writeText(output.value);
+
+    document.getElementById("copied").style.display = "block";
+
+    setTimeout(() => {
+        document.getElementById("copied").style.display = "none";
+    }, 2000);
+}
+
+</script>
+
+</body>
+</html>

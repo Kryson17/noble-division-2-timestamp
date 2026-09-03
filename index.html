@@ -37,7 +37,6 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-
     overflow-x: hidden;
 
     font-family:
@@ -68,11 +67,8 @@ body::before {
     content: "";
 
     position: fixed;
-
     inset: 0;
-
     pointer-events: none;
-
     opacity: .35;
 
     background-image:
@@ -86,8 +82,7 @@ body::before {
             transparent 1px
         );
 
-    background-size:
-        55px 55px;
+    background-size: 55px 55px;
 
     mask-image:
         linear-gradient(
@@ -106,27 +101,20 @@ body::before {
 
 .aurora {
     position: fixed;
-
     border-radius: 50%;
-
     pointer-events: none;
-
     filter: blur(80px);
-
     z-index: -4;
-
     mix-blend-mode: multiply;
 }
 
 .aurora.one {
     width: 500px;
     height: 500px;
-
     top: -190px;
     left: -160px;
 
-    background:
-        rgba(37,195,239,.25);
+    background: rgba(37,195,239,.25);
 
     animation:
         auroraOne
@@ -139,12 +127,10 @@ body::before {
 .aurora.two {
     width: 600px;
     height: 600px;
-
     top: 30%;
     right: -270px;
 
-    background:
-        rgba(89,215,246,.21);
+    background: rgba(89,215,246,.21);
 
     animation:
         auroraTwo
@@ -157,12 +143,10 @@ body::before {
 .aurora.three {
     width: 430px;
     height: 430px;
-
     bottom: -180px;
     left: 30%;
 
-    background:
-        rgba(37,176,224,.17);
+    background: rgba(37,176,224,.17);
 
     animation:
         auroraThree
@@ -173,7 +157,6 @@ body::before {
 }
 
 @keyframes auroraOne {
-
     0% {
         transform:
             translate(0,0)
@@ -194,7 +177,6 @@ body::before {
 }
 
 @keyframes auroraTwo {
-
     0% {
         transform:
             translate(0,0)
@@ -215,7 +197,6 @@ body::before {
 }
 
 @keyframes auroraThree {
-
     0% {
         transform:
             translate(0,0)
@@ -236,13 +217,9 @@ body::before {
 
 .particles {
     position: fixed;
-
     inset: 0;
-
     overflow: hidden;
-
     pointer-events: none;
-
     z-index: -3;
 }
 
@@ -254,8 +231,7 @@ body::before {
 
     border-radius: 50%;
 
-    background:
-        rgba(48,183,222,.28);
+    background: rgba(48,183,222,.28);
 
     box-shadow:
         0 0 15px
@@ -268,7 +244,6 @@ body::before {
 }
 
 @keyframes particleFloat {
-
     from {
         transform:
             translateY(110vh)
@@ -310,9 +285,7 @@ body::before {
 
 .logo {
     display: inline-flex;
-
     align-items: center;
-
     gap: 9px;
 
     padding:
@@ -339,9 +312,7 @@ body::before {
         var(--cyan-dark);
 
     font-size: 10px;
-
     font-weight: 900;
-
     letter-spacing: 3px;
 }
 
@@ -366,7 +337,6 @@ body::before {
 }
 
 @keyframes pulse {
-
     0%,
     100% {
         opacity: .65;
@@ -390,11 +360,9 @@ h1 {
 
     line-height: 1;
 
-    letter-spacing:
-        -3px;
+    letter-spacing: -3px;
 
-    font-weight:
-        950;
+    font-weight: 950;
 }
 
 .gradient {
@@ -414,8 +382,7 @@ h1 {
 }
 
 .subtitle {
-    max-width:
-        610px;
+    max-width: 610px;
 
     margin:
         18px
@@ -425,11 +392,9 @@ h1 {
     color:
         var(--muted);
 
-    line-height:
-        1.7;
+    line-height: 1.7;
 
-    font-size:
-        14px;
+    font-size: 14px;
 }
 
 
@@ -439,15 +404,11 @@ h1 {
 
 .container {
     width: 92%;
+    max-width: 1080px;
 
-    max-width:
-        1080px;
+    margin: auto;
 
-    margin:
-        auto;
-
-    padding-bottom:
-        90px;
+    padding-bottom: 90px;
 }
 
 
@@ -458,14 +419,11 @@ h1 {
 .category {
     position: relative;
 
-    margin-bottom:
-        35px;
+    margin-bottom: 35px;
 
-    padding:
-        28px;
+    padding: 28px;
 
-    border-radius:
-        27px;
+    border-radius: 27px;
 
     background:
         var(--glass);
@@ -504,11 +462,9 @@ h1 {
     background:
         rgba(72,205,239,.12);
 
-    filter:
-        blur(10px);
+    filter: blur(10px);
 
-    pointer-events:
-        none;
+    pointer-events: none;
 }
 
 .category-header {
@@ -520,8 +476,7 @@ h1 {
 
     gap: 15px;
 
-    margin-bottom:
-        25px;
+    margin-bottom: 25px;
 
     z-index: 1;
 }
@@ -537,8 +492,7 @@ h1 {
         9px
         14px;
 
-    border-radius:
-        11px;
+    border-radius: 11px;
 
     background:
         rgba(220,248,255,.85);
@@ -550,20 +504,15 @@ h1 {
     color:
         #357f96;
 
-    font-size:
-        11px;
+    font-size: 11px;
 
-    font-weight:
-        900;
+    font-weight: 900;
 
-    letter-spacing:
-        1.8px;
+    letter-spacing: 1.8px;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 
     box-shadow:
         0 5px 20px
@@ -573,8 +522,7 @@ h1 {
 .category-line {
     flex: 1;
 
-    height:
-        1px;
+    height: 1px;
 
     background:
         linear-gradient(
@@ -592,14 +540,12 @@ h1 {
 .cards {
     position: relative;
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         repeat(2,1fr);
 
-    gap:
-        19px;
+    gap: 19px;
 
     z-index: 1;
 }
@@ -609,14 +555,11 @@ h1 {
 
     overflow: hidden;
 
-    padding:
-        24px;
+    padding: 24px;
 
-    min-height:
-        145px;
+    min-height: 145px;
 
-    border-radius:
-        19px;
+    border-radius: 19px;
 
     background:
         rgba(255,255,255,.72);
@@ -629,8 +572,7 @@ h1 {
         0 12px 35px
         rgba(31,143,178,.06);
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
     transition:
         transform .3s ease,
@@ -647,14 +589,10 @@ h1 {
     width: 190px;
     height: 190px;
 
-    right:
-        -100px;
+    right: -100px;
+    top: -105px;
 
-    top:
-        -105px;
-
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
         rgba(62,201,238,.13);
@@ -668,13 +606,11 @@ h1 {
 
     position: absolute;
 
-    left:
-        -100%;
+    left: -100%;
 
     top: 0;
 
     width: 70%;
-
     height: 100%;
 
     background:
@@ -713,8 +649,7 @@ h1 {
 }
 
 .card:hover::after {
-    left:
-        140%;
+    left: 140%;
 }
 
 .card.active {
@@ -730,26 +665,17 @@ h1 {
 }
 
 .icon {
-    position:
-        relative;
+    position: relative;
 
-    width:
-        48px;
+    width: 48px;
+    height: 48px;
 
-    height:
-        48px;
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
+    justify-content: center;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border-radius:
-        14px;
+    border-radius: 14px;
 
     background:
         linear-gradient(
@@ -762,11 +688,9 @@ h1 {
         1px solid
         #c0e8f3;
 
-    font-size:
-        21px;
+    font-size: 21px;
 
-    margin-bottom:
-        17px;
+    margin-bottom: 17px;
 
     box-shadow:
         0 8px 20px
@@ -783,25 +707,19 @@ h1 {
 }
 
 .card h3 {
-    position:
-        relative;
+    position: relative;
 
-    margin:
-        0;
+    margin: 0;
 
-    font-size:
-        16px;
+    font-size: 16px;
 
-    font-weight:
-        900;
+    font-weight: 900;
 
-    z-index:
-        2;
+    z-index: 2;
 }
 
 .card p {
-    position:
-        relative;
+    position: relative;
 
     margin:
         7px
@@ -811,14 +729,11 @@ h1 {
     color:
         var(--muted);
 
-    font-size:
-        12px;
+    font-size: 12px;
 
-    line-height:
-        1.5;
+    line-height: 1.5;
 
-    z-index:
-        2;
+    z-index: 2;
 }
 
 
@@ -827,17 +742,13 @@ h1 {
 ===================================================== */
 
 .generator {
-    display:
-        none;
+    display: none;
 
-    margin-top:
-        25px;
+    margin-top: 25px;
 
-    padding:
-        29px;
+    padding: 29px;
 
-    border-radius:
-        23px;
+    border-radius: 23px;
 
     background:
         var(--glass-strong);
@@ -860,7 +771,6 @@ h1 {
 }
 
 @keyframes generatorAppear {
-
     from {
         opacity: 0;
 
@@ -879,28 +789,19 @@ h1 {
 }
 
 .generator-top {
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
+    justify-content: space-between;
 
-    justify-content:
-        space-between;
+    gap: 15px;
 
-    gap:
-        15px;
-
-    margin-bottom:
-        22px;
+    margin-bottom: 22px;
 }
 
 .generator-title {
-    font-size:
-        21px;
-
-    font-weight:
-        900;
+    font-size: 21px;
+    font-weight: 900;
 }
 
 .live {
@@ -908,8 +809,7 @@ h1 {
         7px
         11px;
 
-    border-radius:
-        20px;
+    border-radius: 20px;
 
     background:
         #e2f9ff;
@@ -921,14 +821,11 @@ h1 {
     color:
         #2096b9;
 
-    font-size:
-        9px;
+    font-size: 9px;
 
-    font-weight:
-        900;
+    font-weight: 900;
 
-    letter-spacing:
-        1.3px;
+    letter-spacing: 1.3px;
 }
 
 
@@ -937,59 +834,47 @@ h1 {
 ===================================================== */
 
 .controls {
-    display:
-        none;
+    display: none;
 
     grid-template-columns:
         1fr
         1fr
         1.4fr;
 
-    gap:
-        14px;
+    gap: 14px;
 
-    margin-bottom:
-        18px;
+    margin-bottom: 18px;
 }
 
 .control {
-    display:
-        flex;
+    display: flex;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    gap:
-        7px;
+    gap: 7px;
 }
 
 .control label {
-    font-size:
-        9px;
+    font-size: 9px;
 
-    font-weight:
-        900;
+    font-weight: 900;
 
-    letter-spacing:
-        1.2px;
+    letter-spacing: 1.2px;
 
     color:
         #64838f;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 }
 
 input {
-    width:
-        100%;
+    width: 100%;
 
     padding:
         12px
         13px;
 
-    border-radius:
-        10px;
+    border-radius: 10px;
 
     border:
         1px solid
@@ -1001,11 +886,9 @@ input {
     color:
         var(--text);
 
-    outline:
-        none;
+    outline: none;
 
-    font-size:
-        13px;
+    font-size: 13px;
 
     transition:
         border-color .2s,
@@ -1022,18 +905,15 @@ input:focus {
 }
 
 .calculated {
-    display:
-        none;
+    display: none;
 
-    margin-bottom:
-        17px;
+    margin-bottom: 17px;
 
     padding:
         12px
         15px;
 
-    border-radius:
-        11px;
+    border-radius: 11px;
 
     background:
         #e9faff;
@@ -1045,8 +925,7 @@ input:focus {
     color:
         #39869a;
 
-    font-size:
-        12px;
+    font-size: 12px;
 }
 
 
@@ -1055,23 +934,17 @@ input:focus {
 ===================================================== */
 
 textarea {
-    width:
-        100%;
+    width: 100%;
 
-    min-height:
-        390px;
+    min-height: 390px;
 
-    padding:
-        17px;
+    padding: 17px;
 
-    resize:
-        vertical;
+    resize: vertical;
 
-    outline:
-        none;
+    outline: none;
 
-    border-radius:
-        14px;
+    border-radius: 14px;
 
     border:
         1px solid
@@ -1083,14 +956,11 @@ textarea {
     color:
         #294955;
 
-    font-family:
-        monospace;
+    font-family: monospace;
 
-    font-size:
-        12px;
+    font-size: 12px;
 
-    line-height:
-        1.6;
+    line-height: 1.6;
 }
 
 textarea:focus {
@@ -1108,20 +978,15 @@ textarea:focus {
 ===================================================== */
 
 .copy {
-    width:
-        100%;
+    width: 100%;
 
-    margin-top:
-        13px;
+    margin-top: 13px;
 
-    padding:
-        15px;
+    padding: 15px;
 
-    border:
-        none;
+    border: none;
 
-    border-radius:
-        12px;
+    border-radius: 12px;
 
     background:
         linear-gradient(
@@ -1131,23 +996,17 @@ textarea:focus {
             #31b8e4
         );
 
-    background-size:
-        200% 100%;
+    background-size: 200% 100%;
 
-    color:
-        white;
+    color: white;
 
-    font-size:
-        12px;
+    font-size: 12px;
 
-    font-weight:
-        900;
+    font-weight: 900;
 
-    letter-spacing:
-        1.2px;
+    letter-spacing: 1.2px;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
     box-shadow:
         0 10px 25px
@@ -1172,23 +1031,18 @@ textarea:focus {
 }
 
 .copied {
-    display:
-        none;
+    display: none;
 
-    margin-top:
-        10px;
+    margin-top: 10px;
 
-    text-align:
-        center;
+    text-align: center;
 
     color:
         #35a77e;
 
-    font-size:
-        12px;
+    font-size: 12px;
 
-    font-weight:
-        bold;
+    font-weight: bold;
 }
 
 
@@ -1202,17 +1056,14 @@ footer {
         20px
         35px;
 
-    text-align:
-        center;
+    text-align: center;
 
     color:
         #88a4ae;
 
-    font-size:
-        10px;
+    font-size: 10px;
 
-    letter-spacing:
-        .3px;
+    letter-spacing: .3px;
 }
 
 
@@ -1230,55 +1081,39 @@ footer {
     }
 
     h1 {
-        letter-spacing:
-            -2px;
+        letter-spacing: -2px;
     }
 
     .container {
-        width:
-            94%;
+        width: 94%;
     }
 
     .category {
-        padding:
-            20px;
-
-        border-radius:
-            21px;
+        padding: 20px;
+        border-radius: 21px;
     }
 
     .cards {
-        grid-template-columns:
-            1fr;
-
-        gap:
-            14px;
+        grid-template-columns: 1fr;
+        gap: 14px;
     }
 
     .controls {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
     .generator {
-        padding:
-            20px;
+        padding: 20px;
     }
 
     .generator-top {
-        align-items:
-            flex-start;
-
-        flex-direction:
-            column;
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .category-title {
-        font-size:
-            9px;
-
-        letter-spacing:
-            1px;
+        font-size: 9px;
+        letter-spacing: 1px;
     }
 }
 
@@ -1417,7 +1252,7 @@ footer {
             </h3>
 
             <p>
-                Sessions 3–7
+                Sessions 1–5 · Starts 18:00
             </p>
 
         </div>
@@ -1948,28 +1783,35 @@ function showPreset(
             formatDate(today);
 
 
-        const third =
+        /*
+         * SOLO CC STARTS AT 18:00
+         *
+         * The session numbering starts
+         * at First Session here.
+         */
+
+        const first =
             timestampFor(
                 today,
                 18
             );
 
 
-        const fourth =
+        const second =
             timestampFor(
                 today,
                 20
             );
 
 
-        const fifth =
+        const third =
             timestampFor(
                 today,
                 22
             );
 
 
-        const sixth =
+        const fourth =
             timestampFor(
                 today,
                 23,
@@ -1977,7 +1819,7 @@ function showPreset(
             );
 
 
-        const seventh =
+        const fifth =
             timestampFor(
                 tomorrow,
                 1
@@ -1993,6 +1835,12 @@ function showPreset(
 
   <:Div2:1540429559076225094>   **Noble Division 2 Schedule (${date})**   <:Div2:1540429559076225094>
 
+First Session:
+<:Arrow:1540758164797005876> <t:${first}:t>
+
+Second Session:
+<:Arrow:1540758164797005876> <t:${second}:t>
+
 Third Session:
 <:Arrow:1540758164797005876> <t:${third}:t>
 
@@ -2001,12 +1849,6 @@ Fourth Session:
 
 Fifth Session: (2 games)
 <:Arrow:1540758164797005876> <t:${fifth}:t>
-
-Sixth Session: (2 games)
-<:Arrow:1540758164797005876> <t:${sixth}:t>
-
-Seventh Session: (2 games)
-<:Arrow:1540758164797005876> <t:${seventh}:t>
 
 More details are available in #announcements
 

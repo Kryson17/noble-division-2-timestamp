@@ -1,37 +1,2075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Noble Division 2 Timestamp</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+    --cyan:#20d7ed;
+    --cyan2:#62edf8;
+    --cyan-dark:#0b91a5;
+    --bg:#020708;
+    --bg2:#061113;
+    --panel:rgba(5,24,26,.88);
+    --panel2:rgba(3,15,17,.94);
+    --text:#e9fcff;
+    --muted:#789da2;
+    --border:rgba(32,215,237,.20);
+    --border2:rgba(32,215,237,.50);
+    --ok:#52e0a5;
+    --warn:#ffd36b;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--text);
+
+    background:
+        radial-gradient(
+            circle at 12% 5%,
+            rgba(15,137,149,.18),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 88% 28%,
+            rgba(8,111,123,.14),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            var(--bg),
+            var(--bg2) 52%,
+            #02090a
+        );
+
+    position:relative;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.35;
+
+    background-image:
+        linear-gradient(
+            rgba(32,215,237,.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(32,215,237,.045) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 92%
+        );
+
+    z-index:-5;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 32%,
+            rgba(0,0,0,.5) 100%
+        );
+
+    z-index:-6;
+}
+
+/* =========================
+   AURORA
+========================= */
+
+.aurora{
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    filter:blur(95px);
+    z-index:-4;
+    mix-blend-mode:screen;
+}
+
+.aurora.one{
+    width:500px;
+    height:500px;
+    top:-190px;
+    left:-160px;
+    background:rgba(12,171,188,.14);
+    animation:a1 13s ease-in-out infinite alternate;
+}
+
+.aurora.two{
+    width:600px;
+    height:600px;
+    top:30%;
+    right:-270px;
+    background:rgba(16,120,134,.10);
+    animation:a2 17s ease-in-out infinite alternate;
+}
+
+.aurora.three{
+    width:430px;
+    height:430px;
+    bottom:-180px;
+    left:30%;
+    background:rgba(12,157,171,.08);
+    animation:a3 15s ease-in-out infinite alternate;
+}
+
+@keyframes a1{
+    to{
+        transform:translate(110px,180px) scale(1.2);
+    }
+}
+
+@keyframes a2{
+    to{
+        transform:translate(-120px,-80px) scale(1.15);
+    }
+}
+
+@keyframes a3{
+    to{
+        transform:translate(120px,-100px) scale(1.2);
+    }
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:-3;
+}
+
+.particle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:rgba(32,215,237,.28);
+    box-shadow:0 0 15px rgba(32,215,237,.5);
+    animation:float linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    85%{
+        opacity:.8;
+    }
+
+    to{
+        transform:
+            translateY(-20vh)
+            translateX(80px);
+        opacity:0;
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    text-align:center;
+    padding:62px 20px 30px;
+}
+
+/* EXISTING LOGO — UNCHANGED */
+
+.logo{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:9px 16px;
+    border-radius:30px;
+    background:rgba(255,255,255,.62);
+    border:1px solid rgba(170,225,239,.8);
+    box-shadow:0 10px 35px rgba(27,154,194,.09);
+    backdrop-filter:blur(12px);
+    color:var(--cyan-dark);
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.logo-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 18px rgba(53,199,241,.9);
+    animation:pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        opacity:.65;
+        transform:scale(.85);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.2);
+    }
+}
+
+h1{
+    margin:20px 0 0;
+    font-size:clamp(38px,7vw,65px);
+    line-height:1;
+    letter-spacing:-3px;
+    font-weight:950;
+}
+
+.gradient{
+    background:
+        linear-gradient(
+            90deg,
+            #12b7ca,
+            #20d7ed,
+            #78f3fa
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+    max-width:610px;
+    margin:18px auto 0;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:92%;
+    max-width:1080px;
+    margin:auto;
+    padding-bottom:90px;
+}
+
+/* =========================
+   COMMAND STRIP
+========================= */
+
+.command-strip{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:0 auto 28px;
+}
+
+.status-chip,
+.clock-chip,
+.zone-chip{
+    padding:13px 16px;
+    border:1px solid rgba(32,215,237,.22);
+    border-radius:14px;
+    background:rgba(4,18,20,.72);
+    color:#9edfe5;
+    box-shadow:inset 0 1px rgba(255,255,255,.03);
+}
+
+.status-chip b{
+    color:var(--ok);
+}
+
+.chip-label{
+    display:block;
+    font-size:9px;
+    letter-spacing:1.5px;
+    color:#5f858a;
+    text-transform:uppercase;
+    margin-bottom:5px;
+}
+
+.chip-value{
+    font-size:12px;
+    font-weight:800;
+}
+
+/* =========================
+   PANELS
+========================= */
+
+.category,
+.generator{
+    position:relative;
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--panel),
+            var(--panel2)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(98,237,248,.05);
+
+    backdrop-filter:blur(18px);
+}
+
+.category{
+    margin-bottom:28px;
+    padding:28px;
+    border-radius:27px;
+}
+
+/* =========================
+   CATEGORY HEADER
+========================= */
+
+.category-header{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+    z-index:1;
+}
+
+.category-title{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    padding:9px 14px;
+    border-radius:11px;
+
+    background:rgba(7,51,49,.85);
+    border:1px solid rgba(32,215,237,.25);
+
+    color:var(--cyan2);
+
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1.8px;
+
+    text-transform:uppercase;
+    white-space:nowrap;
+}
+
+.category-line{
+    flex:1;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(32,215,237,.48),
+            transparent
+        );
+}
+
+/* =========================
+   QUICK LAUNCH
+========================= */
+
+.quick-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.quick-btn{
+    border:1px solid rgba(32,215,237,.22);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,34,36,.9),
+            rgba(3,16,18,.9)
+        );
+
+    color:#dffcff;
+
+    padding:15px;
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-weight:900;
+
+    transition:.25s;
+}
+
+.quick-btn:hover{
+    transform:translateY(-3px);
+    border-color:rgba(32,215,237,.55);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.3);
+}
+
+/* =========================
+   NEXT SESSION
+========================= */
+
+.next-panel{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:18px;
+    align-items:center;
+}
+
+.next-main{
+    padding:4px;
+}
+
+.eyebrow{
+    font-size:9px;
+    letter-spacing:2px;
+    color:#6b969b;
+    font-weight:900;
+}
+
+.next-name{
+    font-size:28px;
+    font-weight:950;
+    margin:7px 0;
+}
+
+.next-time{
+    color:#79dce6;
+    font-weight:800;
+}
+
+.countdown{
+    font:900 32px/1 monospace;
+    color:#62edf8;
+    text-align:right;
+}
+
+.progress{
+    height:6px;
+    background:#08272a;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:16px;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    width:0;
+    background:#20d7ed;
+    box-shadow:0 0 14px rgba(32,215,237,.7);
+    transition:width .8s;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:19px;
+    z-index:1;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+
+    padding:24px;
+    min-height:145px;
+
+    border-radius:19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,30,32,.94),
+            rgba(3,16,18,.88)
+        );
+
+    border:1px solid rgba(32,215,237,.17);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.30);
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+
+    border-color:var(--border2);
+
+    box-shadow:
+        0 22px 50px rgba(0,0,0,.42),
+        0 0 28px rgba(32,215,237,.06);
+}
+
+.card.active{
+    border-color:var(--cyan);
+
+    box-shadow:
+        0 0 0 3px rgba(32,215,237,.09),
+        0 22px 55px rgba(0,0,0,.42);
+}
+
+.icon{
+    width:48px;
+    height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c393a,
+            #082729
+        );
+
+    border:1px solid rgba(32,215,237,.25);
+
+    font-size:21px;
+    margin-bottom:17px;
+
+    transition:.3s;
+}
+
+.card:hover .icon{
+    transform:
+        rotate(-6deg)
+        scale(1.1);
+}
+
+.card h3{
+    margin:0;
+    font-size:16px;
+    font-weight:900;
+}
+
+.card p{
+    margin:7px 0 0;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* =========================
+   LIVE SCHEDULE
+========================= */
+
+.timeline{
+    display:grid;
+    gap:8px;
+}
+
+.timeline-row{
+    display:grid;
+    grid-template-columns:90px 1fr 90px;
+
+    align-items:center;
+
+    padding:12px 14px;
+
+    border:1px solid rgba(32,215,237,.10);
+    border-radius:12px;
+
+    background:rgba(3,16,18,.62);
+}
+
+.timeline-row.next{
+    border-color:rgba(32,215,237,.6);
+
+    box-shadow:
+        0 0 22px rgba(32,215,237,.06);
+}
+
+.timeline-time{
+    font:800 12px monospace;
+    color:#62edf8;
+}
+
+.timeline-name{
+    font-weight:800;
+}
+
+.timeline-state{
+    text-align:right;
+
+    font-size:9px;
+    letter-spacing:1px;
+    color:#5f858a;
+}
+
+.timeline-row.next .timeline-state{
+    color:#52e0a5;
+}
+
+/* =========================
+   GENERATOR
+========================= */
+
+.generator{
+    display:none;
+    margin-top:25px;
+    padding:29px;
+    border-radius:23px;
+
+    box-shadow:
+        0 28px 75px rgba(0,0,0,.48),
+        0 0 35px rgba(32,215,237,.055);
+
+    animation:appear .4s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:
+            translateY(18px)
+            scale(.985);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.generator-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:22px;
+}
+
+.generator-title{
+    font-size:21px;
+    font-weight:900;
+}
+
+.live{
+    padding:7px 11px;
+    border-radius:20px;
+
+    background:rgba(7,51,49,.88);
+    border:1px solid rgba(32,215,237,.28);
+
+    color:var(--cyan2);
+
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.3px;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls{
+    display:none;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1.4fr;
+
+    gap:14px;
+
+    margin-bottom:18px;
+}
+
+.control{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.control label{
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    color:#71979c;
+    text-transform:uppercase;
+}
+
+input{
+    width:100%;
+
+    padding:12px 13px;
+
+    border-radius:10px;
+
+    border:1px solid rgba(32,215,237,.22);
+
+    background:#06181a;
+    color:var(--text);
+
+    outline:none;
+
+    font-size:13px;
+}
+
+input:focus{
+    border-color:var(--cyan);
+
+    box-shadow:
+        0 0 0 3px rgba(32,215,237,.10);
+}
+
+input::-webkit-calendar-picker-indicator{
+    filter:invert(1) brightness(1.6);
+}
+
+.calculated{
+    display:none;
+
+    margin-bottom:17px;
+    padding:12px 15px;
+
+    border-radius:11px;
+
+    background:rgba(7,51,49,.78);
+    border:1px solid rgba(32,215,237,.22);
+
+    color:#86d7dd;
+    font-size:12px;
+}
+
+/* =========================
+   OUTPUT
+========================= */
+
+textarea{
+    width:100%;
+    min-height:390px;
+
+    padding:17px;
+
+    resize:vertical;
+    outline:none;
+
+    border-radius:14px;
+
+    border:1px solid rgba(32,215,237,.22);
+
+    background:#020d0f;
+    color:#bdeff3;
+
+    font-family:monospace;
+    font-size:12px;
+    line-height:1.6;
+}
+
+textarea:focus{
+    border-color:var(--cyan);
+
+    box-shadow:
+        0 0 0 3px rgba(32,215,237,.08);
+}
+
+/* =========================
+   COPY
+========================= */
+
+.copy{
+    width:100%;
+
+    margin-top:13px;
+    padding:15px;
+
+    border:none;
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #087f8d,
+            #16b9ca,
+            #0c8997
+        );
+
+    background-size:200% 100%;
+
+    color:#eaffff;
+
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1.2px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.28);
+
+    transition:.2s;
+}
+
+.copy:hover{
+    transform:translateY(-2px);
+    background-position:100% 0;
+}
+
+.copied{
+    display:none;
+
+    margin-top:10px;
+
+    text-align:center;
+
+    color:var(--ok);
+
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* =========================
+   HISTORY
+========================= */
+
+.history-list{
+    display:grid;
+    gap:8px;
+}
+
+.history-item{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    align-items:center;
+
+    padding:12px 14px;
+
+    border:1px solid rgba(32,215,237,.12);
+    border-radius:12px;
+
+    background:rgba(3,16,18,.62);
+}
+
+.history-item span{
+    display:block;
+    font-weight:800;
+    font-size:12px;
+}
+
+.history-item small{
+    color:#62858a;
+    font-size:9px;
+}
+
+.history-actions{
+    display:flex;
+    gap:6px;
+}
+
+.mini-btn{
+    background:#073331;
+
+    border:1px solid rgba(32,215,237,.25);
+
+    color:#8eeaf1;
+
+    border-radius:8px;
+
+    padding:7px 9px;
+
+    font-size:9px;
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.mini-btn:hover{
+    border-color:var(--cyan);
+}
+
+.empty{
+    color:#63858a;
+    font-size:12px;
+    padding:10px;
+}
+
+/* =========================
+   SYSTEM
+========================= */
+
+.system-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.system-item{
+    padding:13px;
+
+    border-radius:12px;
+
+    background:rgba(3,16,18,.6);
+
+    border:1px solid rgba(32,215,237,.10);
+}
+
+.system-item span{
+    display:block;
+
+    font-size:8px;
+    color:#5f858a;
+
+    letter-spacing:1.4px;
+
+    margin-bottom:5px;
+}
+
+.system-item b{
+    font-size:11px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:0 20px 85px;
+
+    text-align:center;
+
+    color:#58777b;
+
+    font-size:10px;
+    letter-spacing:.3px;
+}
+
+/* =========================
+   MOBILE NAV
+========================= */
+
+.mobile-nav{
+    display:none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    .command-strip{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .quick-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .controls{
+        grid-template-columns:1fr;
+    }
+
+    .next-panel{
+        grid-template-columns:1fr;
+    }
+
+    .countdown{
+        text-align:left;
+    }
+
+    .system-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .header{
+        padding:50px 17px 25px;
+    }
+
+    .category{
+        padding:20px;
+    }
+
+    .generator{
+        padding:20px;
+    }
+
+    .generator-top{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .quick-grid{
+        gap:9px;
+    }
+
+    .quick-btn{
+        padding:12px;
+    }
+
+    .category-title{
+        font-size:9px;
+        letter-spacing:1px;
+    }
+
+    .timeline-row{
+        grid-template-columns:
+            70px
+            1fr
+            70px;
+    }
+
+    .mobile-nav{
+        display:flex;
+
+        position:fixed;
+
+        bottom:12px;
+        left:12px;
+        right:12px;
+
+        z-index:50;
+
+        justify-content:space-around;
+
+        padding:8px;
+
+        border:
+            1px solid
+            rgba(32,215,237,.25);
+
+        border-radius:16px;
+
+        background:
+            rgba(3,15,17,.92);
+
+        backdrop-filter:blur(14px);
+
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.45);
+    }
+
+    .mobile-nav a{
+        color:#78b8bf;
+
+        text-decoration:none;
+
+        font-size:9px;
+        font-weight:900;
+        letter-spacing:.8px;
+
+        padding:9px;
+    }
+
+    .mobile-nav a:hover{
+        color:#62edf8;
+    }
+
+    footer{
+        padding-bottom:85px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="aurora one"></div>
+<div class="aurora two"></div>
+<div class="aurora three"></div>
+
+<div class="particles">
+
+    <span class="particle"
+        style="left:8%;animation-duration:14s;animation-delay:-4s;">
+    </span>
+
+    <span class="particle"
+        style="left:19%;animation-duration:18s;animation-delay:-9s;">
+    </span>
+
+    <span class="particle"
+        style="left:32%;animation-duration:16s;animation-delay:-6s;">
+    </span>
+
+    <span class="particle"
+        style="left:47%;animation-duration:20s;animation-delay:-13s;">
+    </span>
+
+    <span class="particle"
+        style="left:61%;animation-duration:15s;animation-delay:-3s;">
+    </span>
+
+    <span class="particle"
+        style="left:74%;animation-duration:19s;animation-delay:-11s;">
+    </span>
+
+    <span class="particle"
+        style="left:88%;animation-duration:17s;animation-delay:-7s;">
+    </span>
+
+</div>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+        <span class="logo-dot"></span>
+        NOBLE DIVISION 2
+    </div>
+
+    <h1>
+        Timestamp
+        <span class="gradient">
+            Generator
+        </span>
+    </h1>
+
+    <div class="subtitle">
+        Generate ready-to-use Discord timestamps
+        for Noble Division 2 sessions.
+    </div>
+
+</header>
+
+
+<main class="container">
+
+<!-- COMMAND STRIP -->
+
+<div class="command-strip" id="home">
+
+    <div class="status-chip">
+        <span class="chip-label">
+            System Status
+        </span>
+
+        <span class="chip-value">
+            <b>● ONLINE</b>
+            · OPERATIONS READY
+        </span>
+    </div>
+
+
+    <div class="clock-chip">
+
+        <span class="chip-label">
+            Local Time
+        </span>
+
+        <span
+            class="chip-value"
+            id="liveClock"
+        >
+            --:--:--
+        </span>
+
+        <div
+            id="liveDate"
+            style="
+                font-size:9px;
+                color:#62858a;
+                margin-top:4px
+            "
+        ></div>
+
+    </div>
+
+
+    <div class="zone-chip">
+
+        <span class="chip-label">
+            Timezone
+        </span>
+
+        <span
+            class="chip-value"
+            id="timezoneChip"
+        >
+            LOCAL
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- QUICK LAUNCH -->
+
+<section
+    class="category"
+    id="quick"
+>
+
+    <div class="category-header">
+
+        <div class="category-title">
+            ⚡ Quick Launch
+        </div>
+
+        <div class="category-line"></div>
+
+    </div>
+
+
+    <div class="quick-grid">
+
+        <button
+            class="quick-btn"
+            onclick="quickPreset('division')"
+        >
+            🏆 DIVISION CUP
+        </button>
+
+        <button
+            class="quick-btn"
+            onclick="quickPreset('solo')"
+        >
+            👤 SOLO CC DAY
+        </button>
+
+        <button
+            class="quick-btn"
+            onclick="quickPreset('weekday')"
+        >
+            📅 WEEKDAY
+        </button>
+
+        <button
+            class="quick-btn"
+            onclick="quickPreset('weekend')"
+        >
+            🌙 WEEKEND
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- NEXT SESSION -->
+
+<section class="category">
+
+    <div class="category-header">
+
+        <div class="category-title">
+            🎯 Next Session
+        </div>
+
+        <div class="category-line"></div>
+
+    </div>
+
+
+    <div class="next-panel">
+
+        <div class="next-main">
+
+            <div class="eyebrow">
+                UPCOMING OPERATION
+            </div>
+
+            <div
+                class="next-name"
+                id="nextSessionName"
+            >
+                Loading...
+            </div>
+
+            <div
+                class="next-time"
+                id="nextSessionTime"
+            >
+                --
+            </div>
+
+            <div class="progress">
+                <span id="nextProgress"></span>
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <div
+                class="eyebrow"
+                style="text-align:right"
+            >
+                COUNTDOWN
+            </div>
+
+            <div
+                class="countdown"
+                id="countdown"
+            >
+                00:00:00
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LIVE SCHEDULE -->
+
+<section
+    class="category"
+    id="schedule"
+>
+
+    <div class="category-header">
+
+        <div class="category-title">
+            📡 Live Schedule
+        </div>
+
+        <div class="category-line"></div>
+
+    </div>
+
+    <div
+        class="timeline"
+        id="timeline"
+    ></div>
+
+</section>
+
+
+<!-- SESSION SCHEDULE -->
+
+<section class="category">
+
+    <div class="category-header">
+
+        <div class="category-title">
+            📋 Session Schedule
+        </div>
+
+        <div class="category-line"></div>
+
+    </div>
+
+
+    <div class="cards">
+
+        <!-- DIVISION CUP -->
+
+        <div
+            class="card"
+            onclick="showPreset('division',this)"
+        >
+
+            <div class="icon">
+                🏆
+            </div>
+
+            <h3>
+                Division Cup
+            </h3>
+
+            <p>
+                Resume hosting in 2 days · 14:00
+            </p>
+
+        </div>
+
+
+        <!-- SOLO -->
+
+        <div
+            class="card"
+            onclick="showPreset('solo',this)"
+        >
+
+            <div class="icon">
+                👤
+            </div>
+
+            <h3>
+                Solo CC Day
+            </h3>
+
+            <p>
+                Sessions 1–5 · Starts 18:00
+            </p>
+
+        </div>
+
+
+        <!-- WEEKDAY -->
+
+        <div
+            class="card"
+            onclick="showPreset('weekday',this)"
+        >
+
+            <div class="icon">
+                📅
+            </div>
+
+            <h3>
+                Non-Tournament Weekday
+            </h3>
+
+            <p>
+                Sessions 1–6
+            </p>
+
+        </div>
+
+
+        <!-- WEEKEND -->
+
+        <div
+            class="card"
+            onclick="showPreset('weekend',this)"
+        >
+
+            <div class="icon">
+                🌙
+            </div>
+
+            <h3>
+                Non-Tournament Weekend
+            </h3>
+
+            <p>
+                Sessions 1–7
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SESSION GENERATORS -->
+
+<section class="category">
+
+    <div class="category-header">
+
+        <div class="category-title">
+            🎮 Sessions
+        </div>
+
+        <div class="category-line"></div>
+
+    </div>
+
+
+    <div class="cards">
+
+        <!-- LATE NIGHT -->
+
+        <div
+            class="card"
+            onclick="showSession('late',this)"
+        >
+
+            <div class="icon">
+                🌙
+            </div>
+
+            <h3>
+                Late Night Lobby
+            </h3>
+
+            <p>
+                2 games · Custom session time
+            </p>
+
+        </div>
+
+
+        <!-- LOBBY -->
+
+        <div
+            class="card"
+            onclick="showSession('lobby',this)"
+        >
+
+            <div class="icon">
+                🎮
+            </div>
+
+            <h3>
+                Lobby
+            </h3>
+
+            <p>
+                3 games · Custom session time
+            </p>
+
+        </div>
+
+
+        <!-- SECOND LOBBY -->
+
+        <div
+            class="card"
+            onclick="showSession('second',this)"
+        >
+
+            <div class="icon">
+                🔄
+            </div>
+
+            <h3>
+                Second Lobby
+            </h3>
+
+            <p>
+                3 games · Second lobby
+            </p>
+
+        </div>
+
+
+        <!-- LATE SECOND -->
+
+        <div
+            class="card"
+            onclick="showSession('lateSecond',this)"
+        >
+
+            <div class="icon">
+                🌃
+            </div>
+
+            <h3>
+                Late Night Second Lobby
+            </h3>
+
+            <p>
+                2 games · Second lobby
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GENERATOR -->
+
+<section
+    class="generator"
+    id="generator"
+>
+
+    <div class="generator-top">
+
+        <div
+            class="generator-title"
+            id="generatorTitle"
+        >
+            Generated Message
+        </div>
+
+        <div class="live">
+            LIVE TIMESTAMPS
+        </div>
+
+    </div>
+
+
+    <div
+        class="controls"
+        id="controls"
+    >
+
+        <div class="control">
+
+            <label>
+                Date
+            </label>
+
+            <input
+                type="date"
+                id="sessionDate"
+            >
+
+        </div>
+
+
+        <div class="control">
+
+            <label>
+                Registration
+            </label>
+
+            <input
+                type="time"
+                id="sessionTime"
+            >
+
+        </div>
+
+
+        <div class="control">
+
+            <label>
+                Host Discord User ID
+            </label>
+
+            <input
+                type="text"
+                id="hostId"
+                placeholder="123456789012345678"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="calculated"
+        id="calculated"
+    >
+
+        First Game Commences:
+
+        <strong id="calculatedTime"></strong>
+
+    </div>
+
+
+    <textarea
+        id="output"
+        readonly
+    ></textarea>
+
+
+    <button
+        class="copy"
+        onclick="copyMessage()"
+    >
+        COPY MESSAGE
+    </button>
+
+
+    <div
+        class="copied"
+        id="copied"
+    >
+        ✓ Message copied
+    </div>
+
+</section>
+
+
+<!-- HISTORY -->
+
+<section
+    class="category"
+    id="history"
+>
+
+    <div class="category-header">
+
+        <div class="category-title">
+            📋 Recent History
+        </div>
+
+        <div class="category-line"></div>
+
+    </div>
+
+    <div
+        class="history-list"
+        id="historyList"
+    ></div>
+
+</section>
+
+
+<!-- SYSTEM INFORMATION -->
+
+<section class="category">
+
+    <div class="category-header">
+
+        <div class="category-title">
+            ⚙️ System Information
+        </div>
+
+        <div class="category-line"></div>
+
+    </div>
+
+
+    <div class="system-grid">
+
+        <div class="system-item">
+
+            <span>
+                PRODUCT
+            </span>
+
+            <b>
+                NOBLE DIVISION 2
+            </b>
+
+        </div>
+
+
+        <div class="system-item">
+
+            <span>
+                VERSION
+            </span>
+
+            <b>
+                COMMAND CENTER 2.0
+            </b>
+
+        </div>
+
+
+        <div class="system-item">
+
+            <span>
+                TIMESTAMPS
+            </span>
+
+            <b>
+                DISCORD FORMAT
+            </b>
+
+        </div>
+
+
+        <div class="system-item">
+
+            <span>
+                STORAGE
+            </span>
+
+            <b>
+                LOCAL BROWSER
+            </b>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="mini-btn"
+        style="margin-top:12px"
+        onclick="resetPreferences()"
+    >
+        RESET LOCAL SETTINGS
+    </button>
+
+</section>
+
+
+<!-- MOBILE NAV -->
+
+<nav class="mobile-nav">
+
+    <a href="#home">
+        HOME
+    </a>
+
+    <a href="#quick">
+        QUICK
+    </a>
+
+    <a href="#schedule">
+        SCHEDULE
+    </a>
+
+    <a href="#generator">
+        GENERATOR
+    </a>
+
+    <a href="#history">
+        HISTORY
+    </a>
+
+</nav>
+
+</main>
+
+
+<footer>
+    Noble Division 2 · Timestamp Generator
+</footer>
+
+
+<script>
+
 /* =====================================================
-   STATIC SCHEDULE PRESETS
+   VARIABLES
 ===================================================== */
 
-function showPreset(type, card) {
+let currentSession = null;
+
+
+/* =====================================================
+   DATE HELPERS
+===================================================== */
+
+function timestampFromInput(
+    dateString,
+    timeString
+){
+
+    const parts =
+        dateString
+            .split("-")
+            .map(Number);
+
+    const year = parts[0];
+    const month = parts[1];
+    const day = parts[2];
+
+    const time =
+        timeString
+            .split(":")
+            .map(Number);
+
+    const hour = time[0];
+    const minute = time[1];
+
+    const date =
+        new Date(
+            year,
+            month - 1,
+            day,
+            hour,
+            minute,
+            0
+        );
+
+    return Math.floor(
+        date.getTime() / 1000
+    );
+}
+
+
+function timestampFor(
+    date,
+    hour,
+    minute = 0
+){
+
+    const d =
+        new Date(date);
+
+    d.setHours(
+        hour,
+        minute,
+        0,
+        0
+    );
+
+    return Math.floor(
+        d.getTime() / 1000
+    );
+}
+
+
+function formatDate(date){
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2,"0");
+
+    const year =
+        date.getFullYear();
+
+    return `${day}-${month}-${year}`;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+function selectCard(card){
+
+    document
+        .querySelectorAll(".card")
+        .forEach(
+            c =>
+            c.classList.remove("active")
+        );
+
+    card.classList.add("active");
+}
+
+
+/* =====================================================
+   GENERATOR OPEN
+===================================================== */
+
+function openGenerator(
+    title,
+    text
+){
+
+    const generator =
+        document.getElementById(
+            "generator"
+        );
+
+    generator.style.display =
+        "block";
+
+    document.getElementById(
+        "generatorTitle"
+    ).textContent =
+        title;
+
+    if(text){
+
+        document.getElementById(
+            "output"
+        ).value =
+            text;
+
+    }
+
+    document.getElementById(
+        "copied"
+    ).style.display =
+        "none";
+
+    generator.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+}
+
+
+/* =====================================================
+   SESSION SCHEDULE PRESETS
+===================================================== */
+
+function showPreset(
+    type,
+    card
+){
 
     selectCard(card);
 
-    document.getElementById("controls").style.display = "none";
-    document.getElementById("calculated").style.display = "none";
+    document.getElementById(
+        "controls"
+    ).style.display =
+        "none";
 
-    const today = new Date();
+    document.getElementById(
+        "calculated"
+    ).style.display =
+        "none";
+
+    const today =
+        new Date();
 
     let text = "";
     let title = "";
 
-    /* -------------------------------
+
+    /* =========================
        DIVISION CUP
-    ------------------------------- */
+    ========================= */
 
-    if (type === "division") {
+    if(type === "division"){
 
-        const target = new Date(today);
+        const target =
+            new Date(today);
 
         target.setDate(
             target.getDate() + 2
         );
 
-        const timestamp = timestampFor(
-            target,
-            14
-        );
+        const timestamp =
+            timestampFor(
+                target,
+                14
+            );
 
-        title = "Division Cup";
+        title =
+            "Division Cup";
 
         text =
 `<:ArrowRight:1398315425913372872> There are no sessions scheduled for today & tomorrow. Good luck in the Divisional Cups! We’ll resume hosting ~ <t:${timestamp}:D> . See you then! 🏆`;
@@ -39,52 +2077,60 @@ function showPreset(type, card) {
     }
 
 
-    /* -------------------------------
+    /* =========================
        SOLO CC DAY
-    ------------------------------- */
+    ========================= */
 
-    if (type === "solo") {
+    if(type === "solo"){
 
-        const tomorrow = new Date(today);
+        const tomorrow =
+            new Date(today);
 
         tomorrow.setDate(
             tomorrow.getDate() + 1
         );
 
-        const date = formatDate(today);
+        const date =
+            formatDate(today);
 
-        const first = timestampFor(
-            today,
-            18
-        );
+        const first =
+            timestampFor(
+                today,
+                18
+            );
 
-        const second = timestampFor(
-            today,
-            20
-        );
+        const second =
+            timestampFor(
+                today,
+                20
+            );
 
-        const third = timestampFor(
-            today,
-            22
-        );
+        const third =
+            timestampFor(
+                today,
+                22
+            );
 
-        const fourth = timestampFor(
-            today,
-            23,
-            30
-        );
+        const fourth =
+            timestampFor(
+                today,
+                23,
+                30
+            );
 
-        const fifth = timestampFor(
-            tomorrow,
-            1
-        );
+        const fifth =
+            timestampFor(
+                tomorrow,
+                1
+            );
 
-        title = "Solo CC Day";
+        title =
+            "Solo CC Day";
 
         text =
 `@everyone
 
-<:Div2:1540429559076225094>   **Noble Division 2 Schedule (${date})**   <:Div2:1540429559076225094>
+  <:Div2:1540429559076225094>   **Noble Division 2 Schedule (${date})**   <:Div2:1540429559076225094>
 
 First Session:
 <:Arrow:1540758164797005876> <t:${first}:t>
@@ -108,51 +2154,59 @@ More details are available in #announcements
     }
 
 
-    /* -------------------------------
-       NON-TOURNAMENT WEEKDAY
-    ------------------------------- */
+    /* =========================
+       WEEKDAY
+    ========================= */
 
-    if (type === "weekday") {
+    if(type === "weekday"){
 
-        const date = formatDate(today);
+        const date =
+            formatDate(today);
 
-        const first = timestampFor(
-            today,
-            14
-        );
+        const first =
+            timestampFor(
+                today,
+                14
+            );
 
-        const second = timestampFor(
-            today,
-            16
-        );
+        const second =
+            timestampFor(
+                today,
+                16
+            );
 
-        const third = timestampFor(
-            today,
-            18
-        );
+        const third =
+            timestampFor(
+                today,
+                18
+            );
 
-        const fourth = timestampFor(
-            today,
-            20
-        );
+        const fourth =
+            timestampFor(
+                today,
+                20
+            );
 
-        const fifth = timestampFor(
-            today,
-            22
-        );
+        const fifth =
+            timestampFor(
+                today,
+                22
+            );
 
-        const sixth = timestampFor(
-            today,
-            23,
-            30
-        );
+        const sixth =
+            timestampFor(
+                today,
+                23,
+                30
+            );
 
-        title = "Non-Tournament Weekday";
+        title =
+            "Non-Tournament Weekday";
 
         text =
 `@everyone
 
-<:Div2:1540429559076225094>   **Noble Division 2 Schedule (${date})**   <:Div2:1540429559076225094>
+  <:Div2:1540429559076225094>   **Noble Division 2 Schedule (${date})**   <:Div2:1540429559076225094>
 
 First Session:
 <:Arrow:1540758164797005876> <t:${first}:t>
@@ -179,62 +2233,72 @@ More details are available in #announcements
     }
 
 
-    /* -------------------------------
-       NON-TOURNAMENT WEEKEND
-    ------------------------------- */
+    /* =========================
+       WEEKEND
+    ========================= */
 
-    if (type === "weekend") {
+    if(type === "weekend"){
 
-        const tomorrow = new Date(today);
+        const tomorrow =
+            new Date(today);
 
         tomorrow.setDate(
             tomorrow.getDate() + 1
         );
 
-        const date = formatDate(today);
+        const date =
+            formatDate(today);
 
-        const first = timestampFor(
-            today,
-            14
-        );
+        const first =
+            timestampFor(
+                today,
+                14
+            );
 
-        const second = timestampFor(
-            today,
-            16
-        );
+        const second =
+            timestampFor(
+                today,
+                16
+            );
 
-        const third = timestampFor(
-            today,
-            18
-        );
+        const third =
+            timestampFor(
+                today,
+                18
+            );
 
-        const fourth = timestampFor(
-            today,
-            20
-        );
+        const fourth =
+            timestampFor(
+                today,
+                20
+            );
 
-        const fifth = timestampFor(
-            today,
-            22
-        );
+        const fifth =
+            timestampFor(
+                today,
+                22
+            );
 
-        const sixth = timestampFor(
-            today,
-            23,
-            30
-        );
+        const sixth =
+            timestampFor(
+                today,
+                23,
+                30
+            );
 
-        const seventh = timestampFor(
-            tomorrow,
-            1
-        );
+        const seventh =
+            timestampFor(
+                tomorrow,
+                1
+            );
 
-        title = "Non-Tournament Weekend";
+        title =
+            "Non-Tournament Weekend";
 
         text =
 `@everyone
 
-<:Div2:1540429559076225094>   **Noble Division 2 Schedule (${date})**   <:Div2:1540429559076225094>
+  <:Div2:1540429559076225094>   **Noble Division 2 Schedule (${date})**   <:Div2:1540429559076225094>
 
 First Session:
 <:Arrow:1540758164797005876> <t:${first}:t>
@@ -264,12 +2328,1237 @@ More details are available in #announcements
     }
 
 
-    /* -------------------------------
-       SHOW RESULT
-    ------------------------------- */
-
     openGenerator(
         title,
         text
     );
 }
+
+
+/* =====================================================
+   SESSION GENERATORS
+===================================================== */
+
+function showSession(
+    type,
+    card
+){
+
+    selectCard(card);
+
+    currentSession =
+        type;
+
+    document.getElementById(
+        "controls"
+    ).style.display =
+        "grid";
+
+    document.getElementById(
+        "calculated"
+    ).style.display =
+        "block";
+
+    const today =
+        new Date();
+
+    const dateInput =
+        document.getElementById(
+            "sessionDate"
+        );
+
+    const timeInput =
+        document.getElementById(
+            "sessionTime"
+        );
+
+
+    if(!dateInput.value){
+
+        dateInput.value =
+            `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,"0")}-${String(today.getDate()).padStart(2,"0")}`;
+
+    }
+
+
+    if(!timeInput.value){
+
+        timeInput.value =
+            "14:00";
+
+    }
+
+
+    const titles = {
+
+        late:
+            "Late Night Lobby",
+
+        lobby:
+            "Lobby",
+
+        second:
+            "Second Lobby",
+
+        lateSecond:
+            "Late Night Second Lobby"
+
+    };
+
+
+    document.getElementById(
+        "generatorTitle"
+    ).textContent =
+        titles[type];
+
+
+    const savedHost =
+        localStorage.getItem(
+            "nobleHostId"
+        );
+
+    if(
+        savedHost &&
+        !document.getElementById("hostId").value
+    ){
+
+        document.getElementById(
+            "hostId"
+        ).value =
+            savedHost;
+
+    }
+
+
+    updateSession();
+
+
+    openGenerator(
+        titles[type],
+        document.getElementById(
+            "output"
+        ).value
+    );
+}
+
+
+/* =====================================================
+   UPDATE SESSION
+===================================================== */
+
+function updateSession(){
+
+    if(!currentSession){
+        return;
+    }
+
+
+    const date =
+        document.getElementById(
+            "sessionDate"
+        ).value;
+
+    const time =
+        document.getElementById(
+            "sessionTime"
+        ).value;
+
+    const host =
+        document.getElementById(
+            "hostId"
+        ).value.trim();
+
+
+    if(
+        !date ||
+        !time
+    ){
+        return;
+    }
+
+
+    const registration =
+        timestampFromInput(
+            date,
+            time
+        );
+
+
+    const start =
+        new Date(
+            registration * 1000
+        );
+
+
+    start.setMinutes(
+        start.getMinutes() + 15
+    );
+
+
+    const firstGame =
+        Math.floor(
+            start.getTime() / 1000
+        );
+
+
+    document.getElementById(
+        "calculatedTime"
+    ).textContent =
+        start.toLocaleTimeString(
+            [],
+            {
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+
+    const hostText =
+        host
+            ? `<@${host}>`
+            : `<@user>`;
+
+
+    let text = "";
+
+
+    /* =========================
+       LATE NIGHT
+    ========================= */
+
+    if(
+        currentSession === "late"
+    ){
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (2 games)**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+The host for this session is: ${hostText}. Direct Message them for help.
+
+• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
+
+Required at least **55+ Reacts** for 1 lobby and **110+ Reacts** for a 2nd lobby (1 per duo).`;
+
+    }
+
+
+    /* =========================
+       LOBBY
+    ========================= */
+
+    if(
+        currentSession === "lobby"
+    ){
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (3 games)**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+The host for this session is: ${hostText}. Direct Message them for help.
+
+• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
+
+Required at least **55+ Reacts** for 1 lobby and **110+ Reacts** for a 2nd lobby (1 per duo).`;
+
+    }
+
+
+    /* =========================
+       SECOND LOBBY
+    ========================= */
+
+    if(
+        currentSession === "second"
+    ){
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (3 games)**
+
+**Second Lobby**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+• The host for this session is: ${hostText}. Direct Message them for help.
+
+Required at least **55+ Reacts** (1 per duo).`;
+
+    }
+
+
+    /* =========================
+       LATE SECOND LOBBY
+    ========================= */
+
+    if(
+        currentSession === "lateSecond"
+    ){
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (2 games)**
+
+**Second Lobby**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+• The host for this session is: ${hostText}. Direct Message them for help.
+
+Required at least **55+ Reacts** (1 per duo).`;
+
+    }
+
+
+    document.getElementById(
+        "output"
+    ).value =
+        text;
+}
+
+
+/* =====================================================
+   INPUT EVENTS
+===================================================== */
+
+document.getElementById(
+    "sessionDate"
+).addEventListener(
+    "input",
+    updateSession
+);
+
+
+document.getElementById(
+    "sessionTime"
+).addEventListener(
+    "input",
+    updateSession
+);
+
+
+document.getElementById(
+    "hostId"
+).addEventListener(
+    "input",
+    function(){
+
+        const value =
+            this.value.trim();
+
+        localStorage.setItem(
+            "nobleHostId",
+            value
+        );
+
+        updateSession();
+    }
+);
+
+
+/* =====================================================
+   COPY
+===================================================== */
+
+async function copyMessage(){
+
+    const output =
+        document.getElementById(
+            "output"
+        );
+
+    const text =
+        output.value;
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+    }catch(error){
+
+        output.select();
+        document.execCommand("copy");
+
+    }
+
+
+    document.getElementById(
+        "copied"
+    ).style.display =
+        "block";
+
+
+    saveHistory(
+        document.getElementById(
+            "generatorTitle"
+        ).textContent,
+        text
+    );
+
+
+    setTimeout(
+        () => {
+
+            document.getElementById(
+                "copied"
+            ).style.display =
+                "none";
+
+        },
+        2000
+    );
+}
+
+
+/* =====================================================
+   COMMAND CENTER
+===================================================== */
+
+const defaultSchedule = [
+
+    {
+        name:"Lobby",
+        hour:14,
+        minute:0
+    },
+
+    {
+        name:"Second Session",
+        hour:16,
+        minute:0
+    },
+
+    {
+        name:"Third Session",
+        hour:18,
+        minute:0
+    },
+
+    {
+        name:"Fourth Session",
+        hour:20,
+        minute:0
+    },
+
+    {
+        name:"Fifth Session",
+        hour:22,
+        minute:0
+    },
+
+    {
+        name:"Sixth Session",
+        hour:23,
+        minute:30
+    },
+
+    {
+        name:"Seventh Session",
+        hour:1,
+        minute:0,
+        nextDay:true
+    }
+
+];
+
+
+/* =====================================================
+   LIVE TIMELINE
+===================================================== */
+
+function renderTimeline(
+    now = new Date()
+){
+
+    const el =
+        document.getElementById(
+            "timeline"
+        );
+
+    if(!el){
+        return;
+    }
+
+
+    let rows = "";
+    let foundNext = false;
+
+
+    defaultSchedule.forEach(
+        item => {
+
+            const d =
+                new Date(now);
+
+            d.setHours(
+                item.hour,
+                item.minute,
+                0,
+                0
+            );
+
+
+            if(item.nextDay){
+
+                d.setDate(
+                    d.getDate() + 1
+                );
+
+            }
+
+
+            const isNext =
+                d > now &&
+                !foundNext;
+
+
+            if(isNext){
+                foundNext = true;
+            }
+
+
+            const state =
+                d <= now
+                    ? "COMPLETED"
+                    : isNext
+                        ? "NEXT"
+                        : "UPCOMING";
+
+
+            rows += `
+                <div class="timeline-row ${isNext ? "next" : ""}">
+
+                    <div class="timeline-time">
+                        ${d.toLocaleTimeString(
+                            [],
+                            {
+                                hour:"2-digit",
+                                minute:"2-digit"
+                            }
+                        )}
+                    </div>
+
+                    <div class="timeline-name">
+                        ${item.name}
+                    </div>
+
+                    <div class="timeline-state">
+                        ${state}
+                    </div>
+
+                </div>
+            `;
+
+        }
+    );
+
+
+    el.innerHTML =
+        rows;
+}
+
+
+/* =====================================================
+   CLOCK
+===================================================== */
+
+function updateClock(){
+
+    const now =
+        new Date();
+
+
+    const clock =
+        document.getElementById(
+            "liveClock"
+        );
+
+    const date =
+        document.getElementById(
+            "liveDate"
+        );
+
+    const timezone =
+        document.getElementById(
+            "timezoneChip"
+        );
+
+
+    if(clock){
+
+        clock.textContent =
+            now.toLocaleTimeString(
+                [],
+                {
+                    hour:"2-digit",
+                    minute:"2-digit",
+                    second:"2-digit"
+                }
+            );
+
+    }
+
+
+    if(date){
+
+        date.textContent =
+            now.toLocaleDateString(
+                [],
+                {
+                    weekday:"long",
+                    year:"numeric",
+                    month:"long",
+                    day:"numeric"
+                }
+            ).toUpperCase();
+
+    }
+
+
+    if(timezone){
+
+        timezone.textContent =
+            Intl.DateTimeFormat()
+                .resolvedOptions()
+                .timeZone
+                .replace("_"," ");
+
+    }
+
+
+    updateNextSession(now);
+}
+
+
+/* =====================================================
+   NEXT SESSION
+===================================================== */
+
+function getNextSession(
+    now
+){
+
+    let best = null;
+
+
+    for(
+        const item of defaultSchedule
+    ){
+
+        const d =
+            new Date(now);
+
+        d.setHours(
+            item.hour,
+            item.minute,
+            0,
+            0
+        );
+
+
+        if(item.nextDay){
+
+            d.setDate(
+                d.getDate() + 1
+            );
+
+        }
+
+
+        if(d <= now){
+            continue;
+        }
+
+
+        if(
+            !best ||
+            d < best.date
+        ){
+
+            best = {
+                ...item,
+                date:d
+            };
+
+        }
+
+    }
+
+
+    if(!best){
+
+        const item =
+            defaultSchedule[0];
+
+        const d =
+            new Date(now);
+
+        d.setDate(
+            d.getDate() + 1
+        );
+
+        d.setHours(
+            item.hour,
+            item.minute,
+            0,
+            0
+        );
+
+
+        best = {
+            ...item,
+            date:d
+        };
+
+    }
+
+
+    return best;
+}
+
+
+function updateNextSession(
+    now = new Date()
+){
+
+    const nameEl =
+        document.getElementById(
+            "nextSessionName"
+        );
+
+    const timeEl =
+        document.getElementById(
+            "nextSessionTime"
+        );
+
+    const countdownEl =
+        document.getElementById(
+            "countdown"
+        );
+
+    const progressEl =
+        document.getElementById(
+            "nextProgress"
+        );
+
+
+    if(
+        !nameEl ||
+        !timeEl ||
+        !countdownEl ||
+        !progressEl
+    ){
+        return;
+    }
+
+
+    const next =
+        getNextSession(now);
+
+
+    const diff =
+        next.date.getTime() -
+        now.getTime();
+
+
+    const hours =
+        Math.floor(
+            diff / 3600000
+        );
+
+    const minutes =
+        Math.floor(
+            (diff % 3600000) / 60000
+        );
+
+    const seconds =
+        Math.floor(
+            (diff % 60000) / 1000
+        );
+
+
+    nameEl.textContent =
+        next.name;
+
+
+    const sameDay =
+        next.date.toDateString() ===
+        now.toDateString();
+
+
+    timeEl.textContent =
+        (
+            sameDay
+                ? "Today"
+                : next.date.toLocaleDateString(
+                    [],
+                    {
+                        weekday:"short"
+                    }
+                )
+        )
+        +
+        " · "
+        +
+        next.date.toLocaleTimeString(
+            [],
+            {
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+
+    countdownEl.textContent =
+        [
+            hours,
+            minutes,
+            seconds
+        ]
+        .map(
+            value =>
+                String(value).padStart(
+                    2,
+                    "0"
+                )
+        )
+        .join(":");
+
+
+    /*
+       Progress begins 2 hours before
+       the upcoming session.
+    */
+
+    const progressStart =
+        new Date(
+            next.date
+        );
+
+    progressStart.setHours(
+        progressStart.getHours() - 2
+    );
+
+
+    const total =
+        next.date.getTime() -
+        progressStart.getTime();
+
+
+    const elapsed =
+        next.date.getTime() -
+        now.getTime();
+
+
+    const percent =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                100 -
+                (
+                    elapsed /
+                    total
+                ) * 100
+            )
+        );
+
+
+    progressEl.style.width =
+        percent + "%";
+}
+
+
+/* =====================================================
+   QUICK PRESETS
+===================================================== */
+
+function quickPreset(
+    type
+){
+
+    const cards =
+        [
+            ...document.querySelectorAll(
+                ".card"
+            )
+        ];
+
+
+    const card =
+        cards.find(
+            c =>
+                (
+                    c.getAttribute(
+                        "onclick"
+                    ) || ""
+                ).includes(
+                    "showPreset('" +
+                    type +
+                    "'"
+                )
+        );
+
+
+    if(card){
+
+        showPreset(
+            type,
+            card
+        );
+
+    }
+}
+
+
+/* =====================================================
+   HISTORY
+===================================================== */
+
+function saveHistory(
+    title,
+    text
+){
+
+    if(!text){
+        return;
+    }
+
+
+    let history = [];
+
+
+    try{
+
+        history =
+            JSON.parse(
+                localStorage.getItem(
+                    "nobleHistory"
+                ) || "[]"
+            );
+
+    }catch(error){
+
+        history = [];
+
+    }
+
+
+    history.unshift({
+
+        title:title,
+        text:text,
+        time:new Date().toISOString()
+
+    });
+
+
+    history =
+        history.slice(
+            0,
+            8
+        );
+
+
+    localStorage.setItem(
+        "nobleHistory",
+        JSON.stringify(
+            history
+        )
+    );
+
+
+    renderHistory();
+}
+
+
+function escapeHtml(
+    value
+){
+
+    return String(value)
+        .replace(
+            /[&<>'"]/g,
+            char => ({
+
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                "'":"&#39;",
+                '"':"&quot;"
+
+            }[char])
+        );
+}
+
+
+function renderHistory(){
+
+    const el =
+        document.getElementById(
+            "historyList"
+        );
+
+
+    if(!el){
+        return;
+    }
+
+
+    let history = [];
+
+
+    try{
+
+        history =
+            JSON.parse(
+                localStorage.getItem(
+                    "nobleHistory"
+                ) || "[]"
+            );
+
+    }catch(error){
+
+        history = [];
+
+    }
+
+
+    if(!history.length){
+
+        el.innerHTML =
+            `
+            <div class="empty">
+                No generated messages yet.
+            </div>
+            `;
+
+        return;
+    }
+
+
+    el.innerHTML =
+        history
+            .map(
+                (item,index) => `
+
+                <div class="history-item">
+
+                    <div>
+
+                        <span>
+                            ${escapeHtml(
+                                item.title
+                            )}
+                        </span>
+
+                        <small>
+                            ${new Date(
+                                item.time
+                            ).toLocaleString()}
+                        </small>
+
+                    </div>
+
+
+                    <div class="history-actions">
+
+                        <button
+                            class="mini-btn"
+                            onclick="loadHistory(${index})"
+                        >
+                            LOAD
+                        </button>
+
+                        <button
+                            class="mini-btn"
+                            onclick="copyHistory(${index})"
+                        >
+                            COPY
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `
+            )
+            .join("");
+}
+
+
+function loadHistory(
+    index
+){
+
+    let history = [];
+
+
+    try{
+
+        history =
+            JSON.parse(
+                localStorage.getItem(
+                    "nobleHistory"
+                ) || "[]"
+            );
+
+    }catch(error){
+
+        return;
+
+    }
+
+
+    if(!history[index]){
+        return;
+    }
+
+
+    openGenerator(
+        history[index].title,
+        history[index].text
+    );
+
+
+    document.getElementById(
+        "generator"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+async function copyHistory(
+    index
+){
+
+    let history = [];
+
+
+    try{
+
+        history =
+            JSON.parse(
+                localStorage.getItem(
+                    "nobleHistory"
+                ) || "[]"
+            );
+
+    }catch(error){
+
+        return;
+
+    }
+
+
+    if(!history[index]){
+        return;
+    }
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            history[index].text
+        );
+
+    }catch(error){
+
+        const temp =
+            document.createElement(
+                "textarea"
+            );
+
+        temp.value =
+            history[index].text;
+
+        document.body.appendChild(
+            temp
+        );
+
+        temp.select();
+
+        document.execCommand(
+            "copy"
+        );
+
+        temp.remove();
+
+    }
+}
+
+
+/* =====================================================
+   RESET SETTINGS
+===================================================== */
+
+function resetPreferences(){
+
+    localStorage.removeItem(
+        "nobleHostId"
+    );
+
+    localStorage.removeItem(
+        "nobleHistory"
+    );
+
+
+    document.getElementById(
+        "hostId"
+    ).value = "";
+
+
+    renderHistory();
+
+
+    alert(
+        "Saved Noble settings have been reset."
+    );
+}
+
+
+/* =====================================================
+   INITIALIZATION
+===================================================== */
+
+updateClock();
+
+renderTimeline();
+
+renderHistory();
+
+
+setInterval(
+    () => {
+
+        updateClock();
+        renderTimeline();
+
+    },
+    1000
+);
+
+</script>
+
+</body>
+</html>

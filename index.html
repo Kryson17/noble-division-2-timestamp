@@ -7,1376 +7,415 @@
 <title>Noble Division 2 Timestamp</title>
 
 <style>
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-:root{
-    --bg:#03050d;
-    --bg2:#080b19;
-    --panel:rgba(10,13,30,.88);
-    --panel2:rgba(15,12,35,.92);
-
-    --blue:#3b82f6;
-    --cyan:#22d3ee;
-    --purple:#8b5cf6;
-    --pink:#c084fc;
-    --gold:#f5c451;
-
-    --text:#f3f5ff;
-    --muted:#8e96b8;
-
-    --border:rgba(96,165,250,.18);
-    --border-purple:rgba(139,92,246,.22);
+:root {
+    --bg: #071011;
+    --bg2: #0b1718;
+    --panel: rgba(14, 27, 28, .88);
+    --panel2: rgba(18, 34, 35, .95);
+    --border: rgba(65, 210, 190, .18);
+    --green: #42d6b5;
+    --green2: #72f0d3;
+    --cyan: #43cce8;
+    --text: #e8fffa;
+    --muted: #88aaa5;
+    --danger: #ff7373;
 }
 
-body{
-    margin:0;
-    min-height:100vh;
-    overflow-x:hidden;
-
-    font-family:
-        Inter,
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    color:var(--text);
-
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
     background:
-        radial-gradient(
-            circle at 15% 10%,
-            rgba(59,130,246,.16),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(139,92,246,.18),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(34,211,238,.08),
-            transparent 35%
-        ),
-        linear-gradient(
-            145deg,
-            #02040a,
-            #060818 45%,
-            #09051a
-        );
-
-    position:relative;
+        radial-gradient(circle at 15% 0%, rgba(48, 197, 166, .10), transparent 32%),
+        radial-gradient(circle at 90% 20%, rgba(52, 194, 222, .07), transparent 30%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
 }
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
     background-image:
-        linear-gradient(
-            rgba(59,130,246,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(139,92,246,.035) 1px,
-            transparent 1px
-        );
-
-    background-size:55px 55px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 90%
-        );
-
-    z-index:-3;
+        linear-gradient(rgba(90, 220, 200, .025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(90, 220, 200, .025) 1px, transparent 1px);
+    background-size: 55px 55px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
 }
 
-/* =====================================================
-   AURORA
-===================================================== */
-
-.aurora{
-    position:fixed;
-    border-radius:50%;
-    pointer-events:none;
-    filter:blur(100px);
-    z-index:-2;
-    opacity:.45;
+.header {
+    text-align: center;
+    padding: 55px 20px 35px;
 }
 
-.aurora.one{
-    width:430px;
-    height:430px;
-    top:-180px;
-    left:-140px;
-    background:rgba(59,130,246,.25);
-
-    animation:
-        floatOne
-        14s
-        ease-in-out
-        infinite
-        alternate;
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 16px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(65,210,190,.20);
+    color: var(--green2);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 3px;
 }
 
-.aurora.two{
-    width:520px;
-    height:520px;
-    right:-220px;
-    top:25%;
-    background:rgba(139,92,246,.23);
-
-    animation:
-        floatTwo
-        17s
-        ease-in-out
-        infinite
-        alternate;
+.logo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 16px rgba(66,214,181,.8);
 }
 
-.aurora.three{
-    width:350px;
-    height:350px;
-    bottom:-160px;
-    left:35%;
-    background:rgba(34,211,238,.12);
-
-    animation:
-        floatThree
-        15s
-        ease-in-out
-        infinite
-        alternate;
+h1 {
+    margin: 20px 0 0;
+    font-size: clamp(38px, 7vw, 60px);
+    line-height: 1;
+    letter-spacing: -3px;
 }
 
-@keyframes floatOne{
-    from{
-        transform:translate(0,0) scale(1);
+.gradient {
+    background: linear-gradient(90deg, var(--green), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    max-width: 580px;
+    margin: 16px auto 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.container {
+    width: 92%;
+    max-width: 1050px;
+    margin: auto;
+    padding-bottom: 70px;
+}
+
+.category {
+    margin-bottom: 24px;
+    padding: 22px;
+    border-radius: 20px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 55px rgba(0,0,0,.18);
+    backdrop-filter: blur(15px);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--green2);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.category-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(66,214,181,.35), transparent);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.card {
+    padding: 18px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(110,220,205,.10);
+    cursor: pointer;
+    transition: .22s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(66,214,181,.40);
+    background: rgba(66,214,181,.055);
+}
+
+.card.active {
+    border-color: var(--green);
+    box-shadow: 0 0 0 2px rgba(66,214,181,.08);
+}
+
+.icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    border-radius: 11px;
+    background: rgba(66,214,181,.08);
+    border: 1px solid rgba(66,214,181,.12);
+    font-size: 17px;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.card p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.session-card {
+    cursor: default;
+}
+
+.session-card:hover {
+    transform: none;
+}
+
+.session-card .icon {
+    margin-bottom: 10px;
+}
+
+.session-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 14px;
+}
+
+.small-button {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(66,214,181,.20);
+    background: rgba(66,214,181,.06);
+    color: #bffcf0;
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.small-button:hover,
+.small-button.active {
+    background: rgba(66,214,181,.16);
+    border-color: var(--green);
+    color: white;
+}
+
+.small-button.secondary {
+    border-color: rgba(67,204,232,.20);
+    background: rgba(67,204,232,.05);
+}
+
+.small-button.secondary:hover {
+    border-color: var(--cyan);
+    background: rgba(67,204,232,.13);
+}
+
+.generator {
+    display: none;
+    margin-bottom: 24px;
+    padding: 22px;
+    border-radius: 18px;
+    background: var(--panel2);
+    border: 1px solid rgba(66,214,181,.22);
+    box-shadow: 0 25px 65px rgba(0,0,0,.25);
+}
+
+.generator-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.generator-title {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.live {
+    padding: 6px 9px;
+    border-radius: 20px;
+    background: rgba(66,214,181,.08);
+    border: 1px solid rgba(66,214,181,.18);
+    color: var(--green2);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.4fr;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.control {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.control label {
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+input {
+    width: 100%;
+    padding: 11px;
+    border-radius: 9px;
+    border: 1px solid rgba(120,220,205,.13);
+    background: rgba(0,0,0,.18);
+    color: var(--text);
+    outline: none;
+    font-size: 12px;
+}
+
+input:focus {
+    border-color: var(--green);
+}
+
+.calculated {
+    display: none;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 9px;
+    background: rgba(66,214,181,.06);
+    border: 1px solid rgba(66,214,181,.12);
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.calculated strong {
+    color: var(--green2);
+}
+
+textarea {
+    width: 100%;
+    min-height: 330px;
+    padding: 15px;
+    resize: vertical;
+    outline: none;
+    border-radius: 11px;
+    border: 1px solid rgba(120,220,205,.13);
+    background: rgba(0,0,0,.20);
+    color: #d9fff7;
+    font-family: monospace;
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+textarea:focus {
+    border-color: var(--green);
+}
+
+.copy {
+    width: 100%;
+    margin-top: 10px;
+    padding: 13px;
+    border: 0;
+    border-radius: 9px;
+    background: linear-gradient(90deg, #27b997, #35c7df);
+    color: #06100f;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.copy:hover {
+    transform: translateY(-2px);
+}
+
+.copied {
+    display: none;
+    margin-top: 8px;
+    text-align: center;
+    color: var(--green);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+footer {
+    padding: 0 20px 30px;
+    text-align: center;
+    color: #55716e;
+    font-size: 9px;
+}
+
+@media(max-width:700px) {
+    .header {
+        padding: 42px 15px 30px;
     }
 
-    to{
-        transform:translate(150px,130px) scale(1.25);
-    }
-}
-
-@keyframes floatTwo{
-    from{
-        transform:translate(0,0) scale(.95);
+    h1 {
+        letter-spacing: -2px;
     }
 
-    to{
-        transform:translate(-150px,80px) scale(1.2);
-    }
-}
-
-@keyframes floatThree{
-    from{
-        transform:translate(0,0);
+    .container {
+        width: 94%;
     }
 
-    to{
-        transform:translate(100px,-100px) scale(1.15);
-    }
-}
-
-/* =====================================================
-   PARTICLES
-===================================================== */
-
-.particles{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:-1;
-}
-
-.particle{
-    position:absolute;
-
-    width:3px;
-    height:3px;
-
-    border-radius:50%;
-
-    background:rgba(34,211,238,.45);
-
-    box-shadow:
-        0 0 14px
-        rgba(34,211,238,.55);
-
-    animation:
-        particleFloat
-        linear
-        infinite;
-}
-
-@keyframes particleFloat{
-    from{
-        transform:
-            translateY(110vh)
-            translateX(0);
-
-        opacity:0;
+    .category {
+        padding: 17px;
     }
 
-    15%{
-        opacity:.7;
+    .cards {
+        grid-template-columns: 1fr;
     }
 
-    85%{
-        opacity:.7;
+    .controls {
+        grid-template-columns: 1fr;
     }
 
-    to{
-        transform:
-            translateY(-20vh)
-            translateX(70px);
-
-        opacity:0;
-    }
-}
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.header{
-    text-align:center;
-
-    padding:
-        65px
-        20px
-        45px;
-}
-
-.logo{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-
-    padding:
-        9px
-        16px;
-
-    border-radius:30px;
-
-    background:
-        rgba(8,11,25,.72);
-
-    border:
-        1px solid
-        rgba(34,211,238,.18);
-
-    box-shadow:
-        0 0 30px
-        rgba(34,211,238,.05);
-
-    backdrop-filter:blur(14px);
-
-    color:#d7f9ff;
-
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:3px;
-}
-
-.logo-dot{
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:var(--cyan);
-
-    box-shadow:
-        0 0 18px
-        rgba(34,211,238,.9);
-
-    animation:
-        pulse
-        2s
-        ease-in-out
-        infinite;
-}
-
-@keyframes pulse{
-    0%,100%{
-        opacity:.6;
-        transform:scale(.85);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1.2);
-    }
-}
-
-h1{
-    margin:
-        20px
-        0
-        0;
-
-    font-size:
-        clamp(38px,7vw,68px);
-
-    line-height:1;
-
-    letter-spacing:-3px;
-
-    font-weight:950;
-}
-
-.gradient{
-    background:
-        linear-gradient(
-            90deg,
-            var(--cyan),
-            #60a5fa,
-            var(--purple),
-            var(--pink)
-        );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.subtitle{
-    max-width:650px;
-
-    margin:
-        18px
-        auto
-        0;
-
-    color:var(--muted);
-
-    line-height:1.7;
-
-    font-size:14px;
-}
-
-/* =====================================================
-   MAIN
-===================================================== */
-
-.container{
-    width:92%;
-    max-width:1250px;
-
-    margin:auto;
-
-    padding-bottom:90px;
-}
-
-/* =====================================================
-   CATEGORY
-===================================================== */
-
-.category{
-    position:relative;
-
-    margin-bottom:28px;
-
-    padding:27px;
-
-    border-radius:25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(10,13,30,.90),
-            rgba(9,7,24,.88)
-        );
-
-    border:
-        1px solid
-        var(--border);
-
-    box-shadow:
-        0 25px 70px
-        rgba(0,0,0,.38),
-
-        inset
-        0 1px 0
-        rgba(255,255,255,.025);
-
-    backdrop-filter:blur(18px);
-
-    overflow:hidden;
-}
-
-.category::after{
-    content:"";
-
-    position:absolute;
-
-    width:260px;
-    height:260px;
-
-    top:-180px;
-    right:-120px;
-
-    border-radius:50%;
-
-    background:
-        rgba(139,92,246,.10);
-
-    filter:blur(15px);
-
-    pointer-events:none;
-}
-
-.category-header{
-    position:relative;
-
-    display:flex;
-    align-items:center;
-
-    gap:15px;
-
-    margin-bottom:22px;
-
-    z-index:1;
-}
-
-.category-title{
-    display:flex;
-    align-items:center;
-    gap:9px;
-
-    padding:
-        9px
-        14px;
-
-    border-radius:11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(59,130,246,.13),
-            rgba(139,92,246,.14)
-        );
-
-    border:
-        1px solid
-        rgba(96,165,250,.22);
-
-    color:#c7dcff;
-
-    font-size:11px;
-    font-weight:900;
-
-    letter-spacing:1.8px;
-    text-transform:uppercase;
-
-    white-space:nowrap;
-}
-
-.category-line{
-    flex:1;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(34,211,238,.35),
-            rgba(139,92,246,.18),
-            transparent
-        );
-}
-
-/* =====================================================
-   CARDS
-===================================================== */
-
-.cards{
-    position:relative;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:17px;
-
-    z-index:1;
-}
-
-.card{
-    position:relative;
-
-    overflow:hidden;
-
-    padding:23px;
-
-    min-height:145px;
-
-    border-radius:19px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(12,17,38,.95),
-            rgba(7,9,23,.94)
-        );
-
-    border:
-        1px solid
-        rgba(96,165,250,.16);
-
-    box-shadow:
-        0 15px 35px
-        rgba(0,0,0,.28);
-
-    cursor:pointer;
-
-    transition:
-        transform .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease,
-        background .3s ease;
-}
-
-.card::before{
-    content:"";
-
-    position:absolute;
-
-    width:180px;
-    height:180px;
-
-    right:-100px;
-    top:-100px;
-
-    border-radius:50%;
-
-    background:
-        rgba(139,92,246,.10);
-
-    transition:
-        transform .45s ease;
-}
-
-.card::after{
-    content:"";
-
-    position:absolute;
-
-    left:-120%;
-    top:0;
-
-    width:70%;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.06),
-            transparent
-        );
-
-    transform:skewX(-18deg);
-
-    transition:left .55s ease;
-}
-
-.card:hover{
-    transform:translateY(-6px);
-
-    border-color:
-        rgba(34,211,238,.38);
-
-    box-shadow:
-        0 22px 50px
-        rgba(0,0,0,.45),
-
-        0 0 25px
-        rgba(34,211,238,.05);
-}
-
-.card:hover::before{
-    transform:scale(1.5);
-}
-
-.card:hover::after{
-    left:140%;
-}
-
-.card.active{
-    border-color:var(--gold);
-
-    box-shadow:
-        0 0 0 2px
-        rgba(245,196,81,.09),
-
-        0 20px 50px
-        rgba(0,0,0,.45),
-
-        0 0 28px
-        rgba(245,196,81,.07);
-}
-
-.icon{
-    position:relative;
-
-    width:47px;
-    height:47px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:14px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(59,130,246,.16),
-            rgba(139,92,246,.17)
-        );
-
-    border:
-        1px solid
-        rgba(34,211,238,.17);
-
-    font-size:21px;
-
-    margin-bottom:16px;
-
-    transition:
-        transform .3s ease;
-}
-
-.card:hover .icon{
-    transform:
-        rotate(-6deg)
-        scale(1.08);
-}
-
-.card h3{
-    position:relative;
-
-    margin:0;
-
-    font-size:16px;
-    font-weight:900;
-
-    z-index:2;
-}
-
-.card p{
-    position:relative;
-
-    margin:
-        7px
-        0
-        0;
-
-    color:var(--muted);
-
-    font-size:12px;
-    line-height:1.5;
-
-    z-index:2;
-}
-
-/* =====================================================
-   SESSION TYPE BADGE
-===================================================== */
-
-.badge{
-    display:inline-block;
-
-    margin-top:10px;
-
-    padding:
-        5px
-        8px;
-
-    border-radius:7px;
-
-    font-size:9px;
-    font-weight:900;
-
-    letter-spacing:1px;
-
-    color:#9eefff;
-
-    background:
-        rgba(34,211,238,.07);
-
-    border:
-        1px solid
-        rgba(34,211,238,.13);
-}
-
-/* =====================================================
-   GENERATOR
-===================================================== */
-
-.generator{
-    display:none;
-
-    margin-top:24px;
-
-    padding:28px;
-
-    border-radius:24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(13,16,38,.97),
-            rgba(9,7,26,.97)
-        );
-
-    border:
-        1px solid
-        rgba(139,92,246,.25);
-
-    box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.48),
-
-        0 0 40px
-        rgba(139,92,246,.04);
-
-    animation:
-        generatorAppear
-        .4s
-        ease;
-}
-
-@keyframes generatorAppear{
-    from{
-        opacity:0;
-        transform:
-            translateY(18px)
-            scale(.985);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-.generator-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:15px;
-
-    margin-bottom:22px;
-}
-
-.generator-title{
-    font-size:21px;
-    font-weight:900;
-}
-
-.live{
-    padding:
-        7px
-        11px;
-
-    border-radius:20px;
-
-    background:
-        rgba(34,211,238,.07);
-
-    border:
-        1px solid
-        rgba(34,211,238,.18);
-
-    color:#67e8f9;
-
-    font-size:9px;
-    font-weight:900;
-
-    letter-spacing:1.3px;
-}
-
-/* =====================================================
-   CONTROLS
-===================================================== */
-
-.controls{
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr
-        1.4fr;
-
-    gap:14px;
-
-    margin-bottom:18px;
-}
-
-.control{
-    display:flex;
-    flex-direction:column;
-
-    gap:7px;
-}
-
-.control label{
-    font-size:9px;
-    font-weight:900;
-
-    letter-spacing:1.2px;
-
-    color:#7f8ab0;
-
-    text-transform:uppercase;
-}
-
-input,
-select{
-    width:100%;
-
-    padding:
-        12px
-        13px;
-
-    border-radius:10px;
-
-    border:
-        1px solid
-        rgba(96,165,250,.18);
-
-    background:
-        rgba(4,7,18,.85);
-
-    color:var(--text);
-
-    outline:none;
-
-    font-size:13px;
-
-    transition:
-        border-color .2s,
-        box-shadow .2s;
-}
-
-input:focus,
-select:focus{
-    border-color:
-        rgba(34,211,238,.55);
-
-    box-shadow:
-        0 0 0 3px
-        rgba(34,211,238,.07);
-}
-
-/* =====================================================
-   TIME SELECTOR
-===================================================== */
-
-.time-section{
-    margin-top:5px;
-    margin-bottom:19px;
-}
-
-.time-title{
-    margin-bottom:9px;
-
-    font-size:9px;
-    font-weight:900;
-
-    letter-spacing:1.2px;
-
-    color:#7f8ab0;
-
-    text-transform:uppercase;
-}
-
-.quick-times{
-    display:flex;
-    flex-wrap:wrap;
-
-    gap:8px;
-
-    margin-bottom:12px;
-}
-
-.quick-time{
-    padding:
-        9px
-        13px;
-
-    border-radius:9px;
-
-    border:
-        1px solid
-        rgba(59,130,246,.18);
-
-    background:
-        rgba(59,130,246,.07);
-
-    color:#b8c8f5;
-
-    cursor:pointer;
-
-    font-size:11px;
-    font-weight:800;
-
-    transition:.2s;
-}
-
-.quick-time:hover{
-    border-color:
-        rgba(34,211,238,.45);
-
-    color:#67e8f9;
-
-    background:
-        rgba(34,211,238,.08);
-}
-
-.quick-time.active{
-    border-color:var(--gold);
-
-    color:var(--gold);
-
-    background:
-        rgba(245,196,81,.07);
-
-    box-shadow:
-        0 0 16px
-        rgba(245,196,81,.06);
-}
-
-.manual-time{
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        auto;
-
-    gap:10px;
-
-    align-items:end;
-}
-
-.manual-time .control{
-    margin:0;
-}
-
-.time-note{
-    color:#6f789c;
-
-    font-size:10px;
-
-    padding-bottom:11px;
-}
-
-/* =====================================================
-   GAMES
-===================================================== */
-
-.games-section{
-    display:none;
-
-    margin-bottom:19px;
-}
-
-.games-title{
-    margin-bottom:9px;
-
-    font-size:9px;
-    font-weight:900;
-
-    letter-spacing:1.2px;
-
-    color:#7f8ab0;
-
-    text-transform:uppercase;
-}
-
-.games{
-    display:flex;
-    gap:9px;
-}
-
-.game-option{
-    padding:
-        10px
-        16px;
-
-    border-radius:9px;
-
-    border:
-        1px solid
-        rgba(139,92,246,.2);
-
-    background:
-        rgba(139,92,246,.07);
-
-    color:#c9c0f8;
-
-    cursor:pointer;
-
-    font-size:11px;
-    font-weight:900;
-
-    transition:.2s;
-}
-
-.game-option:hover{
-    border-color:
-        rgba(139,92,246,.5);
-}
-
-.game-option.active{
-    border-color:var(--gold);
-
-    color:var(--gold);
-
-    background:
-        rgba(245,196,81,.07);
-}
-
-/* =====================================================
-   CALCULATED
-===================================================== */
-
-.calculated{
-    display:none;
-
-    padding:
-        11px
-        14px;
-
-    margin-bottom:18px;
-
-    border-radius:10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(34,211,238,.05),
-            rgba(139,92,246,.05)
-        );
-
-    border:
-        1px solid
-        rgba(34,211,238,.10);
-
-    color:#9aa5ca;
-
-    font-size:11px;
-}
-
-.calculated strong{
-    color:#67e8f9;
-}
-
-/* =====================================================
-   BUTTONS
-===================================================== */
-
-.actions{
-    display:flex;
-    gap:10px;
-}
-
-button{
-    border:0;
-    outline:0;
-
-    cursor:pointer;
-
-    font-family:inherit;
-}
-
-.generate{
-    flex:1;
-
-    padding:
-        13px
-        18px;
-
-    border-radius:11px;
-
-    color:#02040a;
-
-    font-size:11px;
-    font-weight:950;
-
-    letter-spacing:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--cyan),
-            #60a5fa,
-            var(--purple)
-        );
-
-    box-shadow:
-        0 10px 28px
-        rgba(59,130,246,.16);
-
-    transition:.25s;
-}
-
-.generate:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 15px 35px
-        rgba(34,211,238,.20);
-}
-
-.copy{
-    padding:
-        13px
-        22px;
-
-    border-radius:11px;
-
-    color:#cbd5ff;
-
-    background:
-        rgba(139,92,246,.09);
-
-    border:
-        1px solid
-        rgba(139,92,246,.25);
-
-    font-size:11px;
-    font-weight:900;
-
-    transition:.2s;
-}
-
-.copy:hover{
-    border-color:
-        rgba(34,211,238,.45);
-
-    color:#67e8f9;
-}
-
-/* =====================================================
-   PREVIEW
-===================================================== */
-
-.preview{
-    display:none;
-
-    margin-top:20px;
-}
-
-.preview-title{
-    margin-bottom:9px;
-
-    color:#7f8ab0;
-
-    font-size:9px;
-    font-weight:900;
-
-    letter-spacing:1.2px;
-
-    text-transform:uppercase;
-}
-
-textarea{
-    width:100%;
-    min-height:330px;
-
-    resize:vertical;
-
-    padding:17px;
-
-    border-radius:13px;
-
-    border:
-        1px solid
-        rgba(34,211,238,.13);
-
-    background:
-        #02040b;
-
-    color:#d8def5;
-
-    outline:none;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size:12px;
-    line-height:1.65;
-}
-
-textarea:focus{
-    border-color:
-        rgba(34,211,238,.35);
-}
-
-/* =====================================================
-   SCHEDULE PREVIEW
-===================================================== */
-
-.schedule-preview{
-    display:none;
-
-    margin-top:20px;
-
-    padding:20px;
-
-    border-radius:15px;
-
-    background:
-        rgba(2,4,11,.65);
-
-    border:
-        1px solid
-        rgba(139,92,246,.16);
-}
-
-.schedule-preview h4{
-    margin:
-        0
-        0
-        14px;
-
-    font-size:13px;
-}
-
-.schedule-preview pre{
-    margin:0;
-
-    white-space:pre-wrap;
-
-    color:#cbd5e1;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size:12px;
-    line-height:1.65;
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.footer{
-    text-align:center;
-
-    padding:
-        10px
-        20px
-        50px;
-
-    color:#555e80;
-
-    font-size:10px;
-
-    letter-spacing:.5px;
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media(max-width:800px){
-
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-    .controls{
-        grid-template-columns:1fr;
-    }
-
-    .manual-time{
-        grid-template-columns:1fr;
-    }
-
-    .time-note{
-        padding:0;
-    }
-
-    .actions{
-        flex-direction:column;
-    }
-
-    .generator-top{
-        align-items:flex-start;
-        flex-direction:column;
-    }
-
-    .category{
-        padding:20px;
-    }
-
-    .header{
-        padding-top:45px;
-    }
-}
-
-@media(max-width:480px){
-
-    h1{
-        letter-spacing:-2px;
-    }
-
-    .quick-times{
-        display:grid;
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .quick-time{
-        text-align:center;
-    }
-
-    .games{
-        display:grid;
-        grid-template-columns:1fr 1fr;
+    .generator-top {
+        align-items: flex-start;
+        flex-direction: column;
     }
 }
 </style>
 </head>
 
 <body>
-
-<div class="aurora one"></div>
-<div class="aurora two"></div>
-<div class="aurora three"></div>
-
-<div class="particles">
-    <span class="particle" style="left:5%;animation-duration:15s;animation-delay:-4s"></span>
-    <span class="particle" style="left:18%;animation-duration:19s;animation-delay:-9s"></span>
-    <span class="particle" style="left:32%;animation-duration:16s;animation-delay:-6s"></span>
-    <span class="particle" style="left:47%;animation-duration:21s;animation-delay:-13s"></span>
-    <span class="particle" style="left:61%;animation-duration:15s;animation-delay:-3s"></span>
-    <span class="particle" style="left:74%;animation-duration:19s;animation-delay:-11s"></span>
-    <span class="particle" style="left:88%;animation-duration:17s;animation-delay:-7s"></span>
-</div>
 
 <header class="header">
 
@@ -1391,7 +430,7 @@ textarea:focus{
     </h1>
 
     <div class="subtitle">
-        Generate ready-to-use Discord timestamps
+        Generate clean, ready-to-use Discord timestamps
         for Noble Division 2 sessions.
     </div>
 
@@ -1406,117 +445,30 @@ textarea:focus{
 <section class="category">
 
     <div class="category-header">
-
         <div class="category-title">
             📋 Session Schedule
         </div>
-
         <div class="category-line"></div>
-
     </div>
 
     <div class="cards">
 
-        <div
-            class="card"
-            onclick="showSchedule('no1',this)"
-        >
-
-            <div class="icon">
-                🏆
-            </div>
-
-            <h3>
-                No Hosting — 1 Day
-            </h3>
-
-            <p>
-                No sessions today due to a tournament.
-            </p>
-
+        <div class="card" onclick="showSchedule('division', this)">
+            <div class="icon">🏆</div>
+            <h3>Division Cup</h3>
+            <p>Resume hosting in 2 days · 14:00</p>
         </div>
 
-
-        <div
-            class="card"
-            onclick="showSchedule('no2',this)"
-        >
-
-            <div class="icon">
-                🏆
-            </div>
-
-            <h3>
-                No Hosting — 2 Days
-            </h3>
-
-            <p>
-                No sessions today & tomorrow due to a tournament.
-            </p>
-
+        <div class="card" onclick="showSchedule('weekday', this)">
+            <div class="icon">📅</div>
+            <h3>Non-Tournament Weekday</h3>
+            <p>15:00 · 17:00 · 19:00 · 21:00 · 23:00</p>
         </div>
 
-
-        <div
-            class="card"
-            onclick="showSchedule('weekday',this)"
-        >
-
-            <div class="icon">
-                📅
-            </div>
-
-            <h3>
-                Non-Tournament Weekday
-            </h3>
-
-            <p>
-                15:00 · 17:00 · 19:00 · 21:00 · 23:00
-            </p>
-
-        </div>
-
-
-        <div
-            class="card"
-            onclick="showSchedule('weekend',this)"
-        >
-
-            <div class="icon">
-                🌙
-            </div>
-
-            <h3>
-                Non-Tournament Weekend
-            </h3>
-
-            <p>
-                14:00 · 16:00 · 18:00 · 20:00 · 22:00 · 23:30 · 01:00
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div
-        class="schedule-preview"
-        id="schedulePreview"
-    >
-
-        <h4 id="scheduleTitle"></h4>
-
-        <pre id="scheduleText"></pre>
-
-        <div class="actions" style="margin-top:15px">
-
-            <button
-                class="copy"
-                onclick="copySchedule()"
-            >
-                📋 COPY ANNOUNCEMENT
-            </button>
-
+        <div class="card" onclick="showSchedule('weekend', this)">
+            <div class="icon">🌙</div>
+            <h3>Non-Tournament Weekend</h3>
+            <p>14:00 · 16:00 · 18:00 · 20:00 · 22:00 · 23:30 · 01:00</p>
         </div>
 
     </div>
@@ -1531,502 +483,329 @@ textarea:focus{
 <section class="category">
 
     <div class="category-header">
-
         <div class="category-title">
             🎮 Sessions
         </div>
-
         <div class="category-line"></div>
-
     </div>
-
 
     <div class="cards">
 
         <!-- SOLO -->
 
-        <div
-            class="card"
-            onclick="showSession('solo',this)"
-        >
+        <div class="card session-card">
+            <div class="icon">👤</div>
+            <h3>Solo</h3>
+            <p>Practice Session · 1 player per react</p>
 
-            <div class="icon">
-                👤
+            <div class="session-actions">
+                <button
+                    class="small-button active"
+                    onclick="selectGames(event, 'solo', 3)"
+                >
+                    3 Games
+                </button>
+
+                <button
+                    class="small-button"
+                    onclick="selectGames(event, 'solo', 2)"
+                >
+                    2 Games
+                </button>
+
+                <button
+                    class="small-button secondary"
+                    onclick="openSession(event, 'solo')"
+                >
+                    Generate
+                </button>
             </div>
-
-            <h3>
-                Solo
-            </h3>
-
-            <p>
-                Noble Division 2 Practice Session
-            </p>
-
-            <span class="badge">
-                2 / 3 GAMES
-            </span>
-
         </div>
 
 
         <!-- SOLO SECOND -->
 
-        <div
-            class="card"
-            onclick="showSession('solo2',this)"
-        >
+        <div class="card session-card">
+            <div class="icon">👤</div>
+            <h3>Solo Second Lobby</h3>
+            <p>Second Lobby · 1 player per react</p>
 
-            <div class="icon">
-                👤
+            <div class="session-actions">
+                <button
+                    class="small-button active"
+                    onclick="selectGames(event, 'soloSecond', 3)"
+                >
+                    3 Games
+                </button>
+
+                <button
+                    class="small-button"
+                    onclick="selectGames(event, 'soloSecond', 2)"
+                >
+                    2 Games
+                </button>
+
+                <button
+                    class="small-button secondary"
+                    onclick="openSession(event, 'soloSecond')"
+                >
+                    Generate
+                </button>
             </div>
-
-            <h3>
-                Solo — Second Lobby
-            </h3>
-
-            <p>
-                Second lobby · Noble Division 2
-            </p>
-
-            <span class="badge">
-                2 / 3 GAMES
-            </span>
-
         </div>
 
 
         <!-- DUOS -->
 
-        <div
-            class="card"
-            onclick="showSession('duos',this)"
-        >
+        <div class="card session-card">
+            <div class="icon">👥</div>
+            <h3>Duos</h3>
+            <p>Practice Session · 1 react per duo</p>
 
-            <div class="icon">
-                👥
+            <div class="session-actions">
+                <button
+                    class="small-button active"
+                    onclick="selectGames(event, 'duos', 3)"
+                >
+                    3 Games
+                </button>
+
+                <button
+                    class="small-button"
+                    onclick="selectGames(event, 'duos', 2)"
+                >
+                    2 Games
+                </button>
+
+                <button
+                    class="small-button secondary"
+                    onclick="openSession(event, 'duos')"
+                >
+                    Generate
+                </button>
             </div>
-
-            <h3>
-                Duos
-            </h3>
-
-            <p>
-                Noble Division 2 Practice Session
-            </p>
-
-            <span class="badge">
-                2 / 3 GAMES
-            </span>
-
         </div>
 
 
         <!-- DUOS SECOND -->
 
-        <div
-            class="card"
-            onclick="showSession('duos2',this)"
-        >
+        <div class="card session-card">
+            <div class="icon">👥</div>
+            <h3>Duos Second Lobby</h3>
+            <p>Second Lobby · 1 react per duo</p>
 
-            <div class="icon">
-                👥
+            <div class="session-actions">
+                <button
+                    class="small-button active"
+                    onclick="selectGames(event, 'duosSecond', 3)"
+                >
+                    3 Games
+                </button>
+
+                <button
+                    class="small-button"
+                    onclick="selectGames(event, 'duosSecond', 2)"
+                >
+                    2 Games
+                </button>
+
+                <button
+                    class="small-button secondary"
+                    onclick="openSession(event, 'duosSecond')"
+                >
+                    Generate
+                </button>
             </div>
-
-            <h3>
-                Duos — Second Lobby
-            </h3>
-
-            <p>
-                Second lobby · Noble Division 2
-            </p>
-
-            <span class="badge">
-                2 / 3 GAMES
-            </span>
-
-        </div>
-
-
-        <!-- RELOAD -->
-
-        <div
-            class="card"
-            onclick="showSession('reload',this)"
-        >
-
-            <div class="icon">
-                🔄
-            </div>
-
-            <h3>
-                Reload
-            </h3>
-
-            <p>
-                Noble Division 2 Practice Session
-            </p>
-
-            <span class="badge">
-                RELOAD
-            </span>
-
-        </div>
-
-
-        <!-- RELOAD SECOND -->
-
-        <div
-            class="card"
-            onclick="showSession('reload2',this)"
-        >
-
-            <div class="icon">
-                🔄
-            </div>
-
-            <h3>
-                Reload — Second Lobby
-            </h3>
-
-            <p>
-                Second lobby · Noble Division 2
-            </p>
-
-            <span class="badge">
-                RELOAD
-            </span>
-
         </div>
 
 
         <!-- TRIOS -->
 
-        <div
-            class="card"
-            onclick="showSession('trios',this)"
-        >
+        <div class="card session-card">
+            <div class="icon">👨‍👩‍👦</div>
+            <h3>Trios</h3>
+            <p>Practice Session · 1 react per trio</p>
 
-            <div class="icon">
-                👨‍👩‍👦
+            <div class="session-actions">
+                <button
+                    class="small-button active"
+                    onclick="selectGames(event, 'trios', 3)"
+                >
+                    3 Games
+                </button>
+
+                <button
+                    class="small-button"
+                    onclick="selectGames(event, 'trios', 2)"
+                >
+                    2 Games
+                </button>
+
+                <button
+                    class="small-button secondary"
+                    onclick="openSession(event, 'trios')"
+                >
+                    Generate
+                </button>
             </div>
-
-            <h3>
-                Trios
-            </h3>
-
-            <p>
-                Noble Division 2 Practice Session
-            </p>
-
-            <span class="badge">
-                2 / 3 GAMES
-            </span>
-
         </div>
 
 
         <!-- TRIOS SECOND -->
 
-        <div
-            class="card"
-            onclick="showSession('trios2',this)"
-        >
+        <div class="card session-card">
+            <div class="icon">👨‍👩‍👦</div>
+            <h3>Trios Second Lobby</h3>
+            <p>Second Lobby · 1 react per trio</p>
 
-            <div class="icon">
-                👨‍👩‍👦
+            <div class="session-actions">
+                <button
+                    class="small-button active"
+                    onclick="selectGames(event, 'triosSecond', 3)"
+                >
+                    3 Games
+                </button>
+
+                <button
+                    class="small-button"
+                    onclick="selectGames(event, 'triosSecond', 2)"
+                >
+                    2 Games
+                </button>
+
+                <button
+                    class="small-button secondary"
+                    onclick="openSession(event, 'triosSecond')"
+                >
+                    Generate
+                </button>
             </div>
+        </div>
 
-            <h3>
-                Trios — Second Lobby
-            </h3>
 
-            <p>
-                Second lobby · Noble Division 2
-            </p>
+        <!-- RELOAD -->
 
-            <span class="badge">
-                2 / 3 GAMES
-            </span>
+        <div class="card session-card">
+            <div class="icon">🔄</div>
+            <h3>Reload</h3>
+            <p>Practice Session · 1 react per duo</p>
+
+            <div class="session-actions">
+                <button
+                    class="small-button secondary"
+                    onclick="openSession(event, 'reload')"
+                >
+                    Generate
+                </button>
+            </div>
+        </div>
+
+
+        <!-- RELOAD SECOND -->
+
+        <div class="card session-card">
+            <div class="icon">🔄</div>
+            <h3>Reload Second Lobby</h3>
+            <p>Second Lobby · 1 react per duo</p>
+
+            <div class="session-actions">
+                <button
+                    class="small-button secondary"
+                    onclick="openSession(event, 'reloadSecond')"
+                >
+                    Generate
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GENERATOR
+===================================================== -->
+
+<section class="generator" id="generator">
+
+    <div class="generator-top">
+
+        <div class="generator-title" id="generatorTitle">
+            Generated Message
+        </div>
+
+        <div class="live">
+            LIVE TIMESTAMPS
+        </div>
+
+    </div>
+
+
+    <div class="controls">
+
+        <div class="control">
+
+            <label>Date</label>
+
+            <input
+                type="date"
+                id="sessionDate"
+            >
+
+        </div>
+
+
+        <div class="control">
+
+            <label>Registration</label>
+
+            <input
+                type="time"
+                id="sessionTime"
+                value="14:00"
+            >
+
+        </div>
+
+
+        <div class="control">
+
+            <label>Host Discord User ID</label>
+
+            <input
+                type="text"
+                id="hostId"
+                placeholder="123456789012345678"
+            >
 
         </div>
 
     </div>
 
 
-    <!-- =================================================
-         GENERATOR
-    ================================================= -->
+    <div class="calculated" id="calculated">
 
-    <div
-        class="generator"
-        id="generator"
-    >
+        First Game Commences:
 
-        <div class="generator-top">
+        <strong id="calculatedTime"></strong>
 
-            <div class="generator-title">
-                Session Setup
-            </div>
+    </div>
 
-            <div class="live">
-                GENERATOR ACTIVE
-            </div>
 
-        </div>
+    <textarea
+        id="output"
+        readonly
+    ></textarea>
 
 
-        <div class="controls">
+    <button class="copy" onclick="copyMessage()">
+        COPY MESSAGE
+    </button>
 
-            <div class="control">
 
-                <label for="sessionDate">
-                    Date
-                </label>
-
-                <input
-                    type="date"
-                    id="sessionDate"
-                >
-
-            </div>
-
-
-            <div class="control">
-
-                <label for="hostId">
-                    Host Discord User ID
-                </label>
-
-                <input
-                    type="text"
-                    id="hostId"
-                    placeholder="Discord User ID"
-                >
-
-            </div>
-
-
-            <div class="control">
-
-                <label>
-                    Selected Session
-                </label>
-
-                <input
-                    type="text"
-                    id="selectedSession"
-                    readonly
-                >
-
-            </div>
-
-        </div>
-
-
-        <!-- TIME -->
-
-        <div class="time-section">
-
-            <div class="time-title">
-                Registration Time
-            </div>
-
-
-            <div
-                class="quick-times"
-                id="quickTimes"
-            >
-
-                <button
-                    class="quick-time"
-                    onclick="setQuickTime('14:00',this)"
-                >
-                    14:00
-                </button>
-
-                <button
-                    class="quick-time"
-                    onclick="setQuickTime('15:00',this)"
-                >
-                    15:00
-                </button>
-
-                <button
-                    class="quick-time"
-                    onclick="setQuickTime('16:00',this)"
-                >
-                    16:00
-                </button>
-
-                <button
-                    class="quick-time"
-                    onclick="setQuickTime('17:00',this)"
-                >
-                    17:00
-                </button>
-
-                <button
-                    class="quick-time"
-                    onclick="setQuickTime('18:00',this)"
-                >
-                    18:00
-                </button>
-
-                <button
-                    class="quick-time"
-                    onclick="setQuickTime('19:00',this)"
-                >
-                    19:00
-                </button>
-
-                <button
-                    class="quick-time"
-                    onclick="setQuickTime('20:00',this)"
-                >
-                    20:00
-                </button>
-
-                <button
-                    class="quick-time"
-                    onclick="setQuickTime('21:00',this)"
-                >
-                    21:00
-                </button>
-
-                <button
-                    class="quick-time"
-                    onclick="setQuickTime('22:00',this)"
-                >
-                    22:00
-                </button>
-
-                <button
-                    class="quick-time"
-                    onclick="setQuickTime('23:00',this)"
-                >
-                    23:00
-                </button>
-
-            </div>
-
-
-            <div class="manual-time">
-
-                <div class="control">
-
-                    <label for="registrationTime">
-                        Manual Time
-                    </label>
-
-                    <input
-                        type="time"
-                        id="registrationTime"
-                        value="18:00"
-                        onchange="manualTimeChanged()"
-                    >
-
-                </div>
-
-                <div class="time-note">
-                    Choose any time manually or use a quick time.
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- GAMES -->
-
-        <div
-            class="games-section"
-            id="gamesSection"
-        >
-
-            <div class="games-title">
-                Number of Games
-            </div>
-
-            <div class="games">
-
-                <button
-                    class="game-option"
-                    id="games2"
-                    onclick="setGames(2)"
-                >
-                    2 Games
-                </button>
-
-                <button
-                    class="game-option active"
-                    id="games3"
-                    onclick="setGames(3)"
-                >
-                    3 Games
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="calculated"
-            id="calculated"
-        >
-            First Game Commences:
-            <strong id="firstGameTime">
-                18:15
-            </strong>
-            <span>
-                · Registration + 15 minutes
-            </span>
-        </div>
-
-
-        <div class="actions">
-
-            <button
-                class="generate"
-                onclick="generateMessage()"
-            >
-                GENERATE DISCORD MESSAGE
-            </button>
-
-        </div>
-
-
-        <div
-            class="preview"
-            id="preview"
-        >
-
-            <div class="preview-title">
-                Generated Discord Message
-            </div>
-
-            <textarea
-                id="message"
-                readonly
-            ></textarea>
-
-
-            <div
-                class="actions"
-                style="margin-top:12px"
-            >
-
-                <button
-                    class="copy"
-                    onclick="copyMessage()"
-                >
-                    📋 COPY ANNOUNCEMENT
-                </button>
-
-            </div>
-
-        </div>
-
+    <div class="copied" id="copied">
+        ✓ Message copied
     </div>
 
 </section>
@@ -2034,113 +813,61 @@ textarea:focus{
 </main>
 
 
-<div class="footer">
-    NOBLE DIVISION 2 · TIMESTAMP GENERATOR
-</div>
+<footer>
+    Noble Division 2 · Timestamp Generator
+</footer>
 
 
 <script>
 
-/* =====================================================
-   STATE
-===================================================== */
-
 let currentSession = null;
-
-let selectedGames = 3;
-
-let selectedScheduleText = "";
+let currentGames = 3;
 
 
 /* =====================================================
-   HELPERS
+   DATE
 ===================================================== */
 
-function pad(number){
-    return String(number).padStart(2,"0");
-}
+function timestampFromInput(dateString, timeString) {
 
+    const [year, month, day] =
+        dateString.split("-").map(Number);
 
-function formatDate(date){
-
-    return date.toLocaleDateString(
-        "en-GB",
-        {
-            day:"2-digit",
-            month:"2-digit",
-            year:"numeric"
-        }
-    );
-}
-
-
-function getDateTime(dateString,timeString){
-
-    const [hours,minutes] =
+    const [hour, minute] =
         timeString.split(":").map(Number);
 
-    const date =
-        new Date(
-            dateString + "T00:00:00"
-        );
-
-    date.setHours(
-        hours,
-        minutes,
-        0,
+    const date = new Date(
+        year,
+        month - 1,
+        day,
+        hour,
+        minute,
         0
     );
 
-    return date;
+    return Math.floor(date.getTime() / 1000);
 }
 
 
-function discordTimestamp(
-    dateString,
-    timeString
-){
+function timestampFor(date, hour, minute = 0) {
 
-    const date =
-        getDateTime(
-            dateString,
-            timeString
-        );
+    const d = new Date(date);
 
-    return Math.floor(
-        date.getTime() / 1000
-    );
+    d.setHours(hour, minute, 0, 0);
+
+    return Math.floor(d.getTime() / 1000);
 }
 
 
-function getFirstGameTime(){
+function formatDate(date) {
 
-    const dateString =
-        document.getElementById(
-            "sessionDate"
-        ).value;
+    const day =
+        String(date.getDate()).padStart(2, "0");
 
-    const registration =
-        document.getElementById(
-            "registrationTime"
-        ).value;
+    const month =
+        String(date.getMonth() + 1).padStart(2, "0");
 
-    const date =
-        getDateTime(
-            dateString,
-            registration
-        );
-
-    date.setMinutes(
-        date.getMinutes() + 15
-    );
-
-    return {
-        date:date,
-        time:
-            pad(date.getHours()) +
-            ":" +
-            pad(date.getMinutes())
-    };
+    return `${day}-${month}-${date.getFullYear()}`;
 }
 
 
@@ -2148,18 +875,363 @@ function getFirstGameTime(){
    CARD SELECTION
 ===================================================== */
 
-function selectCard(card){
+function selectCard(card) {
 
     document
         .querySelectorAll(".card")
-        .forEach(
-            item =>
-                item.classList.remove("active")
-        );
+        .forEach(c => c.classList.remove("active"));
 
-    if(card){
+    if (card) {
         card.classList.add("active");
     }
+}
+
+
+/* =====================================================
+   SESSION GAMES
+===================================================== */
+
+function selectGames(event, type, games) {
+
+    event.stopPropagation();
+
+    currentGames = games;
+    currentSession = type;
+
+    const card =
+        event.target.closest(".session-card");
+
+    card
+        .querySelectorAll(".small-button")
+        .forEach(button => {
+            if (
+                button.textContent.includes(`${games} Games`)
+            ) {
+                button.classList.add("active");
+            } else if (
+                button.textContent.includes("Games")
+            ) {
+                button.classList.remove("active");
+            }
+        });
+
+    updateSession();
+}
+
+
+function openSession(event, type) {
+
+    event.stopPropagation();
+
+    currentSession = type;
+
+    const today = new Date();
+
+    const dateInput =
+        document.getElementById("sessionDate");
+
+    if (!dateInput.value) {
+
+        dateInput.value =
+            `${today.getFullYear()}-${String(
+                today.getMonth() + 1
+            ).padStart(2, "0")}-${String(
+                today.getDate()
+            ).padStart(2, "0")}`;
+    }
+
+    document
+        .getElementById("generator")
+        .style.display = "block";
+
+    document
+        .getElementById("calculated")
+        .style.display = "block";
+
+    updateSession();
+
+    document
+        .getElementById("generator")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+}
+
+
+/* =====================================================
+   SESSION TEXT
+===================================================== */
+
+function updateSession() {
+
+    if (!currentSession) {
+        return;
+    }
+
+    const date =
+        document.getElementById("sessionDate").value;
+
+    const time =
+        document.getElementById("sessionTime").value;
+
+    const host =
+        document.getElementById("hostId").value.trim();
+
+    if (!date || !time) {
+        return;
+    }
+
+    const registration =
+        timestampFromInput(date, time);
+
+    const start =
+        new Date(registration * 1000);
+
+    start.setMinutes(
+        start.getMinutes() + 15
+    );
+
+    const firstGame =
+        Math.floor(start.getTime() / 1000);
+
+    document.getElementById("calculatedTime")
+        .textContent =
+        start.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+    const hostText =
+        host
+            ? `<@${host}>`
+            : `<@user>`;
+
+    let text = "";
+    let title = "";
+
+
+    /* -------------------------------------------------
+       SOLO
+    ------------------------------------------------- */
+
+    if (currentSession === "solo") {
+
+        title =
+            `Solo · ${currentGames} Games`;
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (${currentGames} Games)**
+
+**Solos**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+The host for this session is: <@832913126499287060> & <@1063915655738441909> Direct Message them for help.
+
+• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
+
+Required at least **110+ Reacts** for 1 lobby and **220+ Reacts** for a 2nd lobby. (1 per player)`;
+    }
+
+
+    /* -------------------------------------------------
+       SOLO SECOND
+    ------------------------------------------------- */
+
+    if (currentSession === "soloSecond") {
+
+        title =
+            `Solo Second Lobby · ${currentGames} Games`;
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (${currentGames} Games)**
+
+**Solos Second Lobby**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+The host for this session is: <@832913126499287060> & <@1063915655738441909> Direct Message them for help.
+
+• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
+
+Required at least **110+ Reacts** for 1 lobby and **220+ Reacts** for a 2nd lobby. (1 per player)`;
+    }
+
+
+    /* -------------------------------------------------
+       DUOS
+    ------------------------------------------------- */
+
+    if (currentSession === "duos") {
+
+        title =
+            `Duos · ${currentGames} Games`;
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (${currentGames} games)**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+The host for this session is: ${hostText}, Direct Message them for help.
+
+• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
+
+Required at least **55+ Reacts** for 1 lobby and **110+ Reacts** for a 2nd lobby (1 per duo).`;
+    }
+
+
+    /* -------------------------------------------------
+       DUOS SECOND
+    ------------------------------------------------- */
+
+    if (currentSession === "duosSecond") {
+
+        title =
+            `Duos Second Lobby · ${currentGames} Games`;
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (${currentGames} games)**
+
+**Second Lobby**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+• The host for this session is: ${hostText}, Direct Message them for help.
+
+Required at least **55+ Reacts** (1 per duo).`;
+    }
+
+
+    /* -------------------------------------------------
+       RELOAD
+    ------------------------------------------------- */
+
+    if (currentSession === "reload") {
+
+        title =
+            "Reload";
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (Reload)**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+The host for this session is: ${hostText}, Direct Message them for help.
+
+• Make sure to read <#1539238648799830108> , <#1540412486749130884> & <#1539238649080713247> before the games.
+
+Required at least **25+ Reacts** for 1 lobby and **50+ Reacts** for a 2nd lobby (1 per duo).`;
+    }
+
+
+    /* -------------------------------------------------
+       RELOAD SECOND
+    ------------------------------------------------- */
+
+    if (currentSession === "reloadSecond") {
+
+        title =
+            "Reload Second Lobby";
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (Reload)**
+
+**Second Lobby**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+• The host for this session is: ${hostText}, Direct Message them for help.
+
+Required at least **25+ Reacts** (1 per duo).`;
+    }
+
+
+    /* -------------------------------------------------
+       TRIOS
+    ------------------------------------------------- */
+
+    if (currentSession === "trios") {
+
+        title =
+            `Trios · ${currentGames} Games`;
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (${currentGames} games)**
+
+**Trios**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+The host for this session is: ${hostText}, Direct Message them for help.
+
+• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
+
+Required at least **40+ Reacts** for 1 lobby and **80+ Reacts** for a 2nd lobby (1 per trio).`;
+    }
+
+
+    /* -------------------------------------------------
+       TRIOS SECOND
+    ------------------------------------------------- */
+
+    if (currentSession === "triosSecond") {
+
+        title =
+            `Trios Second Lobby · ${currentGames} Games`;
+
+        text =
+`@everyone
+
+**Noble Division 2 Practice Session (${currentGames} games)**
+
+**Trios Second Lobby**
+
+<:Arrow:1540758164797005876>   Registration opens @ <t:${registration}:t>
+
+<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGame}:t>
+
+The host for this session is: ${hostText}, Direct Message them for help.
+
+• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
+
+Required at least **40+ Reacts** for 1 lobby and **80+ Reacts** for a 2nd lobby (1 per trio).`;
+    }
+
+
+    document.getElementById("generatorTitle")
+        .textContent = title;
+
+    document.getElementById("output")
+        .value = text;
 }
 
 
@@ -2167,207 +1239,143 @@ function selectCard(card){
    SESSION SCHEDULE
 ===================================================== */
 
-function showSchedule(
-    type,
-    card
-){
+function showSchedule(type, card) {
 
     selectCard(card);
 
-    const preview =
-        document.getElementById(
-            "schedulePreview"
+    const today = new Date();
+
+    let text = "";
+    let title = "";
+
+
+    if (type === "division") {
+
+        const target =
+            new Date(today);
+
+        target.setDate(
+            target.getDate() + 2
         );
 
-    const title =
-        document.getElementById(
-            "scheduleTitle"
-        );
+        const timestamp =
+            timestampFor(target, 14);
 
-    const text =
-        document.getElementById(
-            "scheduleText"
-        );
+        title =
+            "Division Cup";
 
-    const now =
-        new Date();
-
-    const today =
-        new Date(now);
-
-    const tomorrow =
-        new Date(now);
-
-    tomorrow.setDate(
-        tomorrow.getDate() + 1
-    );
-
-    const date =
-        formatDate(today);
-
-
-    /* =========================
-       NO HOSTING 1 DAY
-    ========================= */
-
-    if(type === "no1"){
-
-        title.textContent =
-            "No Hosting — 1 Day";
-
-        selectedScheduleText =
-`@everyone
-
-**No session schedule today due to a tournament.**
-
-No sessions today — we’re taking a short break while the tournament is on.
-
-We’ll resume hosting tomorrow. Good luck to everyone competing! 🏆`;
-
+        text =
+`<:ArrowRight:1398315425913372872> There are no sessions scheduled for today & tomorrow. Good luck in the Divisional Cups! We’ll resume hosting ~ <t:${timestamp}:D> . See you then! 🏆`;
     }
 
 
-    /* =========================
-       NO HOSTING 2 DAYS
-    ========================= */
+    if (type === "weekday") {
 
-    if(type === "no2"){
+        const date =
+            formatDate(today);
 
-        title.textContent =
-            "No Hosting — 2 Days";
+        const first =
+            timestampFor(today, 15);
 
-        selectedScheduleText =
-`@everyone
+        const second =
+            timestampFor(today, 17);
 
-**No session schedule today & tomorrow due to a tournament.**
+        const third =
+            timestampFor(today, 19);
 
-No sessions for the next two days while the tournament is on.
+        const fourth =
+            timestampFor(today, 21);
 
-We’ll resume hosting the following day. Good luck to everyone competing! 🏆`;
+        const fifth =
+            timestampFor(today, 23);
 
-    }
-
-
-    /* =========================
-       WEEKDAY
-    ========================= */
-
-    if(type === "weekday"){
-
-        const times = [
-            "15:00",
-            "17:00",
-            "19:00",
-            "21:00",
-            "23:00"
-        ];
-
-        const timestamps =
-            times.map(
-                time =>
-                    discordTimestamp(
-                        today
-                            .toISOString()
-                            .split("T")[0],
-                        time
-                    )
-            );
-
-        title.textContent =
+        title =
             "Non-Tournament Weekday";
 
-        selectedScheduleText =
+        text =
 `@everyone
 
 <:Div2:1540429559076225094>   **Noble Division 2 Schedule (${date})**   <:Div2:1540429559076225094>
 
 First Session:
-<:Arrow:1540758164797005876> <t:${timestamps[0]}:t>
+<:Arrow:1540758164797005876> <t:${first}:t>
 
 Second Session:
-<:Arrow:1540758164797005876> <t:${timestamps[1]}:t>
+<:Arrow:1540758164797005876> <t:${second}:t>
 
 Third Session:
-<:Arrow:1540758164797005876> <t:${timestamps[2]}:t>
+<:Arrow:1540758164797005876> <t:${third}:t>
 
 Fourth Session:
-<:Arrow:1540758164797005876> <t:${timestamps[3]}:t>
+<:Arrow:1540758164797005876> <t:${fourth}:t>
 
-Fifth Session: (2 games)
-<:Arrow:1540758164797005876> <t:${timestamps[4]}:t>
+Fifth Session:
+<:Arrow:1540758164797005876> <t:${fifth}:t>
 
 More details are available in #announcements
 
 -# Please note that session times may shift depending on how earlier sessions progress.`;
-
     }
 
 
-    /* =========================
-       WEEKEND
-    ========================= */
+    if (type === "weekend") {
 
-    if(type === "weekend"){
+        const tomorrow =
+            new Date(today);
 
-        const todayString =
-            today
-                .toISOString()
-                .split("T")[0];
+        tomorrow.setDate(
+            tomorrow.getDate() + 1
+        );
 
-        const tomorrowString =
-            tomorrow
-                .toISOString()
-                .split("T")[0];
+        const date =
+            formatDate(today);
 
-        const times = [
-            "14:00",
-            "16:00",
-            "18:00",
-            "20:00",
-            "22:00",
-            "23:30"
-        ];
+        const first =
+            timestampFor(today, 14);
 
-        const timestamps =
-            times.map(
-                time =>
-                    discordTimestamp(
-                        todayString,
-                        time
-                    )
-            );
+        const second =
+            timestampFor(today, 16);
+
+        const third =
+            timestampFor(today, 18);
+
+        const fourth =
+            timestampFor(today, 20);
+
+        const fifth =
+            timestampFor(today, 22);
+
+        const sixth =
+            timestampFor(today, 23, 30);
 
         const seventh =
-            discordTimestamp(
-                tomorrowString,
-                "01:00"
-            );
+            timestampFor(tomorrow, 1);
 
-        title.textContent =
+        title =
             "Non-Tournament Weekend";
 
-        selectedScheduleText =
+        text =
 `@everyone
 
 <:Div2:1540429559076225094>   **Noble Division 2 Schedule (${date})**   <:Div2:1540429559076225094>
 
 First Session:
-<:Arrow:1540758164797005876> <t:${timestamps[0]}:t>
+<:Arrow:1540758164797005876> <t:${first}:t>
 
 Second Session:
-<:Arrow:1540758164797005876> <t:${timestamps[1]}:t>
+<:Arrow:1540758164797005876> <t:${second}:t>
 
 Third Session:
-<:Arrow:1540758164797005876> <t:${timestamps[2]}:t>
+<:Arrow:1540758164797005876> <t:${third}:t>
 
 Fourth Session:
-<:Arrow:1540758164797005876> <t:${timestamps[3]}:t>
+<:Arrow:1540758164797005876> <t:${fourth}:t>
 
 Fifth Session: (2 games)
-<:Arrow:1540758164797005876> <t:${timestamps[4]}:t>
+<:Arrow:1540758164797005876> <t:${fifth}:t>
 
 Sixth Session: (2 games)
-<:Arrow:1540758164797005876> <t:${timestamps[5]}:t>
+<:Arrow:1540758164797005876> <t:${sixth}:t>
 
 Seventh Session: (2 games)
 <:Arrow:1540758164797005876> <t:${seventh}:t>
@@ -2375,645 +1383,81 @@ Seventh Session: (2 games)
 More details are available in #announcements
 
 -# Please note that session times may shift depending on how earlier sessions progress.`;
-
     }
 
 
-    text.textContent =
-        selectedScheduleText;
+    document.getElementById("generator").style.display = "block";
+    document.getElementById("calculated").style.display = "none";
 
-    preview.style.display =
-        "block";
+    document.getElementById("generatorTitle")
+        .textContent = title;
 
-    preview.scrollIntoView({
-        behavior:"smooth",
-        block:"nearest"
-    });
-}
+    document.getElementById("output")
+        .value = text;
 
-
-/* =====================================================
-   COPY SCHEDULE
-===================================================== */
-
-function copySchedule(){
-
-    if(!selectedScheduleText){
-        return;
-    }
-
-    navigator.clipboard
-        .writeText(
-            selectedScheduleText
-        )
-        .then(
-            () => {
-                alert(
-                    "Schedule announcement copied!"
-                );
-            }
-        );
-}
-
-
-/* =====================================================
-   SHOW SESSION
-===================================================== */
-
-function showSession(
-    type,
-    card
-){
-
-    selectCard(card);
-
-    currentSession = type;
-
-    const generator =
-        document.getElementById(
-            "generator"
-        );
-
-    const gamesSection =
-        document.getElementById(
-            "gamesSection"
-        );
-
-    const selectedSession =
-        document.getElementById(
-            "selectedSession"
-        );
-
-    const today =
-        new Date();
-
-    const dateInput =
-        document.getElementById(
-            "sessionDate"
-        );
-
-    if(!dateInput.value){
-
-        dateInput.value =
-            today
-                .toISOString()
-                .split("T")[0];
-
-    }
-
-
-    const names = {
-
-        solo:
-            "Solo",
-
-        solo2:
-            "Solo — Second Lobby",
-
-        duos:
-            "Duos",
-
-        duos2:
-            "Duos — Second Lobby",
-
-        reload:
-            "Reload",
-
-        reload2:
-            "Reload — Second Lobby",
-
-        trios:
-            "Trios",
-
-        trios2:
-            "Trios — Second Lobby"
-
-    };
-
-
-    selectedSession.value =
-        names[type];
-
-
-    const supportsGames =
-        [
-            "solo",
-            "solo2",
-            "duos",
-            "duos2",
-            "trios",
-            "trios2"
-        ].includes(type);
-
-
-    gamesSection.style.display =
-        supportsGames
-            ? "block"
-            : "none";
-
-
-    updateFirstGame();
-
-    generator.style.display =
-        "block";
-
-    generator.scrollIntoView({
-        behavior:"smooth",
-        block:"nearest"
-    });
-}
-
-
-/* =====================================================
-   GAMES
-===================================================== */
-
-function setGames(number){
-
-    selectedGames = number;
-
-    document
-        .getElementById("games2")
-        .classList.toggle(
-            "active",
-            number === 2
-        );
-
-    document
-        .getElementById("games3")
-        .classList.toggle(
-            "active",
-            number === 3
-        );
-}
-
-
-/* =====================================================
-   QUICK TIME
-===================================================== */
-
-function setQuickTime(
-    time,
-    button
-){
-
-    document
-        .querySelectorAll(".quick-time")
-        .forEach(
-            item =>
-                item.classList.remove(
-                    "active"
-                )
-        );
-
-    button.classList.add("active");
-
-    document
-        .getElementById(
-            "registrationTime"
-        )
-        .value = time;
-
-    updateFirstGame();
-}
-
-
-/* =====================================================
-   MANUAL TIME
-===================================================== */
-
-function manualTimeChanged(){
-
-    document
-        .querySelectorAll(".quick-time")
-        .forEach(
-            item =>
-                item.classList.remove(
-                    "active"
-                )
-        );
-
-    updateFirstGame();
-}
-
-
-/* =====================================================
-   FIRST GAME
-===================================================== */
-
-function updateFirstGame(){
-
-    const date =
-        document.getElementById(
-            "sessionDate"
-        ).value;
-
-    const time =
-        document.getElementById(
-            "registrationTime"
-        ).value;
-
-    if(!date || !time){
-        return;
-    }
-
-    const result =
-        getFirstGameTime();
-
-    document
-        .getElementById(
-            "firstGameTime"
-        )
-        .textContent =
-        result.time;
-
-    document
-        .getElementById(
-            "calculated"
-        )
-        .style.display =
-        "block";
-}
-
-
-/* =====================================================
-   HOST
-===================================================== */
-
-function getHostMention(){
-
-    const host =
-        document
-            .getElementById(
-                "hostId"
-            )
-            .value
-            .trim();
-
-    if(host){
-        return `<@${host}>`;
-    }
-
-    return "<@user>";
-}
-
-
-/* =====================================================
-   GENERATE MESSAGE
-===================================================== */
-
-function generateMessage(){
-
-    if(!currentSession){
-        return;
-    }
-
-    const date =
-        document
-            .getElementById(
-                "sessionDate"
-            )
-            .value;
-
-    const registration =
-        document
-            .getElementById(
-                "registrationTime"
-            )
-            .value;
-
-    if(!date || !registration){
-
-        alert(
-            "Please select a date and registration time."
-        );
-
-        return;
-    }
-
-
-    const registrationTimestamp =
-        discordTimestamp(
-            date,
-            registration
-        );
-
-
-    const firstGame =
-        getFirstGameTime();
-
-
-    const firstGameTimestamp =
-        Math.floor(
-            firstGame.date.getTime()
-            / 1000
-        );
-
-
-    const host =
-        getHostMention();
-
-
-    let message = "";
-
-
-    /* =================================================
-       SOLO
-    ================================================= */
-
-    if(
-        currentSession === "solo" ||
-        currentSession === "solo2"
-    ){
-
-        const lobbyTitle =
-            currentSession === "solo2"
-                ? "Solos Second Lobby"
-                : "Solos";
-
-        const gameText =
-            selectedGames === 2
-                ? "2 Games"
-                : "3 Games";
-
-        message =
-`@everyone
-
-**Noble Division 2 Practice Session (${gameText})**
-
-**${lobbyTitle}**
-
-<:Arrow:1540758164797005876>   Registration opens <t:${registrationTimestamp}:t>
-
-<:Arrow:1540758164797005876>   First Game Commences <t:${firstGameTimestamp}:t>
-
-The host for this session is: ${currentSession === "solo" ? "<@832913126499287060> & <@1063915655738441909>" : "<@832913126499287060> & <@1063915655738441909>"} Direct Message them for help.
-
-• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
-
-Required at least **110+ Reacts** for 1 lobby and **220+ Reacts** for a 2nd lobby. (1 per player)`;
-
-    }
-
-
-    /* =================================================
-       DUOS
-    ================================================= */
-
-    if(
-        currentSession === "duos" ||
-        currentSession === "duos2"
-    ){
-
-        const lobby =
-            currentSession === "duos2"
-                ? `
-
-**Second Lobby**`
-                : "";
-
-        if(currentSession === "duos"){
-
-            message =
-`@everyone 
-
-**Noble Division 2 Practice Session (${selectedGames} games)**
-
-<:Arrow:1540758164797005876>   Registration opens @ <t:${registrationTimestamp}:t>
-
-<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGameTimestamp}:t>
-
-The host for this session is: ${host}, Direct Message them for help.
-
-• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
-
-Required at least **55+ Reacts** for 1 lobby and **110+ Reacts** for a 2nd lobby (1 per duo).`;
-
-        }else{
-
-            message =
-`@everyone 
-
-**Noble Division 2 Practice Session (${selectedGames} games)**
-
-**Second Lobby**
-
-<:Arrow:1540758164797005876>   Registration opens @ <t:${registrationTimestamp}:t>
-
-<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGameTimestamp}:t>
-
-• The host for this session is: ${host}, Direct Message them for help. 
-
-Required at least **55+ Reacts** (1 per duo).`;
-
-        }
-
-    }
-
-
-    /* =================================================
-       RELOAD
-    ================================================= */
-
-    if(
-        currentSession === "reload" ||
-        currentSession === "reload2"
-    ){
-
-        if(currentSession === "reload"){
-
-            message =
-`@everyone 
-
-**Noble Division 2 Practice Session (Reload)**
-
-<:Arrow:1540758164797005876>   Registration opens @ <t:${registrationTimestamp}:t>
-
-<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGameTimestamp}:t>
-
-The host for this session is: ${host}, Direct Message them for help.
-
-• Make sure to read <#1539238648799830108> , <#1540412486749130884> & <#1539238649080713247> before the games.
-
-Required at least **25+ Reacts** for 1 lobby and **50+ Reacts** for a 2nd lobby (1 per duo).`;
-
-        }else{
-
-            message =
-`@everyone 
-
-**Noble Division 2 Practice Session (Reload)**
-
-**Second Lobby**
-
-<:Arrow:1540758164797005876>   Registration opens @ <t:${registrationTimestamp}:t>
-
-<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGameTimestamp}:t>
-
-• The host for this session is: ${host}, Direct Message them for help. 
-
-Required at least **25+ Reacts** (1 per duo).`;
-
-        }
-
-    }
-
-
-    /* =================================================
-       TRIOS
-    ================================================= */
-
-    if(
-        currentSession === "trios" ||
-        currentSession === "trios2"
-    ){
-
-        if(currentSession === "trios"){
-
-            message =
-`@everyone 
-
-**Noble Division 2 Practice Session (${selectedGames} games)**
-
-**Trios**
-
-<:Arrow:1540758164797005876>   Registration opens @ <t:${registrationTimestamp}:t>
-
-<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGameTimestamp}:t>
-
-The host for this session is: ${host}, Direct Message them for help.
-
-• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
-
-Required at least **40+ Reacts** for 1 lobby and **80+ Reacts** for a 2nd lobby (1 per trio).`;
-
-        }else{
-
-            message =
-`@everyone 
-
-**Noble Division 2 Practice Session (${selectedGames} games)**
-
-**Trios Second Lobby**
-
-<:Arrow:1540758164797005876>   Registration opens @ <t:${registrationTimestamp}:t>
-
-<:Arrow:1540758164797005876>   First Game Commences @ <t:${firstGameTimestamp}:t>
-
-The host for this session is: ${host}, Direct Message them for help.
-
-• Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
-
-Required at least **40+ Reacts** for 1 lobby and **80+ Reacts** for a 2nd lobby (1 per trio).`;
-
-        }
-
-    }
-
-
-    document
-        .getElementById(
-            "message"
-        )
-        .value = message;
-
-
-    document
-        .getElementById(
-            "preview"
-        )
-        .style.display =
-        "block";
-
-
-    document
-        .getElementById(
-            "preview"
-        )
+    document.getElementById("generator")
         .scrollIntoView({
-            behavior:"smooth",
-            block:"nearest"
+            behavior: "smooth",
+            block: "start"
         });
 }
 
 
 /* =====================================================
-   COPY MESSAGE
+   INPUT EVENTS
 ===================================================== */
 
-function copyMessage(){
+document.getElementById("sessionDate")
+    .addEventListener("input", updateSession);
 
-    const message =
-        document
-            .getElementById(
-                "message"
-            )
-            .value;
+document.getElementById("sessionTime")
+    .addEventListener("input", updateSession);
 
-    if(!message){
-        return;
-    }
-
-    navigator.clipboard
-        .writeText(message)
-        .then(
-            () => {
-
-                const button =
-                    document.querySelector(
-                        ".copy"
-                    );
-
-                alert(
-                    "Discord message copied!"
-                );
-
-            }
-        );
-}
+document.getElementById("hostId")
+    .addEventListener("input", updateSession);
 
 
 /* =====================================================
-   DATE CHANGE
+   COPY
 ===================================================== */
 
-document
-    .getElementById(
-        "sessionDate"
-    )
-    .addEventListener(
-        "change",
-        updateFirstGame
+function copyMessage() {
+
+    const output =
+        document.getElementById("output");
+
+    navigator.clipboard.writeText(
+        output.value
     );
+
+    document.getElementById("copied")
+        .style.display = "block";
+
+    setTimeout(() => {
+
+        document.getElementById("copied")
+            .style.display = "none";
+
+    }, 2000);
+}
 
 
 /* =====================================================
    DEFAULT DATE
 ===================================================== */
 
-const today =
-    new Date();
+(function init() {
 
-document
-    .getElementById(
-        "sessionDate"
-    )
-    .value =
-    today
-        .toISOString()
-        .split("T")[0];
+    const today = new Date();
 
+    document.getElementById("sessionDate").value =
+        `${today.getFullYear()}-${String(
+            today.getMonth() + 1
+        ).padStart(2, "0")}-${String(
+            today.getDate()
+        ).padStart(2, "0")}`;
 
-/* =====================================================
-   DEFAULT TIME
-===================================================== */
-
-document
-    .getElementById(
-        "registrationTime"
-    )
-    .value =
-    "18:00";
+})();
 
 </script>
 

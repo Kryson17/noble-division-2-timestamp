@@ -1819,17 +1819,13 @@ const SESSION_PRESETS = {
 
     solo: {
         name: "Solo",
-        type: "solo",
-        fixedHosts:
-            "<@832913126499287060> & <@1063915655738441909>"
+        type: "solo"
     },
 
 
     solo2: {
         name: "Solo — Second Lobby",
-        type: "solo2",
-        fixedHosts:
-            "<@832913126499287060> & <@1063915655738441909>"
+        type: "solo2"
     },
 
 
@@ -2478,7 +2474,7 @@ function generateAnnouncement(){
 
 <:Arrow:1540758164797005876>   First Game Commences ${firstGameTimestamp}
 
-The host for this session is: ${session.fixedHosts} Direct Message them for help.
+The host for this session is: ${dynamicHost} Direct Message them for help.
 
 • Make sure to read <#1539238648799830108>, <#1540412486749130884> & <#1539238649080713247> before the games.
 

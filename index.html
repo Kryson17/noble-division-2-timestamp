@@ -8,10 +8,6 @@
 
 <style>
 
-/* =========================================================
-   ROOT
-========================================================= */
-
 :root{
     --bg:#050914;
     --bg2:#080d1c;
@@ -39,11 +35,6 @@
     --shadow:
         0 24px 70px rgba(0,0,0,.48);
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     box-sizing:border-box;
@@ -109,11 +100,6 @@ body::before{
         );
 }
 
-
-/* =========================================================
-   APP
-========================================================= */
-
 .app{
     width:min(1480px,94%);
     margin:0 auto;
@@ -126,11 +112,6 @@ body::before{
     position:relative;
     z-index:1;
 }
-
-
-/* =========================================================
-   HEADER
-========================================================= */
 
 .header{
     position:relative;
@@ -277,11 +258,6 @@ h1{
     font-size:13px;
 }
 
-
-/* =========================================================
-   MAIN THREE COLUMN LAYOUT
-========================================================= */
-
 .main-grid{
     display:grid;
 
@@ -296,11 +272,6 @@ h1{
 
     align-items:start;
 }
-
-
-/* =========================================================
-   PANELS
-========================================================= */
 
 .panel{
     position:relative;
@@ -384,11 +355,6 @@ h1{
         13px
         15px;
 }
-
-
-/* =========================================================
-   LEFT COLUMN
-========================================================= */
 
 .section-name{
     margin:
@@ -558,11 +524,6 @@ h1{
     padding-top:7px;
 }
 
-
-/* =========================================================
-   SCHEDULE PREVIEW
-========================================================= */
-
 .schedule-preview{
     display:none;
 
@@ -609,10 +570,9 @@ h1{
         monospace;
 }
 
-
-/* =========================================================
-   CENTER SETUP
-========================================================= */
+.schedule-preview .copy{
+    margin-top:10px;
+}
 
 .form-grid{
     display:grid;
@@ -677,11 +637,6 @@ h1{
         0 0 0 3px
         rgba(41,216,255,.07);
 }
-
-
-/* =========================================================
-   QUICK TIMES
-========================================================= */
 
 .quick-section{
     margin:
@@ -766,11 +721,6 @@ h1{
     margin-top:8px;
 }
 
-
-/* =========================================================
-   SELECTED SESSION
-========================================================= */
-
 .selected-session{
     margin:
         15px
@@ -812,11 +762,6 @@ h1{
 
     font-weight:850;
 }
-
-
-/* =========================================================
-   GAME SELECT
-========================================================= */
 
 .game-section{
     margin:
@@ -901,11 +846,6 @@ h1{
     pointer-events:none;
 }
 
-
-/* =========================================================
-   FIRST GAME
-========================================================= */
-
 .first-game{
     margin:
         12px
@@ -933,11 +873,6 @@ h1{
 .first-game strong{
     color:#edf2ff;
 }
-
-
-/* =========================================================
-   GENERATE BUTTON
-========================================================= */
 
 .generate{
     width:
@@ -989,11 +924,6 @@ h1{
         rgba(67,65,255,.30);
 }
 
-
-/* =========================================================
-   STATUS
-========================================================= */
-
 .status{
     min-height:14px;
 
@@ -1006,11 +936,6 @@ h1{
 
     font-size:9px;
 }
-
-
-/* =========================================================
-   RIGHT MESSAGE
-========================================================= */
 
 .message-panel{
     min-height:100%;
@@ -1128,11 +1053,6 @@ h1{
         rgba(127,57,255,.22);
 }
 
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
 @media(max-width:1180px){
 
     .main-grid{
@@ -1150,7 +1070,6 @@ h1{
         min-height:350px;
     }
 }
-
 
 @media(max-width:780px){
 
@@ -1184,7 +1103,6 @@ h1{
     }
 }
 
-
 @media(max-width:470px){
 
     .schedule-grid{
@@ -1208,15 +1126,9 @@ h1{
 </style>
 </head>
 
-
 <body>
 
 <div class="app">
-
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
 
 <header class="header">
 
@@ -1231,24 +1143,12 @@ h1{
     </h1>
 
     <div class="subtitle">
-        Select a session, choose a registration time,
-        and generate the ready-to-use Discord announcement.
+        Select a session, choose a registration time, and generate the ready-to-use Discord announcement.
     </div>
 
 </header>
 
-
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
 <main class="main-grid">
-
-
-<!-- =========================================================
-     LEFT — SELECTION
-========================================================= -->
 
 <section class="panel">
 
@@ -1258,14 +1158,11 @@ h1{
 
     <div class="panel-body">
 
-
         <div class="section-name">
             Schedule Presets
         </div>
 
-
         <div class="schedule-grid">
-
 
             <button
                 type="button"
@@ -1286,7 +1183,6 @@ h1{
 
             </button>
 
-
             <button
                 type="button"
                 class="card schedule-card"
@@ -1306,7 +1202,6 @@ h1{
 
             </button>
 
-
             <button
                 type="button"
                 class="card schedule-card"
@@ -1325,7 +1220,6 @@ h1{
                 </small>
 
             </button>
-
 
             <button
                 type="button"
@@ -1348,20 +1242,16 @@ h1{
 
         </div>
 
-
         <div
             id="schedulePreview"
             class="schedule-preview"
         ></div>
 
-
         <div class="section-name">
             Sessions
         </div>
 
-
         <div class="session-list">
-
 
             <button
                 type="button"
@@ -1382,7 +1272,6 @@ h1{
 
             </button>
 
-
             <button
                 type="button"
                 class="card"
@@ -1401,7 +1290,6 @@ h1{
                 </small>
 
             </button>
-
 
             <button
                 type="button"
@@ -1422,7 +1310,6 @@ h1{
 
             </button>
 
-
             <button
                 type="button"
                 class="card"
@@ -1441,7 +1328,6 @@ h1{
                 </small>
 
             </button>
-
 
             <button
                 type="button"
@@ -1462,7 +1348,6 @@ h1{
 
             </button>
 
-
             <button
                 type="button"
                 class="card"
@@ -1481,7 +1366,6 @@ h1{
                 </small>
 
             </button>
-
 
             <button
                 type="button"
@@ -1502,7 +1386,6 @@ h1{
 
             </button>
 
-
             <button
                 type="button"
                 class="card"
@@ -1522,18 +1405,11 @@ h1{
 
             </button>
 
-
         </div>
 
     </div>
 
 </section>
-
-
-
-<!-- =========================================================
-     CENTER — SETUP
-========================================================= -->
 
 <section class="panel purple">
 
@@ -1541,9 +1417,7 @@ h1{
         Setup
     </div>
 
-
     <div class="form-grid">
-
 
         <div class="field">
 
@@ -1557,7 +1431,6 @@ h1{
             >
 
         </div>
-
 
         <div class="field">
 
@@ -1574,10 +1447,7 @@ h1{
 
         </div>
 
-
     </div>
-
-
 
     <div class="quick-section">
 
@@ -1585,12 +1455,10 @@ h1{
             Registration Opens
         </div>
 
-
         <div
             id="quickGrid"
             class="quick-grid"
         ></div>
-
 
         <div
             class="field custom-time"
@@ -1609,8 +1477,6 @@ h1{
 
     </div>
 
-
-
     <div class="selected-session">
 
         <div class="selected-session-label">
@@ -1626,14 +1492,11 @@ h1{
 
     </div>
 
-
-
     <div class="game-section">
 
         <div class="game-title">
             Games
         </div>
-
 
         <div class="game-buttons">
 
@@ -1645,7 +1508,6 @@ h1{
             >
                 2 Games
             </button>
-
 
             <button
                 type="button"
@@ -1660,8 +1522,6 @@ h1{
 
     </div>
 
-
-
     <div class="first-game">
 
         First Game Commences:
@@ -1672,14 +1532,10 @@ h1{
 
     </div>
 
-
-
     <div
         id="status"
         class="status"
     ></div>
-
-
 
     <button
         type="button"
@@ -1691,18 +1547,11 @@ h1{
 
 </section>
 
-
-
-<!-- =========================================================
-     RIGHT — MESSAGE
-========================================================= -->
-
 <section class="panel message-panel">
 
     <div class="panel-header">
         Generated Message
     </div>
-
 
     <div class="message-info">
 
@@ -1713,14 +1562,12 @@ h1{
 
     </div>
 
-
     <div class="message-wrap">
 
         <div
             id="messageBox"
             class="message-box"
         >Select a session and generate an announcement.</div>
-
 
         <button
             type="button"
@@ -1734,20 +1581,11 @@ h1{
 
 </section>
 
-
 </main>
 
 </div>
 
-
-
 <script>
-
-/* =========================================================
-   SCHEDULE PRESETS
-   IMPORTANT:
-   These are intentionally separate from SESSION PRESETS.
-========================================================= */
 
 const SCHEDULE_PRESETS = {
 
@@ -1764,7 +1602,6 @@ No sessions today — we’re taking a short break while the tournament is on.
 We’ll resume hosting tomorrow. Good luck to everyone competing! 🏆`
     },
 
-
     no2: {
         name: "No Hosting — 2 Days",
 
@@ -1778,7 +1615,6 @@ No sessions for the next two days while the tournament is on.
 We’ll resume hosting the following day. Good luck to everyone competing! 🏆`
     },
 
-
     weekday: {
         name: "Non-Tournament Weekday",
 
@@ -1790,7 +1626,6 @@ We’ll resume hosting the following day. Good luck to everyone competing! 🏆`
             "23:00"
         ]
     },
-
 
     weekend: {
         name: "Non-Tournament Weekend",
@@ -1808,13 +1643,6 @@ We’ll resume hosting the following day. Good luck to everyone competing! 🏆`
 
 };
 
-
-
-/* =========================================================
-   SESSION PRESETS
-   EXACTLY 8
-========================================================= */
-
 const SESSION_PRESETS = {
 
     solo: {
@@ -1822,42 +1650,35 @@ const SESSION_PRESETS = {
         type: "solo"
     },
 
-
     solo2: {
         name: "Solo — Second Lobby",
         type: "solo2"
     },
-
 
     duos: {
         name: "Duos",
         type: "duos"
     },
 
-
     duos2: {
         name: "Duos — Second Lobby",
         type: "duos2"
     },
-
 
     reload: {
         name: "Reload",
         type: "reload"
     },
 
-
     reload2: {
         name: "Reload — Second Lobby",
         type: "reload2"
     },
 
-
     trios: {
         name: "Trios",
         type: "trios"
     },
-
 
     trios2: {
         name: "Trios — Second Lobby",
@@ -1865,12 +1686,6 @@ const SESSION_PRESETS = {
     }
 
 };
-
-
-
-/* =========================================================
-   STATE
-========================================================= */
 
 let selectedSchedule = null;
 
@@ -1880,18 +1695,11 @@ let selectedGames = 3;
 
 let selectedTime = "15:00";
 
-
-
-/* =========================================================
-   DATE HELPERS
-========================================================= */
-
 function pad(number){
 
     return String(number).padStart(2,"0");
 
 }
-
 
 function getLocalDate(){
 
@@ -1906,7 +1714,6 @@ function getLocalDate(){
     );
 
 }
-
 
 function makeDate(dateString,timeString){
 
@@ -1928,7 +1735,6 @@ function makeDate(dateString,timeString){
 
 }
 
-
 function discordTimestamp(date){
 
     return (
@@ -1943,7 +1749,6 @@ function discordTimestamp(date){
 
 }
 
-
 function formatTime(date){
 
     return (
@@ -1956,12 +1761,6 @@ function formatTime(date){
 
 }
 
-
-
-/* =========================================================
-   QUICK TIMES
-========================================================= */
-
 function createQuickTimes(){
 
     const container =
@@ -1970,7 +1769,6 @@ function createQuickTimes(){
         );
 
     container.innerHTML = "";
-
 
     for(
         let hour = 14;
@@ -1981,24 +1779,19 @@ function createQuickTimes(){
         const time =
             pad(hour) + ":00";
 
-
         const button =
             document.createElement("button");
-
 
         button.type = "button";
 
         button.className =
             "quick-button";
 
-
         button.textContent =
             time;
 
-
         button.dataset.time =
             time;
-
 
         button.addEventListener(
             "click",
@@ -2009,23 +1802,19 @@ function createQuickTimes(){
             }
         );
 
-
         container.appendChild(button);
 
     }
 
 }
 
-
 function selectTime(time){
 
     selectedTime = time;
 
-
     document.getElementById(
         "customTime"
     ).value = time;
-
 
     document
         .querySelectorAll(
@@ -2042,16 +1831,9 @@ function selectTime(time){
             }
         );
 
-
     updateFirstGame();
 
 }
-
-
-
-/* =========================================================
-   SESSION SELECT
-========================================================= */
 
 function clearActiveSelections(){
 
@@ -2069,7 +1851,6 @@ function clearActiveSelections(){
             }
         );
 
-
     document
         .querySelectorAll(
             "[data-schedule]"
@@ -2086,34 +1867,32 @@ function clearActiveSelections(){
 
 }
 
-
 function selectSession(key,element){
 
     selectedSession = key;
 
     selectedSchedule = null;
 
-
     clearActiveSelections();
 
     element.classList.add("active");
 
+    document.getElementById(
+        "schedulePreview"
+    ).classList.remove("visible");
 
     const session =
         SESSION_PRESETS[key];
-
 
     document.getElementById(
         "selectedSession"
     ).textContent =
         session.name;
 
-
     const reload =
         session.type === "reload"
         ||
         session.type === "reload2";
-
 
     document
         .getElementById("games2")
@@ -2122,14 +1901,12 @@ function selectSession(key,element){
             reload
         );
 
-
     document
         .getElementById("games3")
         .classList.toggle(
             "disabled",
             reload
         );
-
 
     if(reload){
 
@@ -2145,9 +1922,7 @@ function selectSession(key,element){
 
     }
 
-
     updateFirstGame();
-
 
     document.getElementById(
         "status"
@@ -2155,39 +1930,28 @@ function selectSession(key,element){
 
 }
 
-
-
-/* =========================================================
-   SCHEDULE SELECT
-========================================================= */
-
 function selectSchedule(key,element){
 
     selectedSchedule = key;
 
     selectedSession = null;
 
-
     clearActiveSelections();
 
     element.classList.add("active");
-
 
     document.getElementById(
         "selectedSession"
     ).textContent =
         "No session selected";
 
-
     const preview =
         document.getElementById(
             "schedulePreview"
         );
 
-
     const preset =
         SCHEDULE_PRESETS[key];
-
 
     if(preset.text){
 
@@ -2200,6 +1964,14 @@ function selectSchedule(key,element){
             <div class="schedule-preview-text">${escapeHtml(
                 preset.text
             )}</div>
+
+            <button
+                type="button"
+                class="copy"
+                onclick="copySchedule()"
+            >
+                COPY SCHEDULE
+            </button>
             `;
 
     }
@@ -2215,15 +1987,21 @@ function selectSchedule(key,element){
             <div class="schedule-preview-text">
                 ${preset.times.join(" · ")}
             </div>
+
+            <button
+                type="button"
+                class="copy"
+                onclick="copySchedule()"
+            >
+                COPY SCHEDULE
+            </button>
             `;
 
     }
 
-
     preview.classList.add(
         "visible"
     );
-
 
     document.getElementById(
         "status"
@@ -2231,12 +2009,6 @@ function selectSchedule(key,element){
         "Schedule preset selected.";
 
 }
-
-
-
-/* =========================================================
-   GAMES
-========================================================= */
 
 function setGames(number){
 
@@ -2246,12 +2018,10 @@ function setGames(number){
 
     }
 
-
     const type =
         SESSION_PRESETS[
             selectedSession
         ].type;
-
 
     if(
         type === "reload"
@@ -2263,9 +2033,7 @@ function setGames(number){
 
     }
 
-
     selectedGames = number;
-
 
     document
         .getElementById("games2")
@@ -2274,7 +2042,6 @@ function setGames(number){
             number === 2
         );
 
-
     document
         .getElementById("games3")
         .classList.toggle(
@@ -2282,16 +2049,9 @@ function setGames(number){
             number === 3
         );
 
-
     updateFirstGame();
 
 }
-
-
-
-/* =========================================================
-   FIRST GAME
-========================================================= */
 
 function updateFirstGame(){
 
@@ -2299,7 +2059,6 @@ function updateFirstGame(){
         document.getElementById(
             "date"
         ).value;
-
 
     if(
         !date
@@ -2316,13 +2075,11 @@ function updateFirstGame(){
 
     }
 
-
     const registration =
         makeDate(
             date,
             selectedTime
         );
-
 
     const firstGame =
         new Date(
@@ -2330,7 +2087,6 @@ function updateFirstGame(){
             +
             15 * 60 * 1000
         );
-
 
     document.getElementById(
         "firstGame"
@@ -2343,12 +2099,6 @@ function updateFirstGame(){
 
 }
 
-
-
-/* =========================================================
-   HOST
-========================================================= */
-
 function getHostMention(){
 
     const value =
@@ -2356,23 +2106,15 @@ function getHostMention(){
             "host"
         ).value.trim();
 
-
     if(!value){
 
         return "<@user>";
 
     }
 
-
     return "<@" + value + ">";
 
 }
-
-
-
-/* =========================================================
-   GENERATE SESSION MESSAGE
-========================================================= */
 
 function generateAnnouncement(){
 
@@ -2387,12 +2129,10 @@ function generateAnnouncement(){
 
     }
 
-
     const date =
         document.getElementById(
             "date"
         ).value;
-
 
     if(!date){
 
@@ -2405,19 +2145,16 @@ function generateAnnouncement(){
 
     }
 
-
     const session =
         SESSION_PRESETS[
             selectedSession
         ];
-
 
     const registration =
         makeDate(
             date,
             selectedTime
         );
-
 
     const firstGame =
         new Date(
@@ -2426,30 +2163,20 @@ function generateAnnouncement(){
             15 * 60 * 1000
         );
 
-
     const registrationTimestamp =
         discordTimestamp(
             registration
         );
-
 
     const firstGameTimestamp =
         discordTimestamp(
             firstGame
         );
 
-
     const dynamicHost =
         getHostMention();
 
-
     let message = "";
-
-
-
-    /* =====================================================
-       SOLO
-    ===================================================== */
 
     if(
         session.type === "solo"
@@ -2461,7 +2188,6 @@ function generateAnnouncement(){
             session.type === "solo"
                 ? "Solos"
                 : "Solos Second Lobby";
-
 
         message =
 `@everyone
@@ -2481,12 +2207,6 @@ The host for this session is: ${dynamicHost} Direct Message them for help.
 Required at least **110+ Reacts** for 1 lobby and **220+ Reacts** for a 2nd lobby. (1 per player)`;
 
     }
-
-
-
-    /* =====================================================
-       DUOS
-    ===================================================== */
 
     else if(
         session.type === "duos"
@@ -2534,12 +2254,6 @@ Required at least **55+ Reacts** (1 per duo).`;
 
     }
 
-
-
-    /* =====================================================
-       RELOAD
-    ===================================================== */
-
     else if(
         session.type === "reload"
         ||
@@ -2586,12 +2300,6 @@ Required at least **25+ Reacts** (1 per duo).`;
 
     }
 
-
-
-    /* =====================================================
-       TRIOS
-    ===================================================== */
-
     else if(
         session.type === "trios"
         ||
@@ -2602,7 +2310,6 @@ Required at least **25+ Reacts** (1 per duo).`;
             session.type === "trios"
                 ? "Trios"
                 : "Trios Second Lobby";
-
 
         message =
 `@everyone 
@@ -2623,13 +2330,10 @@ Required at least **40+ Reacts** for 1 lobby and **80+ Reacts** for a 2nd lobby 
 
     }
 
-
-
     document.getElementById(
         "messageBox"
     ).textContent =
         message;
-
 
     document.getElementById(
         "status"
@@ -2638,19 +2342,12 @@ Required at least **40+ Reacts** for 1 lobby and **80+ Reacts** for a 2nd lobby 
 
 }
 
-
-
-/* =========================================================
-   COPY
-========================================================= */
-
 async function copyAnnouncement(){
 
     const text =
         document.getElementById(
             "messageBox"
         ).textContent;
-
 
     if(
         !text
@@ -2662,7 +2359,6 @@ async function copyAnnouncement(){
         return;
 
     }
-
 
     try{
 
@@ -2679,7 +2375,6 @@ async function copyAnnouncement(){
                 "textarea"
             );
 
-
         textarea.value = text;
 
         textarea.style.position =
@@ -2688,11 +2383,9 @@ async function copyAnnouncement(){
         textarea.style.opacity =
             "0";
 
-
         document.body.appendChild(
             textarea
         );
-
 
         textarea.select();
 
@@ -2700,11 +2393,9 @@ async function copyAnnouncement(){
             "copy"
         );
 
-
         textarea.remove();
 
     }
-
 
     document.getElementById(
         "status"
@@ -2713,11 +2404,86 @@ async function copyAnnouncement(){
 
 }
 
+async function copySchedule(){
 
+    const preview =
+        document.getElementById(
+            "schedulePreview"
+        );
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
+    if(!preview){
+
+        return;
+
+    }
+
+    const title =
+        preview.querySelector(
+            ".schedule-preview-title"
+        );
+
+    const text =
+        preview.querySelector(
+            ".schedule-preview-text"
+        );
+
+    if(!title || !text){
+
+        return;
+
+    }
+
+    const copyText =
+        title.textContent.trim()
+        +
+        "\n\n"
+        +
+        text.textContent.trim();
+
+    try{
+
+        await navigator.clipboard.writeText(
+            copyText
+        );
+
+    }
+
+    catch(error){
+
+        const textarea =
+            document.createElement(
+                "textarea"
+            );
+
+        textarea.value =
+            copyText;
+
+        textarea.style.position =
+            "fixed";
+
+        textarea.style.opacity =
+            "0";
+
+        document.body.appendChild(
+            textarea
+        );
+
+        textarea.select();
+
+        document.execCommand(
+            "copy"
+        );
+
+        textarea.remove();
+
+    }
+
+    document.getElementById(
+        "status"
+    ).textContent =
+        "Schedule copied to clipboard.";
+
+}
 
 function escapeHtml(value){
 
@@ -2742,12 +2508,6 @@ function escapeHtml(value){
 
 }
 
-
-
-/* =========================================================
-   CUSTOM TIME
-========================================================= */
-
 document.getElementById(
     "customTime"
 ).addEventListener(
@@ -2760,7 +2520,6 @@ document.getElementById(
                 this.value;
 
         }
-
 
         document
             .querySelectorAll(
@@ -2778,17 +2537,10 @@ document.getElementById(
                 }
             );
 
-
         updateFirstGame();
 
     }
 );
-
-
-
-/* =========================================================
-   DATE
-========================================================= */
 
 document.getElementById(
     "date"
@@ -2797,17 +2549,10 @@ document.getElementById(
     updateFirstGame
 );
 
-
-
-/* =========================================================
-   INIT
-========================================================= */
-
 document.getElementById(
     "date"
 ).value =
     getLocalDate();
-
 
 createQuickTimes();
 

@@ -1216,7 +1216,7 @@ h1{
                 </strong>
 
                 <small>
-                    15:00 · 17:00 · 19:00 · 21:00 · 23:00
+                    14:00 · 16:00 · 18:00 · 20:00 · 22:00 · 23:30
                 </small>
 
             </button>
@@ -1619,11 +1619,12 @@ We’ll resume hosting the following day. Good luck to everyone competing! 🏆`
         name: "Non-Tournament Weekday",
 
         times: [
-            "15:00",
-            "17:00",
-            "19:00",
-            "21:00",
-            "23:00"
+            "14:00",
+            "16:00",
+            "18:00",
+            "20:00",
+            "22:00",
+            "23:30"
         ]
     },
 
@@ -1694,6 +1695,8 @@ let selectedSession = null;
 let selectedGames = 3;
 
 let selectedTime = "15:00";
+
+let currentScheduleText = "";
 
 function pad(number){
 
@@ -1873,6 +1876,8 @@ function selectSession(key,element){
 
     selectedSchedule = null;
 
+    currentScheduleText = "";
+
     clearActiveSelections();
 
     element.classList.add("active");
@@ -1930,6 +1935,206 @@ function selectSession(key,element){
 
 }
 
+function formatScheduleDate(dateString){
+
+    const parts =
+        dateString.split("-");
+
+    return (
+        parts[2]
+        +
+        "-"
+        +
+        parts[1]
+        +
+        "-"
+        +
+        parts[0]
+    );
+
+}
+
+function generateScheduleText(
+    preset,
+    dateString
+){
+
+    if(preset.text){
+
+        return preset.text;
+
+    }
+
+    const displayDate =
+        formatScheduleDate(
+            dateString
+        );
+
+    const baseDate =
+        makeDate(
+            dateString,
+            "00:00"
+        );
+
+    let previousDate = null;
+
+    const sessionNames = [
+        "First",
+        "Second",
+        "Third",
+        "Fourth",
+        "Fifth",
+        "Sixth",
+        "Seventh"
+    ];
+
+    const sessions =
+        preset.times.map(
+            function(time,index){
+
+                const parts =
+                    time.split(":").map(Number);
+
+                const sessionDate =
+                    new Date(baseDate);
+
+                sessionDate.setHours(
+                    parts[0],
+                    parts[1],
+                    0,
+                    0
+                );
+
+                if(
+                    previousDate
+                    &&
+                    sessionDate <= previousDate
+                ){
+
+                    sessionDate.setDate(
+                        sessionDate.getDate() + 1
+                    );
+
+                }
+
+                previousDate =
+                    sessionDate;
+
+                const timestamp =
+                    Math.floor(
+                        sessionDate.getTime() / 1000
+                    );
+
+                const last =
+                    index ===
+                    preset.times.length - 1;
+
+                const sessionName =
+                    sessionNames[index]
+                    +
+                    " Session"
+                    +
+                    (
+                        last
+                            ? " (2 games)"
+                            : ""
+                    );
+
+                return (
+                    sessionName
+                    +
+                    ":\n"
+                    +
+                    "<:Arrow:1540758164797005876> "
+                    +
+                    "<t:"
+                    +
+                    timestamp
+                    +
+                    ":t>"
+                );
+
+            }
+        );
+
+    return (
+`@everyone
+
+<:Div2:1540429559076225094>   **Noble Division 2 Schedule (${displayDate})**   <:Div2:1540429559076225094>
+
+`
+        +
+        sessions.join("\n\n")
+        +
+`
+
+More details are available in <#1541099252149657772>
+
+-# Please note that session times may shift depending on how earlier sessions progress.`
+    );
+
+}
+
+function renderSchedule(){
+
+    if(!selectedSchedule){
+
+        return;
+
+    }
+
+    const preset =
+        SCHEDULE_PRESETS[
+            selectedSchedule
+        ];
+
+    const date =
+        document.getElementById(
+            "date"
+        ).value;
+
+    if(!date){
+
+        return;
+
+    }
+
+    currentScheduleText =
+        generateScheduleText(
+            preset,
+            date
+        );
+
+    const preview =
+        document.getElementById(
+            "schedulePreview"
+        );
+
+    preview.innerHTML =
+        `
+        <div class="schedule-preview-title">
+            ${preset.name}
+        </div>
+
+        <div class="schedule-preview-text">${escapeHtml(
+            currentScheduleText
+        )}</div>
+
+        <button
+            type="button"
+            class="copy"
+            onclick="copySchedule()"
+        >
+            COPY SCHEDULE
+        </button>
+        `;
+
+    preview.classList.add(
+        "visible"
+    );
+
+}
+
 function selectSchedule(key,element){
 
     selectedSchedule = key;
@@ -1945,63 +2150,7 @@ function selectSchedule(key,element){
     ).textContent =
         "No session selected";
 
-    const preview =
-        document.getElementById(
-            "schedulePreview"
-        );
-
-    const preset =
-        SCHEDULE_PRESETS[key];
-
-    if(preset.text){
-
-        preview.innerHTML =
-            `
-            <div class="schedule-preview-title">
-                ${preset.name}
-            </div>
-
-            <div class="schedule-preview-text">${escapeHtml(
-                preset.text
-            )}</div>
-
-            <button
-                type="button"
-                class="copy"
-                onclick="copySchedule()"
-            >
-                COPY SCHEDULE
-            </button>
-            `;
-
-    }
-
-    else{
-
-        preview.innerHTML =
-            `
-            <div class="schedule-preview-title">
-                ${preset.name}
-            </div>
-
-            <div class="schedule-preview-text">
-                ${preset.times.join(" · ")}
-            </div>
-
-            <button
-                type="button"
-                class="copy"
-                onclick="copySchedule()"
-            >
-                COPY SCHEDULE
-            </button>
-            `;
-
-    }
-
-    preview.classList.add(
-        "visible"
-    );
+    renderSchedule();
 
     document.getElementById(
         "status"
@@ -2406,44 +2555,16 @@ async function copyAnnouncement(){
 
 async function copySchedule(){
 
-    const preview =
-        document.getElementById(
-            "schedulePreview"
-        );
-
-    if(!preview){
+    if(!currentScheduleText){
 
         return;
 
     }
-
-    const title =
-        preview.querySelector(
-            ".schedule-preview-title"
-        );
-
-    const text =
-        preview.querySelector(
-            ".schedule-preview-text"
-        );
-
-    if(!title || !text){
-
-        return;
-
-    }
-
-    const copyText =
-        title.textContent.trim()
-        +
-        "\n\n"
-        +
-        text.textContent.trim();
 
     try{
 
         await navigator.clipboard.writeText(
-            copyText
+            currentScheduleText
         );
 
     }
@@ -2456,7 +2577,7 @@ async function copySchedule(){
             );
 
         textarea.value =
-            copyText;
+            currentScheduleText;
 
         textarea.style.position =
             "fixed";
@@ -2546,7 +2667,17 @@ document.getElementById(
     "date"
 ).addEventListener(
     "change",
-    updateFirstGame
+    function(){
+
+        updateFirstGame();
+
+        if(selectedSchedule){
+
+            renderSchedule();
+
+        }
+
+    }
 );
 
 document.getElementById(
